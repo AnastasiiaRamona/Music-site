@@ -11,6 +11,7 @@
   --font-size-base: 16px;
   --font-weight-normal: 400;
   --font-weight-bold: 700;
+  --primary-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 * {
