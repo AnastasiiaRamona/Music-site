@@ -7,9 +7,9 @@
   padding: 20px;
   background: var(--bca-gradient);
   color: var(--white);
-  border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   height: 80vh;
+  background: url('../../../assets/background-4.jpg');
 }
 
 .videoWrapper {
@@ -18,7 +18,8 @@
   height: 65vh;
   padding-top: 28.125%;
   overflow: hidden;
-  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.252);
+  border-radius: 20px;
 }
 
 .videoWrapper iframe {

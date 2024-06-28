@@ -12,7 +12,7 @@ export const Header = () => {
       <div className={styles['header-container']}>
         <div className={styles.logo}>
           <Image className={styles['logo-image']} src={musicLogoSrc} alt="Logo" />
-          <h1 className={`${vibes.className}`}>ANASTASIIA RAMONA</h1>
+          <h1 className={`${vibes.className}`}><Link href="/home">ANASTASIIA RAMONA</Link></h1>
           <p className={styles['logo-text']}>Unleashing the Unheard, One Beat at a Time</p>
         </div>
         <nav className={styles['site-navigation']}>
