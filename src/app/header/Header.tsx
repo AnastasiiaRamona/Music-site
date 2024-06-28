@@ -20,7 +20,9 @@ export const Header = () => {
             <li className={styles['nav-item']}>
               <Link href="/home">Home</Link>
             </li>
-            <li className={styles['nav-item']}>About</li>
+            <li className={styles['nav-item']}>
+              <Link href="/about">About</Link>
+            </li>
             <li className={styles['nav-item']}>
               <Link href="/music">Music</Link>
             </li>
