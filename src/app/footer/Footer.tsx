@@ -1,12 +1,15 @@
+'use client';
+
 import instagramIconSrc from '../../assets/instagram-icon.png';
 import telegramIconSrc from '../../assets/telegram-icon.png';
 import youtubeIconSrc from '../../assets/youtube-icon.png';
 import SocialMediaButton from './SocialMediaButton';
 import styles from './Footer.module.css';
+import { forwardRef } from 'react';
 
-export const Footer = () => {
+export const Footer = forwardRef<HTMLElement>((props, ref) => {
   return (
-    <footer className={styles['site-footer']}>
+    <footer ref={ref} className={styles['site-footer']}>
       <div className={styles['footer-content']}>
         <div className={styles['social-list']}>
           <SocialMediaButton href='https://www.instagram.com/sia.de.ramona/' url={instagramIconSrc} alt="Instagram" />
@@ -17,4 +20,6 @@ export const Footer = () => {
       </div>
     </footer>
   );
-}
+})
+
+Footer.displayName = 'Footer';

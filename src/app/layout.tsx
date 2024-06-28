@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Overlock_SC } from "next/font/google";
 
 import "./globals.css";
-import { Footer } from "./footer/Footer";
-import { Header } from "./header/Header";
+import { Overlock_SC } from "next/font/google";
+import StartPage from "./startPage/StartPage";
 
 const overlock = Overlock_SC({ weight: '400', subsets: ['latin'] });
+
 
 export const metadata: Metadata = {
   title: "ANASTASIIA RAMONA",
@@ -20,9 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${overlock.className}`}>
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <StartPage>
+          {children}
+        </StartPage>
       </body>
     </html>
   );

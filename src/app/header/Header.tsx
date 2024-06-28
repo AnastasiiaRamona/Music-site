@@ -3,10 +3,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './header.module.css';
 import { Vibes } from "next/font/google";
+import { RefObject } from 'react';
 
 const vibes = Vibes({ weight: '400', subsets: ['latin'] });
 
-export const Header = () => {
+type HeaderProps = {
+  footerRef: RefObject<HTMLElement>;
+}
+
+export const Header = (props: HeaderProps) => {
   return (
     <header className={styles['site-header']}>
       <div className={styles['header-container']}>
@@ -26,10 +31,14 @@ export const Header = () => {
             <li className={styles['nav-item']}>
               <Link href="/music">Music</Link>
             </li>
-            <li className={styles['nav-item']}>Contact</li>
+            <li onClick = {() => onClick(props.footerRef)} className={styles['nav-item']}>Contact</li>
           </ul>
         </nav>
       </div>
     </header>
   );
 };
+
+function onClick(footerRef: RefObject<HTMLElement>) {
+  footerRef.current?.scrollIntoView({ behavior: 'smooth' });
+}
