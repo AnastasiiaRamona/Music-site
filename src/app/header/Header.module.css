@@ -29,7 +29,7 @@
     }
 
     .logo-text-heading {
-      font-size: 1.5em;
+      font-size: xx-large;
       font-weight: bold;
       line-height: 1.2;
       color: var(--white);
@@ -61,10 +61,6 @@
         margin: 0 10px;
         cursor: pointer;
         transition: color 0.3s;
-
-        &:hover {
-          color: var(--secondary-color);
-        }
       }
     }
   }

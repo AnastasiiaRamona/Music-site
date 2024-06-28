@@ -1,16 +1,21 @@
-import styles from './Main.module.css';
+import Link from 'next/link';
+import styles from './page.module.css';
 import { Vibes } from "next/font/google";
 
 const vibes = Vibes({ weight: '400', subsets: ['latin'] });
 
-export const Main = () => {
+const Home = () => {
   return (
     <section className={styles['site-main']}>
       <section className={styles['hero-section']}>
         <div className={styles['hero-content']}>
-          <h1>Welcome to Anastasiia Ramona&apos;s Music World</h1>
+          <h2>Welcome to Anastasiia Ramona&apos;s Music World</h2>
           <p>Explore Anastasiia Ramona&apos;s music and find out more about our journey.</p>
-          <button className={styles['cta-button']}>Learn More</button>
+          <button className={styles['cta-button']}>
+            <Link legacyBehavior href="/music">
+              Learn More
+            </Link>
+          </button>
         </div>
       </section>
       <section className={styles['new-release-section']}>
@@ -26,7 +31,9 @@ export const Main = () => {
       </section>
     </section>
   );
-}
+};
+
+export default Home;
 
 
 

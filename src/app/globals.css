@@ -1,10 +1,8 @@
 :root {
   --bca-gradient: linear-gradient(135deg, #032a7825, #6aaeb36d, #0ba6ff4b);
-  --bca-gradient-second: linear-gradient(20deg, #ff6f61, #fcd116, #0ba6ff);
-  --primary-color: #20232a;
+  --primary-color: #20283a;
   --secondary-color: #c8ecf7;
-  --success-color: #28a745;
-  --btn-bca-color: linear-gradient(20deg, #20232a, #61dafb, #fcd116);
+  --blue: #0ba6ff4b;
   --black: #000000;
   --white: #ffffff;
   --light: rgba(255, 255, 255, 0.5);
@@ -27,4 +25,16 @@ body {
   background: url('../assets/background.jpg') top center no-repeat;
   background-size: cover;
   min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  color: var(--white);
+}
+
+a:hover {
+  transform: translateY(-1.5px);
+  color: var(--secondary-color);
 }

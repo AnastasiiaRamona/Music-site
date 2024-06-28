@@ -23,7 +23,7 @@
   color: var(--black);
 }
 
-.hero-content h1 {
+.hero-content h2 {
   font-size: 3rem;
   margin: 0;
 }
@@ -41,6 +41,19 @@
   border: none;
   background: none;
   cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.cta-button a {
+  color: var(--black);
+
+  &:hover {
+    color: var(--white);
+  }
 }
 
 .new-release-section {

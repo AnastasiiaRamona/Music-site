@@ -1,16 +1,7 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import Link from "next/link";
-import { Header } from "./header/Header";
-import { Main } from "./main/Main";
-import { Footer } from "./footer/Footer";
+import Home from "./home/page";
 
-export default function Home() {
+export default function Main() {
   return (
-    <main className={styles.main}>
-        <Header/>
-        <Main/>
-        <Footer/>
-    </main>
+    <Home/>
   );
 }
