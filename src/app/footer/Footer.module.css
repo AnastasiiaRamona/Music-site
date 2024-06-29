@@ -1,0 +1,24 @@
+.site-footer {
+  background-color: #333333db;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  .footer-text {
+    font-family: var(--primary-font-family);
+    margin: 0;
+    font-size: 14px;
+  }
+}
+
+.social-list {
+  display: flex;
+  gap: 15px;
+}
