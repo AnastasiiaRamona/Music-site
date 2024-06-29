@@ -12,7 +12,7 @@ const Home = () => {
           <h2>Welcome to Anastasiia Ramona&apos;s Music World</h2>
           <p>Explore Anastasiia Ramona&apos;s music and find out more about our journey.</p>
           <button className={styles['cta-button']}>
-            <Link legacyBehavior href="/music">
+            <Link legacyBehavior href="/music" rel="preload">
               Learn More
             </Link>
           </button>

@@ -34,13 +34,13 @@ export const Header = (props: HeaderProps) => {
         <nav className={`${styles['site-navigation']} ${isOpen ? styles.active : ''}`}>
           <ul className={styles['nav-list']}>
             <li className={styles['nav-item']} onClick={handleNavLinkClick}>
-              <Link href="/home">Home</Link>
+              <Link href="/home" rel="preload">Home</Link>
             </li>
             <li className={styles['nav-item']} onClick={handleNavLinkClick}>
-              <Link href="/about">About</Link>
+              <Link href="/about" rel="preload">About</Link>
             </li>
             <li className={styles['nav-item']} onClick={handleNavLinkClick}>
-              <Link href="/music">Music</Link>
+              <Link href="/music" rel="preload">Music</Link>
             </li>
             <li className={styles['nav-item']} onClick={() => { handleNavLinkClick(); onClick(props.footerRef); }}>
               Contact
