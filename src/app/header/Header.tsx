@@ -1,7 +1,7 @@
 import musicLogoSrc from '../../assets/music.png';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from './header.module.css';
+import styles from './Header.module.css';
 import { Vibes } from "next/font/google";
 import { RefObject, useState } from 'react';
 import BurgerButton from './BurgerButton';
