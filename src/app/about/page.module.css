@@ -1,5 +1,6 @@
 .about {
   padding: 50px;
+  height: 100vh;
 }
 
 .about h2 {
@@ -15,14 +16,14 @@
 }
 
 .artistBio {
-  font-size: 2rem;
+  font-size: xx-large;
   color: var(--primary-color);
   text-align: justify;
 }
 
 .artistImageWrapper {
   border-radius: 20px;
-  height: 60vh;
+  height: 59vh;
   width: 60vw;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
   overflow: hidden;
@@ -38,4 +39,61 @@
 .artistImage:hover {
   transform: scale(1.1);
   transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 1234px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .artistImageWrapper {
+    height: 40vh;
+  }
+}
+
+@media screen and (max-width: 713px) {
+  .artistBio {
+    font-size: x-large;
+  }
+}
+
+@media screen and (max-width: 591px) {
+  .about h2 {
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  .artistImageWrapper {
+    width: 80vw;
+    height: 30vh;
+  }
+}
+
+@media screen and (max-height: 765px) {
+  .artistBio {
+    font-size: medium;
+  }
+
+  .about h2 {
+    margin: 0;
+    font-size: large;
+  }
+
+  .artistImageWrapper {
+    width: 80vw;
+    height: 40vh;
+  }
+}
+
+@media screen and (max-height: 506px) {
+  .artistBio {
+    font-size: large;
+  }
+
+  .artistImageWrapper {
+    width: 30vw;
+    height: 30vh;
+  }
 }

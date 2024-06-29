@@ -78,8 +78,8 @@
 }
 
 .new-release-content iframe {
-  width: 50vw;
-  height: 50vh;
+  width: 80%;
+  height: 60vh;
   margin: 1rem 0;
   border: none;
 }
@@ -89,4 +89,16 @@
   font-weight: normal;
   line-height: 1.5;
   color: var(--white);
+}
+
+@media screen and (max-width: 974px) {
+  .new-release-content iframe {
+    height: 40vh;
+  }
+}
+
+@media screen and (max-width: 612px) {
+  .new-release-content iframe {
+    height: 20vh;
+  }
 }
