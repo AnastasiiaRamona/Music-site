@@ -11,7 +11,7 @@ const overlock = Overlock_SC({ weight: '400', subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: "ANASTASIIA RAMONA",
-  description: "Musician",
+  description: "Musician/singer-songwriter",
 };
 
 export default function RootLayout({

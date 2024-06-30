@@ -3,7 +3,7 @@ import Image, { StaticImageData } from 'next/image';
 import appleMusicSrc from '../../../assets/apple-music.svg';
 import spotifySrc from '../../../assets/spotify.png';
 import amazonSrc from '../../../assets/amazon.png';
-import styles from './page.module.css'; 
+import styles from './page.module.css';
 
 type AlbumProps = {
   album?: {
