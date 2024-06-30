@@ -4,6 +4,7 @@ import "./globals.css";
 import { Overlock_SC } from "next/font/google";
 import StartPage from "./startPage/StartPage";
 import { images } from "../app/data/albums";
+import Head from "next/head";
 
 const overlock = Overlock_SC({ weight: '400', subsets: ['latin'] });
 
@@ -20,11 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${overlock.className}`}>
-      <head>
+      <Head>
         {images.map((src, index) => (
           <link key={index} rel="preload" href={src} as="image" />
         ))}
-      </head>
+      </Head>
       <body>
         <StartPage>
           {children}
