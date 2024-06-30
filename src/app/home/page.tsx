@@ -25,6 +25,7 @@ const Home = () => {
             src="https://www.youtube.com/embed/dLrnlyDI8Gg?si=ggo7EpNFpcSNeE5D"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
+            rel="preload"
           ></iframe>
           <p>Check out Anastasiia Ramona&apos;s latest release and get a taste of her new sound.</p>
         </div>

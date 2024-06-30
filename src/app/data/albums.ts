@@ -7,6 +7,22 @@ import coverSrc6 from '../../assets/covers/console_7_11zon.webp';
 import coverSrc7 from '../../assets/covers/the-first-time_4_11zon.webp';
 import coverSrc8 from '../../assets/covers/luminance_1_11zon.webp';
 import coverSrc9 from '../../assets/covers/rondo_3_11zon.webp';
+import image from '../../assets/image.webp';
+import appleMusicSrc from '../../assets/apple-music.svg';
+import spotifySrc from '../../assets/spotify.png';
+import amazonSrc from '../../assets/amazon.png';
+import musicSrc from '../../assets/music.png';
+import telegramSrc from '../../assets/telegram-icon.png';
+import youTubeSrc from '../../assets/youtube-icon.png';
+import instagramSrc from '../../assets/instagram-icon.png';
+import backgroundSrc1 from '../../assets/background-1.webp';
+import backgroundSrc2 from '../../assets/background-2.webp';
+import backgroundSrc3 from '../../assets/background-4.webp';
+import backgroundSrc4 from '../../assets/background.webp';
+
+export const images = [ 
+  coverSrc1, coverSrc2, coverSrc3, coverSrc4, coverSrc5, coverSrc6, coverSrc7, coverSrc8, coverSrc9, image, appleMusicSrc, spotifySrc, amazonSrc, musicSrc, telegramSrc, youTubeSrc, instagramSrc, backgroundSrc1, backgroundSrc2, backgroundSrc3, backgroundSrc4 
+];
 
 export const albums = [
   {

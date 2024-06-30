@@ -30,6 +30,7 @@ function MusicId({ album }: AlbumProps) {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           className={styles.videoFrame}
+          rel="preload"
         ></iframe>
       </div>
       <div className={styles.linksContainer}>
