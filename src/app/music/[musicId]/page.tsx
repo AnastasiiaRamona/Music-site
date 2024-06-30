@@ -34,7 +34,7 @@ const MemoizedIframe = memo(({ src, className }: { src: string; className: strin
 MemoizedIframe.displayName = 'MemoizedIframe';
 
 const MemoizedImage = memo(({ src, alt, className }: { src: StaticImageData; alt: string; className: string }) => {
-  return <Image loading="lazy" src={src} alt={alt} className={className} />;
+  return <Image loading="lazy" src={src} alt={alt} className={className} unoptimized={true} />;
 });
 
 MemoizedImage.displayName = 'MemoizedImage';

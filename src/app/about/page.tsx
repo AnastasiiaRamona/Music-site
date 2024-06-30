@@ -10,6 +10,7 @@ type ImageData = {
   src: StaticImageData;
   alt: string;
   className: string;
+  unoptimized: boolean;
 };
 
 const MemoizedImage = memo(({ src, alt, className }: ImageData) => {
@@ -32,7 +33,7 @@ export default function About() {
         <p className={styles.artistBio}>{artistBio}</p>
         <div className={styles.artistImagesWrapper}>
           <div className={styles.artistImageWrapper}>
-            <MemoizedImage src={artistSrc} alt="Artist" className={styles.artistImage} />
+            <MemoizedImage src={artistSrc} alt="Artist" className={styles.artistImage} unoptimized={true}/>
           </div>
         </div>
       </div>

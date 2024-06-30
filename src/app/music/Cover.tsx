@@ -8,6 +8,7 @@ type CoverData = {
   url: StaticImageData;
   alt: string;
   text: string;
+  unoptimized: boolean;
 }
 
 type CoverGalleryProps = {
@@ -18,7 +19,7 @@ const Cover = memo(({ id, url, alt, text }: CoverData) => {
   return (
     <Link legacyBehavior href={`/music/${id}`}>
       <div className={styles['cover-container']}>
-        <Image src={url} alt={alt} loading="lazy" className={styles['cover-image']} />
+        <Image src={url} alt={alt} loading="lazy" className={styles['cover-image']} unoptimized={true}/>
         <div className={styles['overlay']}>
           <p>{text}</p>
         </div>
@@ -35,7 +36,7 @@ export default function CoverGallery({ covers }: CoverGalleryProps) {
   return (
     <div className={styles['cover-gallery']}>
       {memoizedCovers.map((cover, index) => (
-        <Cover key={index} id={cover.id} url={cover.url} alt={cover.alt} text={cover.text} />
+        <Cover key={index} id={cover.id} url={cover.url} alt={cover.alt} text={cover.text} unoptimized={true}/>
       ))}
     </div>
   );
