@@ -15,13 +15,12 @@ import musicSrc from '../../assets/music.webp';
 import telegramSrc from '../../assets/telegram-icon.webp';
 import youTubeSrc from '../../assets/youtube-icon.webp';
 import instagramSrc from '../../assets/instagram-icon.webp';
-import backgroundSrc1 from '../../assets/background-1.webp';
 import backgroundSrc2 from '../../assets/background-2.webp';
 import backgroundSrc3 from '../../assets/background-4.webp';
 import backgroundSrc4 from '../../assets/background.webp';
 
 export const images = [ 
-  coverSrc1, coverSrc2, coverSrc3, coverSrc4, coverSrc5, coverSrc6, coverSrc7, coverSrc8, coverSrc9, image, appleMusicSrc, spotifySrc, amazonSrc, musicSrc, telegramSrc, youTubeSrc, instagramSrc, backgroundSrc1, backgroundSrc2, backgroundSrc3, backgroundSrc4 
+  coverSrc1, coverSrc2, coverSrc3, coverSrc4, coverSrc5, coverSrc6, coverSrc7, coverSrc8, coverSrc9, image, appleMusicSrc, spotifySrc, amazonSrc, musicSrc, telegramSrc, youTubeSrc, instagramSrc, backgroundSrc2, backgroundSrc3, backgroundSrc4 
 ];
 
 export const albums = [
