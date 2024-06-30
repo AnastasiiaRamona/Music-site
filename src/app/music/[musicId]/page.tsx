@@ -26,7 +26,6 @@ const MemoizedIframe = memo(({ src, className }: { src: string; className: strin
       allowFullScreen
       className={className}
       rel="preload"
-      loading="lazy"
     ></iframe>
   );
 });
