@@ -28,7 +28,7 @@ export const Header = (props: HeaderProps) => {
       <div className={styles['header-container']}>
         <div className={styles.logo}>
           <Link href="/home">
-            <Image priority={true} className={styles['logo-image']} src={musicLogoSrc} alt="Logo" />
+            <Image loading='lazy' className={styles['logo-image']} src={musicLogoSrc} alt="Logo" />
           </Link>
           <h1 className={`${vibes.className}`}>ANASTASIIA RAMONA</h1>
           <p className={styles['logo-text']}>Unleashing the Unheard, One Beat at a Time</p>

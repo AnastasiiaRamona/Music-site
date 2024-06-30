@@ -13,7 +13,7 @@ export default function About() {
         <p className={styles.artistBio}>Anastasiia Ramona is an indie pop, dream pop, and synth pop project that was started by just one musician whose mind has been computerized. The musician explores topics of self-discovery, workaholism, burnout, inspiration, and love in her songs.</p>
         <div className={styles.artistImagesWrapper}>
           <div className={styles.artistImageWrapper}>
-            <Image src={artistSrc} alt="Artist" className={styles.artistImage} />
+            <Image loading='lazy' src={artistSrc} alt="Artist" className={styles.artistImage} />
           </div>
         </div>
       </div>

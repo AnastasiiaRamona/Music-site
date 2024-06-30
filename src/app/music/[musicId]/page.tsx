@@ -35,13 +35,13 @@ function MusicId({ album }: AlbumProps) {
       </div>
       <div className={styles.linksContainer}>
         <a href={album.appleMusicLink} target='_blank' className={styles.link}>
-          <Image priority={true} src={appleMusicSrc} alt={'apple music'} className={styles.icon} />
+          <Image loading='lazy' src={appleMusicSrc} alt={'apple music'} className={styles.icon} />
         </a>
         <a href={album.spotifyLink} target='_blank' className={styles.link}>
-          <Image priority={true} src={spotifySrc} alt={'spotify'} className={styles.icon} />
+          <Image loading='lazy' src={spotifySrc} alt={'spotify'} className={styles.icon} />
         </a>
         <a href={album.amazonLink} target='_blank' className={styles.link}>
-          <Image priority={true} src={amazonSrc} alt={'amazon'} className={styles.icon} />
+          <Image loading='lazy' src={amazonSrc} alt={'amazon'} className={styles.icon} />
         </a>
       </div>
     </div>
