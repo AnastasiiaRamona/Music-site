@@ -6,7 +6,8 @@ const covers = albums.map(album => ({
   id: album.albumId,
   url: album.coverSrc as StaticImageData,
   alt: album.title,
-  text: album.title
+  text: album.title,
+  unoptimized: true,
 }));
 
 export default function Music() {
