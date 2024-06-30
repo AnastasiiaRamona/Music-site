@@ -17,7 +17,7 @@ function Cover({ id, url, alt, text }: CoverData) {
   return (
     <Link legacyBehavior href={`/music/${id}`}>
       <div className={styles['cover-container']}>
-        <Image src={url} alt={alt} className={styles['cover-image']} />
+        <Image src={url} alt={alt} priority={true} className={styles['cover-image']} />
         <div className={styles['overlay']}>
           <p>{text}</p>
         </div>

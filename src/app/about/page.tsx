@@ -1,4 +1,4 @@
-import artistSrc from '../../assets/image.png';
+import artistSrc from '../../assets/image.webp';
 import styles from './page.module.css';
 import Image from 'next/image';
 import { Vibes } from "next/font/google";

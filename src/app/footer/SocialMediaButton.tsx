@@ -10,7 +10,7 @@ type SocialMediaButtonProps = {
 export default function SocialMediaButton({ url, alt, href }: SocialMediaButtonProps) {
   return (
     <a href={href} target="_blank" className={styles['social-media-button']}>
-      <Image src={url} alt={alt} className={styles['social-media-button__image']}/>
+      <Image priority={true} src={url} alt={alt} className={styles['social-media-button__image']}/>
     </a>
   );
 }
