@@ -1,19 +1,38 @@
+import { memo, useMemo } from 'react';
 import artistSrc from '../../assets/image.webp';
 import styles from './page.module.css';
-import Image from 'next/image';
-import { Vibes } from "next/font/google";
+import Image, { StaticImageData } from 'next/image';
+import { Vibes } from 'next/font/google';
 
 const vibes = Vibes({ weight: '400', subsets: ['latin'] });
 
+type ImageData = {
+  src: StaticImageData;
+  alt: string;
+  className: string;
+};
+
+const MemoizedImage = memo(({ src, alt, className }: ImageData) => {
+  return <Image loading="lazy" src={src} alt={alt} className={className} />;
+});
+
+MemoizedImage.displayName = 'MemoizedImage';
+
 export default function About() {
+  const artistBio = useMemo(
+    () =>
+      'Anastasiia Ramona is an indie pop, dream pop, and synth pop project that was started by just one musician whose mind has been computerized. The musician explores topics of self-discovery, workaholism, burnout, inspiration, and love in her songs.',
+    []
+  );
+
   return (
     <section className={styles.about}>
-      <h2 className={`${vibes.className}`}>__MY NAME IS ANASTASIIA RAMONA__</h2>
+      <h2 className={vibes.className}>__MY NAME IS ANASTASIIA RAMONA__</h2>
       <div className={styles.hero}>
-        <p className={styles.artistBio}>Anastasiia Ramona is an indie pop, dream pop, and synth pop project that was started by just one musician whose mind has been computerized. The musician explores topics of self-discovery, workaholism, burnout, inspiration, and love in her songs.</p>
+        <p className={styles.artistBio}>{artistBio}</p>
         <div className={styles.artistImagesWrapper}>
           <div className={styles.artistImageWrapper}>
-            <Image loading='lazy' src={artistSrc} alt="Artist" className={styles.artistImage} />
+            <MemoizedImage src={artistSrc} alt="Artist" className={styles.artistImage} />
           </div>
         </div>
       </div>

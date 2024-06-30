@@ -1,4 +1,4 @@
-import musicLogoSrc from '../../assets/music.png';
+import musicLogoSrc from '../../assets/music.webp';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.css';

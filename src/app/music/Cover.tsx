@@ -1,7 +1,7 @@
 import Image, { StaticImageData } from 'next/image';
 import styles from './Cover.module.css';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 
 type CoverData = {
   id: string;
@@ -14,18 +14,20 @@ type CoverGalleryProps = {
   covers: CoverData[];
 }
 
-function Cover({ id, url, alt, text }: CoverData) {
+const Cover = memo(({ id, url, alt, text }: CoverData) => {
   return (
     <Link legacyBehavior href={`/music/${id}`}>
       <div className={styles['cover-container']}>
-        <Image src={url} alt={alt} loading='lazy' className={styles['cover-image']} />
+        <Image src={url} alt={alt} loading="lazy" className={styles['cover-image']} />
         <div className={styles['overlay']}>
           <p>{text}</p>
         </div>
       </div>
     </Link>
   );
-}
+});
+
+Cover.displayName = 'Cover';
 
 export default function CoverGallery({ covers }: CoverGalleryProps) {
   const memoizedCovers = useMemo(() => covers, [covers]);
