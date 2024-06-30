@@ -8,7 +8,6 @@ import Head from "next/head";
 
 const overlock = Overlock_SC({ weight: '400', subsets: ['latin'] });
 
-
 export const metadata: Metadata = {
   title: "ANASTASIIA RAMONA",
   description: "Musician/singer-songwriter",
@@ -23,7 +22,7 @@ export default function RootLayout({
     <html lang="en" className={`${overlock.className}`}>
       <Head>
         {images.map((src, index) => (
-          <link key={index} rel="preload" href={src} as="image" />
+          <link key={index} rel="preload" href={src.toString()} as="image" />
         ))}
       </Head>
       <body>
