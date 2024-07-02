@@ -6,6 +6,8 @@
 .about h2 {
   font-size: 3rem;
   font-weight: 700;
+  margin: 0;
+  margin-bottom: 20px;
 }
 
 .hero {
@@ -13,6 +15,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   gap: 40px;
+  height: 80%;
 }
 
 .artistBio {
@@ -41,7 +44,41 @@
   transition: all 0.3s ease;
 }
 
-@media screen and (max-width: 1234px) {
+@media screen and (max-height: 765px) {
+  .hero {
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .artistBio {
+    margin: 0;
+  }
+
+  .artistImageWrapper {
+    height: 50vh;
+    width: 50vw;
+  }
+}
+
+@media screen and (max-height: 484px) {
+  .artistBio {
+    font-size: large;
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .artistBio {
+    font-size: large;
+  }
+
+  .about h2 {
+    margin: 0;
+    font-size: x-large;
+  }
+}
+
+@media screen and (max-width: 785px) {
   .hero {
     flex-direction: column;
     align-items: center;
@@ -53,47 +90,9 @@
   }
 }
 
-@media screen and (max-width: 713px) {
-  .artistBio {
-    font-size: x-large;
-  }
-}
-
-@media screen and (max-width: 591px) {
-  .about h2 {
-    margin: 0;
-    font-size: 2rem;
-  }
-
+@media screen and (max-width: 534px) {
   .artistImageWrapper {
-    width: 80vw;
     height: 30vh;
-  }
-}
-
-@media screen and (max-height: 765px) {
-  .artistBio {
-    font-size: medium;
-  }
-
-  .about h2 {
-    margin: 0;
-    font-size: large;
-  }
-
-  .artistImageWrapper {
-    width: 80vw;
-    height: 40vh;
-  }
-}
-
-@media screen and (max-height: 506px) {
-  .artistBio {
-    font-size: large;
-  }
-
-  .artistImageWrapper {
-    width: 30vw;
-    height: 30vh;
+    width: 78vw;
   }
 }
