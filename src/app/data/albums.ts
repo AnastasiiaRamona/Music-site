@@ -7,6 +7,7 @@ import coverSrc6 from '../../assets/covers/console_7_11zon.webp';
 import coverSrc7 from '../../assets/covers/the-first-time_4_11zon.webp';
 import coverSrc8 from '../../assets/covers/luminance_1_11zon.webp';
 import coverSrc9 from '../../assets/covers/rondo_3_11zon.webp';
+import coverSrc10 from '../../assets/covers/distant-melodies.webp';
 import image from '../../assets/image.webp';
 import appleMusicSrc from '../../assets/apple-music.webp';
 import spotifySrc from '../../assets/spotify.webp';
@@ -24,6 +25,15 @@ export const images = [
 ];
 
 export const albums = [
+  {
+    albumId: 'distant-melodies',
+    coverSrc: coverSrc10,
+    title: 'Distant Melodies',
+    appleMusicLink: 'https://music.apple.com/ru/album/distant-melodies-single/1756027382',
+    spotifyLink: 'https://open.spotify.com/artist/0xVXQ2ZodJ7EAsjBvoQBBH',
+    youtubeLink: 'https://www.youtube.com/embed/ySYcoEfrl90?si=czs8Ex9UZXROD1S5',
+    amazonLink: 'https://www.amazon.com/music/player/albums/B0D91H2NBK',
+  },
   {
     albumId: 'friend-of-mine',
     coverSrc: coverSrc1,

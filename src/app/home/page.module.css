@@ -102,3 +102,12 @@
     height: 20vh;
   }
 }
+
+.custom-toast {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.custom-toast:hover {
+  color: var(--primary-color);
+}

@@ -1,5 +1,9 @@
-import React, { memo, useMemo } from 'react';
+'use client';
+
+import React, { RefObject, memo, useEffect, useMemo, useRef } from 'react';
 import Link from 'next/link';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import styles from './page.module.css';
 import { Vibes } from 'next/font/google';
 
@@ -22,9 +26,15 @@ const MemoizedIframe = memo(({ src }: IframeProps) => {
 
 MemoizedIframe.displayName = 'MemoizedIframe';
 
+function scrollToSection(ref: RefObject<HTMLElement>) {
+  ref.current?.scrollIntoView({ behavior: 'smooth' });
+}
+
 const Home = () => {
+  const newReleaseSectionRef = useRef<HTMLElement>(null);
+
   const latestReleaseSrc = useMemo(
-    () => 'https://www.youtube.com/embed/dLrnlyDI8Gg?si=ggo7EpNFpcSNeE5D',
+    () => 'https://www.youtube.com/embed/ySYcoEfrl90?si=czs8Ex9UZXROD1S5',
     []
   );
 
@@ -43,6 +53,24 @@ const Home = () => {
     []
   );
 
+  useEffect(() => {
+    const CustomToast = () => (
+      <div
+        onClick={() => {
+          scrollToSection(newReleaseSectionRef);
+        }}
+        className={styles['custom-toast']}
+      >
+        Listen to the latest release!
+      </div>
+    );
+
+    toast.info(<CustomToast />, {
+      position: 'bottom-left',
+      autoClose: 5000,
+    });
+  }, []);
+
   return (
     <section className={styles['site-main']}>
       <section className={styles['hero-section']}>
@@ -56,23 +84,17 @@ const Home = () => {
           </button>
         </div>
       </section>
-      <section className={styles['new-release-section']}>
+      <section ref={newReleaseSectionRef} className={styles['new-release-section']}>
         <h2 className={vibes.className}>THE LATEST RELEASE</h2>
         <div className={styles['new-release-content']}>
           <MemoizedIframe src={latestReleaseSrc} />
           <p>{latestReleaseDescription}</p>
         </div>
       </section>
+      <ToastContainer />
     </section>
   );
 };
 
 export default Home;
-
-
-
-
-
-
-
 
