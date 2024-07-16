@@ -24,6 +24,7 @@ export default function RootLayout({
         {images.map((src, index) => (
           <link key={index} rel="preload" href={src.toString()} as="image" />
         ))}
+        <meta name="yandex-verification" content="18436f7da04f12f3" />
       </Head>
       <body>
         <StartPage>
