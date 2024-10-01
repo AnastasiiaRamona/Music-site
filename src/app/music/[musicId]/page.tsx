@@ -1,5 +1,5 @@
 import { memo, useMemo } from 'react';
-import { albums } from '../../data/albums';
+import { albums } from '../../../data/albums';
 import Image, { StaticImageData } from 'next/image';
 import appleMusicSrc from '../../../assets/apple-music.webp';
 import spotifySrc from '../../../assets/spotify.webp';

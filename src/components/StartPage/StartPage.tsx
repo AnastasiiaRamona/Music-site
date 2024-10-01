@@ -1,9 +1,8 @@
 'use client';
 
+import { Footer } from "@/components/Footer/Footer";
+import { Header } from "@/components/Header/Header";
 import { useRef } from "react";
-import { Footer } from "../footer/Footer";
-import { Header } from "../header/Header";
-
 export default function StartPage({
   children,
 }: Readonly<{

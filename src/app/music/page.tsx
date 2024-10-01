@@ -1,5 +1,5 @@
-import CoverGallery from './Cover';
-import { albums } from '../data/albums';
+import CoverGallery from '../../components/Cover/Cover';
+import { albums } from '../../data/albums';
 import { StaticImageData } from 'next/image';
 
 const covers = albums.map(album => ({
