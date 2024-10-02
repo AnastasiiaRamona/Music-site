@@ -65,7 +65,7 @@ const Home = () => {
       </div>
     );
 
-    toast.info(<CustomToast />, {
+    toast(<CustomToast />, {
       position: 'bottom-left',
       autoClose: 5000,
     });

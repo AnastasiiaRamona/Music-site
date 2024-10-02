@@ -1,10 +1,10 @@
-import musicLogoSrc from '../../assets/music.webp';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.css';
 import { Vibes } from "next/font/google";
 import { RefObject, useState } from 'react';
-import BurgerButton from './BurgerButton';
+import BurgerButton from './BurgerButton/BurgerButton';
+import EmojiSymbolsSharpIcon from '@mui/icons-material/EmojiSymbolsSharp';
 
 const vibes = Vibes({ weight: '400', subsets: ['latin'] });
 
@@ -28,7 +28,7 @@ export const Header = (props: HeaderProps) => {
       <div className={styles['header-container']}>
         <div className={styles.logo}>
           <Link href="/home">
-            <Image loading='lazy' className={styles['logo-image']} src={musicLogoSrc} alt="Logo" />
+            <EmojiSymbolsSharpIcon fontSize='large' cursor='pointer' />
           </Link>
           <h1 className={`${vibes.className}`}>ANASTASIIA RAMONA</h1>
           <p className={styles['logo-text']}>Unleashing the Unheard, One Beat at a Time</p>

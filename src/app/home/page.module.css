@@ -49,6 +49,7 @@
 }
 
 .cta-button a {
+  font-family: var(--primary-font-family);
   color: var(--black);
 
   &:hover {
@@ -100,6 +101,10 @@
 @media screen and (max-width: 612px) {
   .new-release-content iframe {
     height: 20vh;
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
   }
 }
 

@@ -12,16 +12,15 @@ import image from '../assets/image.webp';
 import appleMusicSrc from '../assets/apple-music.webp';
 import spotifySrc from '../assets/spotify.webp';
 import amazonSrc from '../assets/amazon.webp';
-import musicSrc from '../assets/music.webp';
 import telegramSrc from '../assets/telegram-icon.webp';
 import youTubeSrc from '../assets/youtube-icon.webp';
 import instagramSrc from '../assets/instagram-icon.webp';
 import backgroundSrc2 from '../assets/background-2.webp';
 import backgroundSrc3 from '../assets/background-4.webp';
-import backgroundSrc4 from '../assets/background.webp';
+import backgroundSrc4 from '../assets/background.jpg';
 
 export const images = [
-  coverSrc1, coverSrc2, coverSrc3, coverSrc4, coverSrc5, coverSrc6, coverSrc7, coverSrc8, coverSrc9, image, appleMusicSrc, spotifySrc, amazonSrc, musicSrc, telegramSrc, youTubeSrc, instagramSrc, backgroundSrc2, backgroundSrc3, backgroundSrc4
+  coverSrc1, coverSrc2, coverSrc3, coverSrc4, coverSrc5, coverSrc6, coverSrc7, coverSrc8, coverSrc9, image, appleMusicSrc, spotifySrc, amazonSrc, telegramSrc, youTubeSrc, instagramSrc, backgroundSrc2, backgroundSrc3, backgroundSrc4
 ];
 
 export const albums = [
@@ -30,7 +29,7 @@ export const albums = [
     coverSrc: coverSrc10,
     title: 'Distant Melodies',
     appleMusicLink: 'https://music.apple.com/ru/album/distant-melodies-single/1756027382',
-    spotifyLink: 'https://open.spotify.com/artist/0xVXQ2ZodJ7EAsjBvoQBBH',
+    spotifyLink: 'https://open.spotify.com/track/178i6OksNV3YHH58iqBPVC?si=f0ab3c6893994c56',
     youtubeLink: 'https://www.youtube.com/embed/ySYcoEfrl90?si=czs8Ex9UZXROD1S5',
     amazonLink: 'https://www.amazon.com/music/player/albums/B0D91H2NBK',
   },

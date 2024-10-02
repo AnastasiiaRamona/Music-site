@@ -12,9 +12,8 @@
   gap: 20px;
 
   .footer-text {
-    font-family: var(--primary-font-family);
     margin: 0;
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 

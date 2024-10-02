@@ -23,16 +23,11 @@ body {
 }
 
 body {
-  background: url('../assets/background.webp') top center no-repeat;
+  background: url('../assets/background.jpg') no-repeat;
   background-size: cover;
+  background-position: top center;
   min-height: 100vh;
-}
-
-@media screen and (max-width: 768px) {
-  body {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.592), rgba(255, 255, 255, 0)),
-      linear-gradient(to bottom, rgba(82, 173, 225, 0.816), rgba(6, 82, 109, 0.789));
-  }
+  background-attachment: scroll;
 }
 
 a {
@@ -44,4 +39,23 @@ a {
 
 a:hover {
   color: var(--secondary-color);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #a8b1b8;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #444444be;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #06638e;
 }
