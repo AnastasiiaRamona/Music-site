@@ -8,6 +8,7 @@ import coverSrc7 from '../assets/covers/the-first-time_4_11zon.webp';
 import coverSrc8 from '../assets/covers/luminance_1_11zon.webp';
 import coverSrc9 from '../assets/covers/rondo_3_11zon.webp';
 import coverSrc10 from '../assets/covers/distant-melodies.webp';
+import coverSrc11 from '../assets/covers/the-last-puzzle_page-0001-min.webp';
 import image from '../assets/image.webp';
 import appleMusicSrc from '../assets/apple-music.webp';
 import spotifySrc from '../assets/spotify.webp';
@@ -20,10 +21,19 @@ import backgroundSrc3 from '../assets/background-4.webp';
 import backgroundSrc4 from '../assets/background.jpg';
 
 export const images = [
-  coverSrc1, coverSrc2, coverSrc3, coverSrc4, coverSrc5, coverSrc6, coverSrc7, coverSrc8, coverSrc9, image, appleMusicSrc, spotifySrc, amazonSrc, telegramSrc, youTubeSrc, instagramSrc, backgroundSrc2, backgroundSrc3, backgroundSrc4
+  coverSrc1, coverSrc2, coverSrc3, coverSrc4, coverSrc5, coverSrc6, coverSrc7, coverSrc8, coverSrc9, coverSrc10, coverSrc11, image, appleMusicSrc, spotifySrc, amazonSrc, telegramSrc, youTubeSrc, instagramSrc, backgroundSrc2, backgroundSrc3, backgroundSrc4
 ];
 
 export const albums = [
+  {
+    albumId: 'the-last-puzzle',
+    coverSrc: coverSrc11,
+    title: 'The Last Puzzle',
+    appleMusicLink: 'https://music.apple.com/ru/album/the-last-puzzle/1772101087?i=1772101370',
+    spotifyLink: 'https://open.spotify.com/artist/0xVXQ2ZodJ7EAsjBvoQBBH',
+    youtubeLink: 'https://www.youtube.com/embed/tzb_NJIxY00?si=GdkYg9EROUgQfoz7',
+    amazonLink: 'https://amazon.com/music/player/tracks/B0DJFYH7HQ?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_mJdNLqkogDnSGHYBH4pB76Sbt',
+  },
   {
     albumId: 'distant-melodies',
     coverSrc: coverSrc10,
