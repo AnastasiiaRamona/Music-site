@@ -6,6 +6,7 @@
   --black: #000000;
   --white: #ffffff;
   --light: rgba(255, 255, 255, 0.5);
+  --strong-light: rgba(255, 255, 255, 0.764);
   --font-size-base: 16px;
   --font-weight-normal: 400;
   --font-weight-bold: 700;

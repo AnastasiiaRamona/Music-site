@@ -1,6 +1,7 @@
 .about {
   padding: 50px;
   height: 100vh;
+  background: var(--strong-light);
 }
 
 .about h2 {
@@ -92,9 +93,7 @@
   }
 }
 
-@media screen and (max-width: 750px) {
-  
-}
+@media screen and (max-width: 750px) {}
 
 @media screen and (max-width: 785px) {
   .hero {
