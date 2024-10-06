@@ -30,7 +30,7 @@ export const albums = [
     coverSrc: coverSrc11,
     title: 'The Last Puzzle',
     appleMusicLink: 'https://music.apple.com/ru/album/the-last-puzzle/1772101087?i=1772101370',
-    spotifyLink: 'https://open.spotify.com/artist/0xVXQ2ZodJ7EAsjBvoQBBH',
+    spotifyLink: 'https://open.spotify.com/track/0sJ0epXoAZAXEzdp8nRsk9?si=97c9dc6668934423',
     youtubeLink: 'https://www.youtube.com/embed/tzb_NJIxY00?si=GdkYg9EROUgQfoz7',
     amazonLink: 'https://amazon.com/music/player/tracks/B0DJFYH7HQ?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_mJdNLqkogDnSGHYBH4pB76Sbt',
   },
