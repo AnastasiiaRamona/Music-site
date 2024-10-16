@@ -28,12 +28,12 @@ export default function About() {
 
   return (
     <section className={styles.about}>
-      <h2 className={vibes.className}>__MY NAME IS ANASTASIIA RAMONA__</h2>
+      <h2 className={vibes.className}>MY NAME IS ANASTASIIA RAMONA</h2>
       <div className={styles.hero}>
         <p className={styles.artistBio}>{artistBio}</p>
         <div className={styles.artistImagesWrapper}>
           <div className={styles.artistImageWrapper}>
-            <MemoizedImage src={artistSrc} alt="Artist" className={styles.artistImage} unoptimized={true}/>
+            <MemoizedImage src={artistSrc} alt="Artist" className={styles.artistImage} unoptimized={true} />
           </div>
         </div>
       </div>

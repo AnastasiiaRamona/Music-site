@@ -11,7 +11,6 @@ const overlock = Halant({ weight: '400', subsets: ['latin'] });
 export const metadata: Metadata = {
   title: "ANASTASIIA RAMONA",
   description: "Indie-musician/singer-songwriter",
-  viewport: "width=device-width, initial-scale=1.0",
   verification: {
     yandex: "18436f7da04f12f3",
   },
