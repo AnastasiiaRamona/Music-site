@@ -45,7 +45,7 @@
   transform: rotate(-45deg) translate(10px, -5px);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-device-width: 768px) {
   .burgerButton {
     display: -webkit-flex;
     display: flex;

@@ -92,7 +92,7 @@
   color: var(--white);
 }
 
-@media screen and (max-width: 974px) {
+@media screen and (max-device-width: 974px) {
   .new-release-content iframe {
     height: 40vh;
   }

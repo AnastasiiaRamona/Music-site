@@ -46,14 +46,14 @@
   transition: all 0.3s ease;
 }
 
-@media screen and (max-height: 830px) {
+@media screen and (max-device-height: 830px) {
   .artistImageWrapper {
     height: 50vh;
     width: 50vw;
   }
 }
 
-@media screen and (max-height: 700px) {
+@media screen and (max-device-height: 700px) {
   .hero {
     flex-direction: row;
     gap: 20px;
@@ -71,7 +71,7 @@
   }
 }
 
-@media screen and (min-height: 770px) {
+@media screen and (min-device-height: 770px) {
   .hero {
     flex-direction: column;
     align-items: center;
@@ -87,15 +87,13 @@
   }
 }
 
-@media screen and (max-height: 484px) {
+@media screen and (max-device-height: 484px) {
   .artistBio {
     font-size: large;
   }
 }
 
-@media screen and (max-width: 750px) {}
-
-@media screen and (max-width: 785px) {
+@media screen and (max-device-width: 785px) {
   .hero {
     flex-direction: column;
     align-items: center;
@@ -116,7 +114,7 @@
   }
 }
 
-@media screen and (max-width: 534px) {
+@media screen and (max-device-width: 534px) {
   .artistImageWrapper {
     height: 30vh;
     width: 78vw;

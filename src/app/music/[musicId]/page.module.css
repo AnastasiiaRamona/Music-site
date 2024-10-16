@@ -61,25 +61,25 @@
   display: block;
 }
 
-@media screen and (max-width: 1287px) {
+@media screen and (max-device-width: 1287px) {
   .videoWrapper {
     width: 80%;
   }
 }
 
-@media screen and (max-width: 817px) {
+@media screen and (max-device-width: 817px) {
   .videoWrapper {
     height: 45vh;
   }
 }
 
-@media screen and (min-height: 836px) {
+@media screen and (min-device-height: 836px) {
   .videoWrapper {
     height: 35vh;
   }
 }
 
-@media screen and (max-width: 589px) {
+@media screen and (max-device-width: 589px) {
   .videoWrapper {
     width: 90%;
     height: 35vh;
@@ -93,5 +93,5 @@
   .linksContainer {
     margin-left: 0;
     flex-direction: row;
-  }  
+  }
 }
