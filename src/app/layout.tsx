@@ -13,7 +13,12 @@ export const metadata: Metadata = {
   description: "Indie-musician/singer-songwriter",
   verification: {
     yandex: "18436f7da04f12f3",
-  },
+  }
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1.0,
 };
 
 export default function RootLayout({
