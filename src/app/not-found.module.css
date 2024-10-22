@@ -1,0 +1,21 @@
+.not-found {
+  margin: 0;
+  height: 100vh;
+  background: url('../assets/background-3.webp') no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found h1 {
+  margin: 0;
+  font-size: 3rem;
+}
+
+.not-found h2 {
+  margin: 0;
+  font-size: 2rem;
+}
