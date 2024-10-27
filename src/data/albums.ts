@@ -9,6 +9,7 @@ import coverSrc8 from '../assets/covers/luminance_1_11zon.webp';
 import coverSrc9 from '../assets/covers/rondo_3_11zon.webp';
 import coverSrc10 from '../assets/covers/distant-melodies.webp';
 import coverSrc11 from '../assets/covers/the-last-puzzle_page-0001-min.webp';
+import coverSrc12 from '../assets/covers/Jacket-denim.webp';
 import image from '../assets/image.webp';
 import appleMusicSrc from '../assets/apple-music.webp';
 import spotifySrc from '../assets/spotify.webp';
@@ -19,12 +20,22 @@ import instagramSrc from '../assets/instagram-icon.webp';
 import backgroundSrc2 from '../assets/background-2.webp';
 import backgroundSrc3 from '../assets/background-4.webp';
 import backgroundSrc4 from '../assets/background.jpg';
+import backgroundSrc5 from '../assets/background-3.webp';
 
 export const images = [
-  coverSrc1, coverSrc2, coverSrc3, coverSrc4, coverSrc5, coverSrc6, coverSrc7, coverSrc8, coverSrc9, coverSrc10, coverSrc11, image, appleMusicSrc, spotifySrc, amazonSrc, telegramSrc, youTubeSrc, instagramSrc, backgroundSrc2, backgroundSrc3, backgroundSrc4
+  coverSrc1, coverSrc2, coverSrc3, coverSrc4, coverSrc5, coverSrc6, coverSrc7, coverSrc8, coverSrc9, coverSrc10, coverSrc11, image, appleMusicSrc, spotifySrc, amazonSrc, telegramSrc, youTubeSrc, instagramSrc, backgroundSrc2, backgroundSrc3, backgroundSrc4, backgroundSrc5
 ];
 
 export const albums = [
+  {
+    albumId: 'jacket-denim',
+    coverSrc: coverSrc12,
+    title: 'Jacket Denim',
+    appleMusicLink: 'https://music.apple.com/ru/album/jacket-denim/1776427593?i=1776427596',
+    spotifyLink: 'https://open.spotify.com/artist/0xVXQ2ZodJ7EAsjBvoQBBH?si=NYB8GjDmS8emV9J3-_oJAw',
+    youtubeLink: 'https://www.youtube.com/embed/HbU9yPWFWeM?si=r1kNcwpHbCXtB6T5',
+    amazonLink: 'https://amazon.com/music/player/albums/B0DL43TWLL?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_iH9V5JGaysVmlkWrIBuwKB1cD',
+  },
   {
     albumId: 'the-last-puzzle',
     coverSrc: coverSrc11,
