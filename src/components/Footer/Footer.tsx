@@ -14,7 +14,7 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
         <div className={styles['social-list']}>
           <SocialMediaButton href='https://www.instagram.com/sia.de.ramona/' url={instagramIconSrc} alt="Instagram" />
           <SocialMediaButton href='https://t.me/Anastasiia_Ramona' url={telegramIconSrc} alt="Telegram" />
-          <SocialMediaButton href='https://www.youtube.com/channel/UC6dcySaxRNKM-QFGJRXcH8g' url={youtubeIconSrc} alt="YouTube" />
+          <SocialMediaButton href='https://youtube.com/@anastasiia-ramona?si=n9o00Thg9qAJDp5-' url={youtubeIconSrc} alt="YouTube" />
         </div>
         <p className={styles['footer-text']}>© 2024 Anastasiia Ramona. All rights reserved.</p>
       </div>
