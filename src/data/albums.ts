@@ -10,6 +10,7 @@ import coverSrc9 from '../assets/covers/rondo_3_11zon.webp';
 import coverSrc10 from '../assets/covers/distant-melodies.webp';
 import coverSrc11 from '../assets/covers/the-last-puzzle_page-0001-min.webp';
 import coverSrc12 from '../assets/covers/Jacket-denim.webp';
+import coverSrc13 from '../assets/covers/awake-and-alive.jpg';
 import image from '../assets/image.webp';
 import appleMusicSrc from '../assets/apple-music.webp';
 import spotifySrc from '../assets/spotify.webp';
@@ -27,6 +28,15 @@ export const images = [
 ];
 
 export const albums = [
+  {
+    albumId: 'awake-and-alive',
+    coverSrc: coverSrc13,
+    title: 'Awake & Alive',
+    appleMusicLink: 'https://music.apple.com/us/artist/anastasiia-ramona/1679860487',
+    spotifyLink: 'https://open.spotify.com/artist/0xVXQ2ZodJ7EAsjBvoQBBH',
+    youtubeLink: 'https://www.youtube.com/embed/KgRRJNzONHU?si=nwoKgWhdGIVVVu4_',
+    amazonLink: 'https://www.amazon.com/music/player/artists/B0C1P2WF3H/anastasiia-ramona',
+  },
   {
     albumId: 'jacket-denim',
     coverSrc: coverSrc12,
