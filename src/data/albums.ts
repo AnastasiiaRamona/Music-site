@@ -32,10 +32,10 @@ export const albums = [
     albumId: 'awake-and-alive',
     coverSrc: coverSrc13,
     title: 'Awake & Alive',
-    appleMusicLink: 'https://music.apple.com/us/artist/anastasiia-ramona/1679860487',
+    appleMusicLink: 'https://music.apple.com/ru/album/awake-alive/1783133647?i=1783133650',
     spotifyLink: 'https://open.spotify.com/artist/0xVXQ2ZodJ7EAsjBvoQBBH',
     youtubeLink: 'https://www.youtube.com/embed/KgRRJNzONHU?si=nwoKgWhdGIVVVu4_',
-    amazonLink: 'https://www.amazon.com/music/player/artists/B0C1P2WF3H/anastasiia-ramona',
+    amazonLink: 'https://amazon.com/music/player/albums/B0DPJ6DMV4?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_xSkLLTNOIpyHRXn3IP0kwOKix',
   },
   {
     albumId: 'jacket-denim',
