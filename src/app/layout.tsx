@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import 'normalize.css';
 
 import "./globals.css";
 import { Halant } from "next/font/google";
