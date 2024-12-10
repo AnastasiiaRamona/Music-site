@@ -11,6 +11,7 @@ import coverSrc10 from '../assets/covers/distant-melodies.webp';
 import coverSrc11 from '../assets/covers/the-last-puzzle_page-0001-min.webp';
 import coverSrc12 from '../assets/covers/Jacket-denim.webp';
 import coverSrc13 from '../assets/covers/awake-and-alive.jpg';
+import coverSrc14 from '../assets/covers/skyglitch.webp';
 import image from '../assets/image.webp';
 import appleMusicSrc from '../assets/apple-music.webp';
 import spotifySrc from '../assets/spotify.webp';
@@ -24,16 +25,25 @@ import backgroundSrc4 from '../assets/background.jpg';
 import backgroundSrc5 from '../assets/background-3.webp';
 
 export const images = [
-  coverSrc1, coverSrc2, coverSrc3, coverSrc4, coverSrc5, coverSrc6, coverSrc7, coverSrc8, coverSrc9, coverSrc10, coverSrc11, image, appleMusicSrc, spotifySrc, amazonSrc, telegramSrc, youTubeSrc, instagramSrc, backgroundSrc2, backgroundSrc3, backgroundSrc4, backgroundSrc5
+  coverSrc1, coverSrc2, coverSrc3, coverSrc4, coverSrc5, coverSrc6, coverSrc7, coverSrc8, coverSrc9, coverSrc10, coverSrc11, coverSrc12, coverSrc13, coverSrc14, image, appleMusicSrc, spotifySrc, amazonSrc, telegramSrc, youTubeSrc, instagramSrc, backgroundSrc2, backgroundSrc3, backgroundSrc4, backgroundSrc5
 ];
 
 export const albums = [
+  {
+    albumId: 'skyglitch',
+    coverSrc: coverSrc14,
+    title: 'Skyglitch',
+    appleMusicLink: 'https://music.apple.com/ru/album/skyglitch/1784440250?i=1784440254',
+    spotifyLink: 'https://open.spotify.com/artist/0xVXQ2ZodJ7EAsjBvoQBBH',
+    youtubeLink: 'https://www.youtube.com/embed/v5IZktSMhcc?si=Y4zrvqpEaSkop6OS',
+    amazonLink: 'https://amazon.com/music/player/albums/B0DQ1CMRDN?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_B2zZR4bmnsBuMO5BtcxoSYLka',
+  },
   {
     albumId: 'awake-and-alive',
     coverSrc: coverSrc13,
     title: 'Awake & Alive',
     appleMusicLink: 'https://music.apple.com/ru/album/awake-alive/1783133647?i=1783133650',
-    spotifyLink: 'https://open.spotify.com/artist/0xVXQ2ZodJ7EAsjBvoQBBH',
+    spotifyLink: 'https://open.spotify.com/track/0k3zJ9Kv0ZatfvObiRMJmN?si=d4672d9ddc904584',
     youtubeLink: 'https://www.youtube.com/embed/KgRRJNzONHU?si=nwoKgWhdGIVVVu4_',
     amazonLink: 'https://amazon.com/music/player/albums/B0DPJ6DMV4?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_xSkLLTNOIpyHRXn3IP0kwOKix',
   },

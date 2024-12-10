@@ -34,7 +34,7 @@ const Home = () => {
   const newReleaseSectionRef = useRef<HTMLElement>(null);
 
   const latestReleaseSrc = useMemo(
-    () => 'https://www.youtube.com/embed/KgRRJNzONHU?si=nwoKgWhdGIVVVu4_',
+    () => 'https://www.youtube.com/embed/v5IZktSMhcc?si=Y4zrvqpEaSkop6OS',
     []
   );
 
