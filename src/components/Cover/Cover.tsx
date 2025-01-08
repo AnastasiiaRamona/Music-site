@@ -25,6 +25,7 @@ const Cover = memo(({ id, url, alt, text }: CoverData) => {
           loading="lazy"
           className={styles['cover-image']}
           unoptimized={true}
+          placeholder="blur"
         />
         <div className={styles['overlay']}>
           <p>{text}</p>

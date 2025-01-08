@@ -14,7 +14,7 @@ type ImageData = {
 };
 
 const MemoizedImage = memo(({ src, alt, className }: ImageData) => {
-  return <Image loading="lazy" src={src} alt={alt} className={className} />;
+  return <Image loading="lazy" src={src} alt={alt} className={className} placeholder="blur" />;
 });
 
 MemoizedImage.displayName = 'MemoizedImage';
