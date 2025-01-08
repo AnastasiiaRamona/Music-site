@@ -38,10 +38,7 @@ const Home = () => {
     []
   );
 
-  const welcomeText = useMemo(
-    () => "Welcome to Anastasiia Ramona's Music World",
-    []
-  );
+  const welcomeText = useMemo(() => "Welcome to Anastasiia Ramona's Music World", []);
 
   const heroDescription = useMemo(
     () => "Explore Anastasiia Ramona's music and find out more about our journey.",
@@ -97,4 +94,3 @@ const Home = () => {
 };
 
 export default Home;
-

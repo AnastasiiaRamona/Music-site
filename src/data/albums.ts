@@ -25,7 +25,31 @@ import backgroundSrc4 from '../assets/background.jpg';
 import backgroundSrc5 from '../assets/background-3.webp';
 
 export const images = [
-  coverSrc1, coverSrc2, coverSrc3, coverSrc4, coverSrc5, coverSrc6, coverSrc7, coverSrc8, coverSrc9, coverSrc10, coverSrc11, coverSrc12, coverSrc13, coverSrc14, image, appleMusicSrc, spotifySrc, amazonSrc, telegramSrc, youTubeSrc, instagramSrc, backgroundSrc2, backgroundSrc3, backgroundSrc4, backgroundSrc5
+  coverSrc1,
+  coverSrc2,
+  coverSrc3,
+  coverSrc4,
+  coverSrc5,
+  coverSrc6,
+  coverSrc7,
+  coverSrc8,
+  coverSrc9,
+  coverSrc10,
+  coverSrc11,
+  coverSrc12,
+  coverSrc13,
+  coverSrc14,
+  image,
+  appleMusicSrc,
+  spotifySrc,
+  amazonSrc,
+  telegramSrc,
+  youTubeSrc,
+  instagramSrc,
+  backgroundSrc2,
+  backgroundSrc3,
+  backgroundSrc4,
+  backgroundSrc5,
 ];
 
 export const albums = [
@@ -36,7 +60,8 @@ export const albums = [
     appleMusicLink: 'https://music.apple.com/ru/album/skyglitch/1784440250?i=1784440254',
     spotifyLink: 'https://open.spotify.com/track/41bTrJK7YkoJHXvK3TwSay?si=3a63b9d8cfb04d6d',
     youtubeLink: 'https://www.youtube.com/embed/v5IZktSMhcc?si=Y4zrvqpEaSkop6OS',
-    amazonLink: 'https://amazon.com/music/player/albums/B0DQ1CMRDN?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_B2zZR4bmnsBuMO5BtcxoSYLka',
+    amazonLink:
+      'https://amazon.com/music/player/albums/B0DQ1CMRDN?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_B2zZR4bmnsBuMO5BtcxoSYLka',
   },
   {
     albumId: 'awake-and-alive',
@@ -45,7 +70,8 @@ export const albums = [
     appleMusicLink: 'https://music.apple.com/ru/album/awake-alive/1783133647?i=1783133650',
     spotifyLink: 'https://open.spotify.com/track/0k3zJ9Kv0ZatfvObiRMJmN?si=37e48a02aa67461a',
     youtubeLink: 'https://www.youtube.com/embed/KgRRJNzONHU?si=nwoKgWhdGIVVVu4_',
-    amazonLink: 'https://amazon.com/music/player/albums/B0DPJ6DMV4?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_xSkLLTNOIpyHRXn3IP0kwOKix',
+    amazonLink:
+      'https://amazon.com/music/player/albums/B0DPJ6DMV4?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_xSkLLTNOIpyHRXn3IP0kwOKix',
   },
   {
     albumId: 'jacket-denim',
@@ -54,7 +80,8 @@ export const albums = [
     appleMusicLink: 'https://music.apple.com/ru/album/jacket-denim/1776427593?i=1776427596',
     spotifyLink: 'https://open.spotify.com/artist/0xVXQ2ZodJ7EAsjBvoQBBH?si=NYB8GjDmS8emV9J3-_oJAw',
     youtubeLink: 'https://www.youtube.com/embed/HbU9yPWFWeM?si=r1kNcwpHbCXtB6T5',
-    amazonLink: 'https://amazon.com/music/player/albums/B0DL43TWLL?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_iH9V5JGaysVmlkWrIBuwKB1cD',
+    amazonLink:
+      'https://amazon.com/music/player/albums/B0DL43TWLL?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_iH9V5JGaysVmlkWrIBuwKB1cD',
   },
   {
     albumId: 'the-last-puzzle',
@@ -63,7 +90,8 @@ export const albums = [
     appleMusicLink: 'https://music.apple.com/ru/album/the-last-puzzle/1772101087?i=1772101370',
     spotifyLink: 'https://open.spotify.com/track/0sJ0epXoAZAXEzdp8nRsk9?si=97c9dc6668934423',
     youtubeLink: 'https://www.youtube.com/embed/tzb_NJIxY00?si=GdkYg9EROUgQfoz7',
-    amazonLink: 'https://amazon.com/music/player/tracks/B0DJFYH7HQ?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_mJdNLqkogDnSGHYBH4pB76Sbt',
+    amazonLink:
+      'https://amazon.com/music/player/tracks/B0DJFYH7HQ?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_mJdNLqkogDnSGHYBH4pB76Sbt',
   },
   {
     albumId: 'distant-melodies',
@@ -104,7 +132,7 @@ export const albums = [
   {
     albumId: 'you-shouldnt-let-one-thing-be-the-meaning-of-your-life',
     coverSrc: coverSrc4,
-    title: 'You Shouldn\'t Let One Thing Be the Meaning of Your Life',
+    title: "You Shouldn't Let One Thing Be the Meaning of Your Life",
     appleMusicLink: 'http://itunes.apple.com/album/id/1711577197',
     spotifyLink: 'https://open.spotify.com/album/6R1iTqqYgTvWOZ3FYIqfUA',
     youtubeLink: 'https://www.youtube.com/embed/45Sa4AA9WwI?si=86MMWpvc4K8ipPxW',
@@ -113,7 +141,7 @@ export const albums = [
   {
     albumId: 'dont-look-down',
     coverSrc: coverSrc5,
-    title: 'Don\'t Look Down (The Journey Never Ends)',
+    title: "Don't Look Down (The Journey Never Ends)",
     appleMusicLink: 'http://itunes.apple.com/album/id/1707820334',
     spotifyLink: 'https://open.spotify.com/album/7qXqB7synzYPHR2m7aOCb0',
     youtubeLink: 'https://www.youtube.com/embed/15sGmrwl3SA?si=bgUW4hWs7WFcljDx',
@@ -122,7 +150,7 @@ export const albums = [
   {
     albumId: 'console-log-you-will-hear-the-voice-of-reason',
     coverSrc: coverSrc6,
-    title: 'console.log(\'You will hear the voice of reason\')',
+    title: "console.log('You will hear the voice of reason')",
     appleMusicLink: 'http://itunes.apple.com/album/id/1695674135',
     spotifyLink: 'https://open.spotify.com/album/7H8oFonDY3H6AzUVrtCnYm',
     youtubeLink: 'https://www.youtube.com/embed/Ro3Dppj_314?si=w-6W497rHHe-PjBS',

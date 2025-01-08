@@ -33,7 +33,12 @@ export default function About() {
         <p className={styles.artistBio}>{artistBio}</p>
         <div className={styles.artistImagesWrapper}>
           <div className={styles.artistImageWrapper}>
-            <MemoizedImage src={artistSrc} alt="Artist" className={styles.artistImage} unoptimized={true} />
+            <MemoizedImage
+              src={artistSrc}
+              alt="Artist"
+              className={styles.artistImage}
+              unoptimized={true}
+            />
           </div>
         </div>
       </div>

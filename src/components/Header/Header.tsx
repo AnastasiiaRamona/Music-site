@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.css';
-import { Vibes } from "next/font/google";
+import { Vibes } from 'next/font/google';
 import { RefObject, useState } from 'react';
 import BurgerButton from './BurgerButton/BurgerButton';
 import EmojiSymbolsSharpIcon from '@mui/icons-material/EmojiSymbolsSharp';
@@ -10,7 +10,7 @@ const vibes = Vibes({ weight: '400', subsets: ['latin'] });
 
 type HeaderProps = {
   footerRef: RefObject<HTMLElement>;
-}
+};
 
 export const Header = (props: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +28,7 @@ export const Header = (props: HeaderProps) => {
       <div className={styles['header-container']}>
         <div className={styles.logo}>
           <Link href="/home">
-            <EmojiSymbolsSharpIcon fontSize='large' cursor='pointer' />
+            <EmojiSymbolsSharpIcon fontSize="large" cursor="pointer" />
           </Link>
           <h1 className={`${vibes.className}`}>ANASTASIIA RAMONA</h1>
           <p className={styles['logo-text']}>Unleashing the Unheard, One Beat at a Time</p>
@@ -36,15 +36,27 @@ export const Header = (props: HeaderProps) => {
         <nav className={`${styles['site-navigation']} ${isOpen ? styles.active : ''}`}>
           <ul className={styles['nav-list']}>
             <li className={styles['nav-item']} onClick={handleNavLinkClick}>
-              <Link href="/home" rel="preload">Home</Link>
+              <Link href="/home" rel="preload">
+                Home
+              </Link>
             </li>
             <li className={styles['nav-item']} onClick={handleNavLinkClick}>
-              <Link href="/about" rel="preload">About</Link>
+              <Link href="/about" rel="preload">
+                About
+              </Link>
             </li>
             <li className={styles['nav-item']} onClick={handleNavLinkClick}>
-              <Link href="/music" rel="preload">Music</Link>
+              <Link href="/music" rel="preload">
+                Music
+              </Link>
             </li>
-            <li className={styles['nav-item']} onClick={() => { handleNavLinkClick(); onClick(props.footerRef); }}>
+            <li
+              className={styles['nav-item']}
+              onClick={() => {
+                handleNavLinkClick();
+                onClick(props.footerRef);
+              }}
+            >
               Contact
             </li>
           </ul>
@@ -54,7 +66,6 @@ export const Header = (props: HeaderProps) => {
     </header>
   );
 };
-
 
 function onClick(footerRef: RefObject<HTMLElement>) {
   footerRef.current?.scrollIntoView({ behavior: 'smooth' });

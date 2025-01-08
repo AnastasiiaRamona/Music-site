@@ -1,27 +1,27 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 import 'normalize.css';
 
-import "./globals.css";
-import { Halant } from "next/font/google";
-import StartPage from "../components/StartPage/StartPage";
-import { images } from "../data/albums";
-import Head from "next/head";
+import './globals.css';
+import { Halant } from 'next/font/google';
+import StartPage from '../components/StartPage/StartPage';
+import { images } from '../data/albums';
+import Head from 'next/head';
 
 const overlock = Halant({ weight: '400', subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "ANASTASIIA RAMONA",
-  description: "Indie-musician/singer-songwriter",
+  title: 'ANASTASIIA RAMONA',
+  description: 'Indie-musician/singer-songwriter',
   verification: {
-    yandex: "18436f7da04f12f3",
-  }
+    yandex: '18436f7da04f12f3',
+  },
 };
 
 export const viewport = {
-  width: "device-width",
+  width: 'device-width',
   initialScale: 1.0,
   maximumScale: 1.0,
-  viewportFit: "cover",
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({
@@ -37,9 +37,7 @@ export default function RootLayout({
         ))}
       </Head>
       <body>
-        <StartPage>
-          {children}
-        </StartPage>
+        <StartPage>{children}</StartPage>
       </body>
     </html>
   );

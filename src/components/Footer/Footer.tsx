@@ -12,14 +12,26 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
     <footer ref={ref} className={styles['site-footer']}>
       <div className={styles['footer-content']}>
         <div className={styles['social-list']}>
-          <SocialMediaButton href='https://www.instagram.com/sia.de.ramona/' url={instagramIconSrc} alt="Instagram" />
-          <SocialMediaButton href='https://t.me/Anastasiia_Ramona' url={telegramIconSrc} alt="Telegram" />
-          <SocialMediaButton href='https://youtube.com/@anastasiia-ramona?si=n9o00Thg9qAJDp5-' url={youtubeIconSrc} alt="YouTube" />
+          <SocialMediaButton
+            href="https://www.instagram.com/sia.de.ramona/"
+            url={instagramIconSrc}
+            alt="Instagram"
+          />
+          <SocialMediaButton
+            href="https://t.me/Anastasiia_Ramona"
+            url={telegramIconSrc}
+            alt="Telegram"
+          />
+          <SocialMediaButton
+            href="https://youtube.com/@anastasiia-ramona?si=n9o00Thg9qAJDp5-"
+            url={youtubeIconSrc}
+            alt="YouTube"
+          />
         </div>
-        <p className={styles['footer-text']}>© 2024 Anastasiia Ramona. All rights reserved.</p>
+        <p className={styles['footer-text']}>© 2025 Anastasiia Ramona. All rights reserved.</p>
       </div>
     </footer>
   );
-})
+});
 
 Footer.displayName = 'Footer';

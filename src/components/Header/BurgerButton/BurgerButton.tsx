@@ -7,7 +7,10 @@ type BurgerButtonProps = {
 
 export default function BurgerButton({ isOpen, toggleMenu }: BurgerButtonProps) {
   return (
-    <button onClick={toggleMenu} className={`${styles.burgerButton} ${isOpen ? styles.active : ''}`}>
+    <button
+      onClick={toggleMenu}
+      className={`${styles.burgerButton} ${isOpen ? styles.active : ''}`}
+    >
       <div className={styles.line}></div>
       <div className={styles.line}></div>
       <div className={styles.line}></div>
