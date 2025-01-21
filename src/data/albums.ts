@@ -12,6 +12,7 @@ import coverSrc11 from '../assets/covers/the-last-puzzle_page-0001-min.webp';
 import coverSrc12 from '../assets/covers/Jacket-denim.webp';
 import coverSrc13 from '../assets/covers/awake-and-alive.jpg';
 import coverSrc14 from '../assets/covers/skyglitch.webp';
+import coverSrc15 from '../assets/covers/Tropical-Lemonade_11zon.webp';
 import image from '../assets/image.webp';
 import appleMusicSrc from '../assets/apple-music.webp';
 import spotifySrc from '../assets/spotify.webp';
@@ -39,6 +40,7 @@ export const images = [
   coverSrc12,
   coverSrc13,
   coverSrc14,
+  coverSrc15,
   image,
   appleMusicSrc,
   spotifySrc,
@@ -53,6 +55,16 @@ export const images = [
 ];
 
 export const albums = [
+  {
+    albumId: 'tropical-lemonade',
+    coverSrc: coverSrc15,
+    title: 'Tropical Lemonade',
+    appleMusicLink: 'https://music.apple.com/us/album/tropical-lemonade/1791435321?i=1791435327',
+    spotifyLink: 'https://open.spotify.com/track/0PmUp7tTZzWQlb88V4sF7R?si=0052d6eefaf44d1a',
+    youtubeLink: 'https://www.youtube.com/embed/geuKULViku4?si=fy0nPC-WrIfGYbdv',
+    amazonLink:
+      'https://amazon.com/music/player/tracks/B0DTGWF7W8?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_8tdTGmlGb3SCsCHzbijQW07bA',
+  },
   {
     albumId: 'skyglitch',
     coverSrc: coverSrc14,
