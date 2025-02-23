@@ -13,6 +13,7 @@ import coverSrc12 from '../assets/covers/Jacket-denim.webp';
 import coverSrc13 from '../assets/covers/awake-and-alive.jpg';
 import coverSrc14 from '../assets/covers/skyglitch.webp';
 import coverSrc15 from '../assets/covers/Tropical-Lemonade_11zon.webp';
+import coverSrc16 from '../assets/covers/the-white-city-s-dance.webp';
 import image from '../assets/image.webp';
 import appleMusicSrc from '../assets/apple-music.webp';
 import spotifySrc from '../assets/spotify.webp';
@@ -41,6 +42,7 @@ export const images = [
   coverSrc13,
   coverSrc14,
   coverSrc15,
+  coverSrc16,
   image,
   appleMusicSrc,
   spotifySrc,
@@ -55,6 +57,16 @@ export const images = [
 ];
 
 export const albums = [
+  {
+    albumId: 'the-white-city-s-dance',
+    coverSrc: coverSrc16,
+    title: 'The White City’s Dance',
+    appleMusicLink: 'https://music.apple.com/us/album/the-white-citys-dance-single/1798050325',
+    spotifyLink: 'https://open.spotify.com/artist/0xVXQ2ZodJ7EAsjBvoQBBH?si=DaARL2vUQk65EHtQ4Q6e7w',
+    youtubeLink: 'https://www.youtube.com/embed/0TVaGchFiAM?si=q5K3yteHu0DGa8BE',
+    amazonLink:
+      'https://music.apple.com/us/album/the-white-citys-dance-single/1798050325',
+  },
   {
     albumId: 'tropical-lemonade',
     coverSrc: coverSrc15,
