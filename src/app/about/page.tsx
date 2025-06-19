@@ -1,4 +1,3 @@
-import { memo, useMemo } from 'react';
 import artistSrc from '../../assets/image.webp';
 import styles from './page.module.css';
 import Image, { StaticImageData } from 'next/image';
@@ -13,18 +12,13 @@ type ImageData = {
   unoptimized: boolean;
 };
 
-const MemoizedImage = memo(({ src, alt, className }: ImageData) => {
+function ImageComponent({ src, alt, className }: ImageData) {
   return <Image loading="lazy" src={src} alt={alt} className={className} placeholder="blur" />;
-});
-
-MemoizedImage.displayName = 'MemoizedImage';
+}
 
 export default function About() {
-  const artistBio = useMemo(
-    () =>
-      'Anastasiia Ramona is an indie pop, dream pop, and synth pop project that was started by just one musician whose mind has been computerized. The musician explores topics of self-discovery, workaholism, burnout, inspiration, and love in her songs.',
-    []
-  );
+  const artistBio =
+    'Anastasiia Ramona is an indie pop, dream pop, and synth pop project that was started by just one musician whose mind has been computerized. The musician explores topics of self-discovery, workaholism, burnout, inspiration, and love in her songs.';
 
   return (
     <section className={styles.about}>
@@ -33,7 +27,7 @@ export default function About() {
         <p className={styles.artistBio}>{artistBio}</p>
         <div className={styles.artistImagesWrapper}>
           <div className={styles.artistImageWrapper}>
-            <MemoizedImage
+            <ImageComponent
               src={artistSrc}
               alt="Artist"
               className={styles.artistImage}

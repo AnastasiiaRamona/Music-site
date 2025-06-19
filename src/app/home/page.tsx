@@ -1,11 +1,12 @@
 'use client';
 
-import React, { RefObject, memo, useEffect, useMemo, useRef } from 'react';
+import React, { RefObject, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './page.module.css';
 import { Vibes } from 'next/font/google';
+import getTheLatestRelease from '../../data/albums';
 
 const vibes = Vibes({ weight: '400', subsets: ['latin'] });
 
@@ -13,7 +14,7 @@ type IframeProps = {
   src: string;
 };
 
-const MemoizedIframe = memo(({ src }: IframeProps) => {
+function IframeComponent({ src }: IframeProps) {
   return (
     <iframe
       src={src}
@@ -22,9 +23,7 @@ const MemoizedIframe = memo(({ src }: IframeProps) => {
       rel="preload"
     ></iframe>
   );
-});
-
-MemoizedIframe.displayName = 'MemoizedIframe';
+}
 
 function scrollToSection(ref: RefObject<HTMLElement>) {
   ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -33,22 +32,11 @@ function scrollToSection(ref: RefObject<HTMLElement>) {
 const Home = () => {
   const newReleaseSectionRef = useRef<HTMLElement>(null);
 
-  const latestReleaseSrc = useMemo(
-    () => 'https://www.youtube.com/embed/0TVaGchFiAM?si=q5K3yteHu0DGa8BE',
-    []
-  );
+  const latestReleaseSrc = getTheLatestRelease().youtubeLink;
 
-  const welcomeText = useMemo(() => "Welcome to Anastasiia Ramona's Music World", []);
-
-  const heroDescription = useMemo(
-    () => "Explore Anastasiia Ramona's music and find out more about our journey.",
-    []
-  );
-
-  const latestReleaseDescription = useMemo(
-    () => "Check out Anastasiia Ramona's latest release and get a taste of her new sound.",
-    []
-  );
+  const welcomeText = "Welcome to Anastasiia Ramona's Music World";
+  const heroDescription = "Explore Anastasiia Ramona's music and find out more about our journey.";
+  const latestReleaseDescription = "Check out Anastasiia Ramona's latest release and get a taste of her new sound.";
 
   useEffect(() => {
     const CustomToast = () => (
@@ -84,7 +72,7 @@ const Home = () => {
       <section ref={newReleaseSectionRef} className={styles['new-release-section']}>
         <h2 className={vibes.className}>THE LATEST RELEASE</h2>
         <div className={styles['new-release-content']}>
-          <MemoizedIframe src={latestReleaseSrc} />
+          <IframeComponent src={latestReleaseSrc} />
           <p>{latestReleaseDescription}</p>
         </div>
       </section>
@@ -94,3 +82,4 @@ const Home = () => {
 };
 
 export default Home;
+

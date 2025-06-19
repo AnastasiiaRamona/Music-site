@@ -14,6 +14,7 @@ import coverSrc13 from '../assets/covers/awake-and-alive.jpg';
 import coverSrc14 from '../assets/covers/skyglitch.webp';
 import coverSrc15 from '../assets/covers/Tropical-Lemonade_11zon.webp';
 import coverSrc16 from '../assets/covers/the-white-city-s-dance.webp';
+import coverSrc17 from '../assets/covers/to-simulants-with-love.webp';
 import image from '../assets/image.webp';
 import appleMusicSrc from '../assets/apple-music.webp';
 import spotifySrc from '../assets/spotify.webp';
@@ -57,6 +58,16 @@ export const images = [
 ];
 
 export const albums = [
+  {
+    albumId: 'to-simulants-with-love',
+    coverSrc: coverSrc17,
+    title: 'To Simulants, with Love',
+    appleMusicLink: 'https://music.apple.com/us/song/to-simulants-with-love/1819341969',
+    spotifyLink: 'https://open.spotify.com/track/0Y2sTT4gqzRR3jS75n728N?si=e802deff137d48a4',
+    youtubeLink: 'https://www.youtube.com/embed/OPH9QYIAChs?si=qsMUTJXAx2YwFc3g',
+    amazonLink:
+      'https://amazon.com/music/player/albums/B0FCDHR4HR?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_XiRFKvHTGahXSeGqg4tfivI5u',
+  },
   {
     albumId: 'the-white-city-s-dance',
     coverSrc: coverSrc16,
@@ -208,3 +219,7 @@ export const albums = [
     amazonLink: 'https://www.amazon.com/music/player/albums/B0C1P1MQQY',
   },
 ];
+
+export default function getTheLatestRelease() {
+  return albums[0];
+}
