@@ -15,6 +15,7 @@ import coverSrc14 from '../assets/covers/skyglitch.webp';
 import coverSrc15 from '../assets/covers/Tropical-Lemonade_11zon.webp';
 import coverSrc16 from '../assets/covers/the-white-city-s-dance.webp';
 import coverSrc17 from '../assets/covers/to-simulants-with-love.webp';
+import coverSrc18 from '../assets/covers/The-Art-of-Rebellion.webp';
 import image from '../assets/image.webp';
 import appleMusicSrc from '../assets/apple-music.webp';
 import spotifySrc from '../assets/spotify.webp';
@@ -58,6 +59,16 @@ export const images = [
 ];
 
 export const albums = [
+  {
+    albumId: 'the-art-of-rebellion',
+    coverSrc: coverSrc18,
+    title: 'The Art of Rebellion',
+    appleMusicLink: 'https://music.apple.com/us/song/the-art-of-rebellion/1822143361',
+    spotifyLink: 'https://open.spotify.com/track/3gubxAlboj9QY8p2CUmKCV?si=d2c566c4994b4e55',
+    youtubeLink: 'https://www.youtube.com/embed/nxTxNi88uVQ?si=E1iwWM4vwV92KcE_',
+    amazonLink:
+      'https://amazon.com/music/player/tracks/B0FF3HPL6K?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_uanfPlUrGnVLl5y9eFpuDULEO',
+  },
   {
     albumId: 'to-simulants-with-love',
     coverSrc: coverSrc17,
