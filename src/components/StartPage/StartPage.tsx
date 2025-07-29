@@ -11,9 +11,9 @@ export default function StartPage({
   const ref = useRef<HTMLElement>(null);
   return (
     <>
-      <Header footerRef={ref} />
+      {/* <Header footerRef={ref} /> */}
       <main>{children}</main>
-      <Footer ref={ref} />
+      {/* <Footer ref={ref} /> */}
     </>
   );
 }

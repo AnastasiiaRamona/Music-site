@@ -1,85 +1,75 @@
 'use client';
 
-import React, { RefObject, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
 import styles from './page.module.css';
-import { Vibes } from 'next/font/google';
-import getTheLatestRelease from '../../data/albums';
+import { motion } from 'framer-motion';
 
-const vibes = Vibes({ weight: '400', subsets: ['latin'] });
-
-type IframeProps = {
-  src: string;
-};
-
-function IframeComponent({ src }: IframeProps) {
-  return (
-    <iframe
-      src={src}
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-      rel="preload"
-    ></iframe>
-  );
-}
-
-function scrollToSection(ref: RefObject<HTMLElement>) {
-  ref.current?.scrollIntoView({ behavior: 'smooth' });
-}
-
-const Home = () => {
-  const newReleaseSectionRef = useRef<HTMLElement>(null);
-
-  const latestReleaseSrc = getTheLatestRelease().youtubeLink;
-
-  const welcomeText = "Welcome to Anastasiia Ramona's Music World";
-  const heroDescription = "Explore Anastasiia Ramona's music and find out more about our journey.";
-  const latestReleaseDescription = "Check out Anastasiia Ramona's latest release and get a taste of her new sound.";
-
+export default function Home() {
   useEffect(() => {
-    const CustomToast = () => (
-      <div
-        onClick={() => {
-          scrollToSection(newReleaseSectionRef);
-        }}
-        className={styles['custom-toast']}
-      >
-        Listen to the latest release!
-      </div>
-    );
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      document.body.style.setProperty('--scrollTop', `${scrollY}px`);
+    };
 
-    toast(<CustomToast />, {
-      position: 'bottom-left',
-      autoClose: 5000,
-    });
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  return (
-    <section className={styles['site-main']}>
-      <section className={styles['hero-section']}>
-        <div className={styles['hero-content']}>
-          <h2>{welcomeText}</h2>
-          <p>{heroDescription}</p>
-          <button className={styles['cta-button']}>
-            <Link legacyBehavior href="/music" rel="preload">
-              Learn More
-            </Link>
-          </button>
-        </div>
-      </section>
-      <section ref={newReleaseSectionRef} className={styles['new-release-section']}>
-        <h2 className={vibes.className}>THE LATEST RELEASE</h2>
-        <div className={styles['new-release-content']}>
-          <IframeComponent src={latestReleaseSrc} />
-          <p>{latestReleaseDescription}</p>
-        </div>
-      </section>
-      <ToastContainer />
+  const text = "Indie Dream Crafter";
+
+  return <>
+    <section>
+      <div className={styles['layers']}>
+        <motion.h1
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{
+            duration: 1,
+            ease: 'easeOut',
+          }}
+        >
+          Anastasiia Ramona
+        </motion.h1>
+        <h2>
+          {text.split('').map((char, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                delay: index * 0.08,
+              }}
+            >
+              {char}
+            </motion.span>
+          ))}
+        </h2>
+        <div className={`${styles.layer} ${styles['layer-base']}`}></div>
+        <div className={`${styles.layer} ${styles['layer-table']}`}></div>
+        <div className={`${styles.layer} ${styles['layer-bottom']}`}></div>
+      </div>
     </section>
-  );
-};
 
-export default Home;
+    <section className={styles['navigation-section']}>
+      <nav className={styles['site-navigation']}>
+        <ul>
+          <li><a href="#music">Music</a></li>
+          <li><a href="#covers">Covers</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </section>
 
+    <section className={styles['new-release-section']}>
+      <div className={styles['layers']}>
+        <div className={`${styles.layer} ${styles['layer-top']}`}></div>
+        <div className={`${styles.layer} ${styles['layer-waves']}`}></div>
+      </div>
+    </section>
+  </>
+}
