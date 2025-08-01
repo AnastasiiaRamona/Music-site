@@ -1,0 +1,27 @@
+.latest-release {
+  z-index: 100;
+  position: absolute;
+}
+
+.latest-release-vinyl {
+  position: relative;
+  transform-origin: center;
+}
+
+
+.latest-release-vinyl__image {
+  width: 50vw;
+  height: 50vw;
+  z-index: 102;
+  position: relative;
+}
+
+.latest-release-cover {
+  width: 23vw;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}

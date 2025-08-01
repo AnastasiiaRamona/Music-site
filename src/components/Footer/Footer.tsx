@@ -11,7 +11,7 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
   return (
     <footer ref={ref} className={styles['site-footer']}>
       <div className={styles['footer-content']}>
-        <div className={styles['social-list']}>
+        {/* <div className={styles['social-list']}>
           <SocialMediaButton
             href="https://www.instagram.com/sia.de.ramona/"
             url={instagramIconSrc}
@@ -27,10 +27,10 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
             url={youtubeIconSrc}
             alt="YouTube"
           />
-        </div>
+        </div> */}
         <p className={styles['footer-text']}>© 2025 Anastasiia Ramona. All rights reserved.</p>
       </div>
-    </footer>
+    </footer >
   );
 });
 

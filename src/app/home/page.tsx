@@ -3,6 +3,9 @@
 import { useEffect } from 'react';
 import styles from './page.module.css';
 import { motion } from 'framer-motion';
+import LatestRelease from '@/components/LatestRelease/LatestRelease';
+import AnimatedText from '@/components/AnimatedText/AnimatedText';
+import NavigationSection from '@/components/NavigationSection/NavigationSection';
 
 export default function Home() {
   useEffect(() => {
@@ -19,7 +22,8 @@ export default function Home() {
     };
   }, []);
 
-  const text = "Indie Dream Crafter";
+  const description = "Indie Dream Crafter";
+  const latestReleaseText = "Grab the Latest Release";
 
   return <>
     <section>
@@ -35,18 +39,7 @@ export default function Home() {
           Anastasiia Ramona
         </motion.h1>
         <h2>
-          {text.split('').map((char, index) => (
-            <motion.span
-              key={index}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                delay: index * 0.08,
-              }}
-            >
-              {char}
-            </motion.span>
-          ))}
+          <AnimatedText text={description} />
         </h2>
         <div className={`${styles.layer} ${styles['layer-base']}`}></div>
         <div className={`${styles.layer} ${styles['layer-table']}`}></div>
@@ -54,21 +47,18 @@ export default function Home() {
       </div>
     </section>
 
-    <section className={styles['navigation-section']}>
-      <nav className={styles['site-navigation']}>
-        <ul>
-          <li><a href="#music">Music</a></li>
-          <li><a href="#covers">Covers</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </section>
+    <NavigationSection />
 
     <section className={styles['new-release-section']}>
       <div className={styles['layers']}>
+        <h3><AnimatedText text={latestReleaseText} /></h3>
         <div className={`${styles.layer} ${styles['layer-top']}`}></div>
         <div className={`${styles.layer} ${styles['layer-waves']}`}></div>
+        <LatestRelease />
+        <article className={styles['new-release-additional-text']}>
+          <p>Close your eyes, you&apos;re already here <br />
+            Nothing here is real, but it all feels familiar </p>
+        </article>
       </div>
     </section>
   </>

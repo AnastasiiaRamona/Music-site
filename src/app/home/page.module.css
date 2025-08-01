@@ -38,6 +38,35 @@
   top: 17%;
 }
 
+.layers h3 {
+  font-family: 'Clawmark';
+  font-size: 3rem;
+  font-weight: 100;
+  position: absolute;
+  color: #ffffff;
+  z-index: 103;
+  left: 10%;
+  top: 19%;
+  rotate: -7deg;
+}
+
+.new-release-additional-text p {
+  font-family: 'Clawmark';
+  font-size: 3.5rem;
+  font-weight: 100;
+  position: absolute;
+  color: #ffffff;
+  z-index: 103;
+  bottom: 30%;
+  right: 5%;
+  rotate: -7deg;
+  text-shadow:
+    -1px -1px 0 black,
+    1px -1px 0 black,
+    -1px 1px 10px black,
+    1px 1px 8px black;
+}
+
 .layer-base {
   background-image: url('../../assets/room-base.webp');
   transform: translate3d(0, calc(var(--scrollTop) / 2), 0);
@@ -50,18 +79,6 @@
 
 .layer-bottom {
   background-image: url('../../assets/room-bottom.webp');
-}
-
-.site-navigation {
-  font-size: 4rem;
-  font-family: 'Clawmark';
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
 }
 
 .new-release-section {

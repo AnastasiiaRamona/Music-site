@@ -16,6 +16,7 @@ import coverSrc15 from '../assets/covers/Tropical-Lemonade_11zon.webp';
 import coverSrc16 from '../assets/covers/the-white-city-s-dance.webp';
 import coverSrc17 from '../assets/covers/to-simulants-with-love.webp';
 import coverSrc18 from '../assets/covers/The-Art-of-Rebellion.webp';
+import coverSrc19 from '../assets/covers/the-remastered-collection.webp';
 import image from '../assets/image.webp';
 import appleMusicSrc from '../assets/apple-music.webp';
 import spotifySrc from '../assets/spotify.webp';
@@ -59,6 +60,16 @@ export const images = [
 ];
 
 export const albums = [
+  {
+    albumId: 'the-remastered-collection',
+    coverSrc: coverSrc19,
+    title: 'The Remastered Collection',
+    appleMusicLink: 'https://music.apple.com/us/album/the-remastered-collection-ep/1829676969',
+    spotifyLink: 'https://open.spotify.com/album/7rwLlPuNaKIFHc6VoWRaXl?si=_o1WSREJSe-Q8_BB7EkGzA',
+    youtubeLink: 'https://www.youtube.com/embed/MXlyeXoNhAk?si=Q-BEXTlCUCUxJqA7',
+    amazonLink:
+      'https://music.amazon.com/albums/B0FKBMGH8B?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_gR7ZyAKGcOLrnXnv9d8fRPMfM',
+  },
   {
     albumId: 'the-art-of-rebellion',
     coverSrc: coverSrc18,
