@@ -1,71 +1,30 @@
-import Link from 'next/link';
+import { useEffect } from 'react';
 import styles from './Header.module.css';
-import { Vibes } from 'next/font/google';
-import { RefObject, useState } from 'react';
-import BurgerButton from './BurgerButton/BurgerButton';
-import EmojiSymbolsSharpIcon from '@mui/icons-material/EmojiSymbolsSharp';
 
-const vibes = Vibes({ weight: '400', subsets: ['latin'] });
+function Header() {
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      document.body.style.setProperty('--scrollTop', `${scrollY}px`);
+    };
 
-type HeaderProps = {
-  footerRef: RefObject<HTMLElement>;
-};
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
 
-export const Header = (props: HeaderProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleNavLinkClick = () => {
-    setIsOpen(false);
-  };
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
-    <header className={styles['site-header']}>
-      <div className={styles['header-container']}>
-        <div className={styles.logo}>
-          <Link href="/home">
-            <EmojiSymbolsSharpIcon fontSize="large" cursor="pointer" />
-          </Link>
-          <h1 className={`${vibes.className}`}>ANASTASIIA RAMONA</h1>
-          <p className={styles['logo-text']}>Unleashing the Unheard, One Beat at a Time</p>
-        </div>
-        <nav className={`${styles['site-navigation']} ${isOpen ? styles.active : ''}`}>
-          <ul className={styles['nav-list']}>
-            <li className={styles['nav-item']} onClick={handleNavLinkClick}>
-              <Link href="/home" rel="preload">
-                Home
-              </Link>
-            </li>
-            <li className={styles['nav-item']} onClick={handleNavLinkClick}>
-              <Link href="/about" rel="preload">
-                About
-              </Link>
-            </li>
-            <li className={styles['nav-item']} onClick={handleNavLinkClick}>
-              <Link href="/music" rel="preload">
-                Music
-              </Link>
-            </li>
-            <li
-              className={styles['nav-item']}
-              onClick={() => {
-                handleNavLinkClick();
-                onClick(props.footerRef);
-              }}
-            >
-              Contact
-            </li>
-          </ul>
-        </nav>
-        <BurgerButton isOpen={isOpen} toggleMenu={toggleMenu} />
-      </div>
+    <header className={styles.header}>
+      <video autoPlay loop muted playsInline
+        className={styles.video}>
+        <source src="/videos/video.mp4" type="video/mp4" />
+      </video>
+      <div className={`${styles.layer} ${styles['layer-bottom']}`}></div>
     </header>
   );
-};
-
-function onClick(footerRef: RefObject<HTMLElement>) {
-  footerRef.current?.scrollIntoView({ behavior: 'smooth' });
 }
+
+export default Header;

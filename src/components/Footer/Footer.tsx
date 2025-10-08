@@ -1,8 +1,8 @@
 'use client';
 
-import instagramIconSrc from '../../assets/instagram-icon.webp';
-import telegramIconSrc from '../../assets/telegram-icon.webp';
-import youtubeIconSrc from '../../assets/youtube-icon.webp';
+const instagramIconSrc = '/assets/instagram-icon.webp';
+const telegramIconSrc = '/assets/telegram-icon.webp';
+const youtubeIconSrc = '/assets/youtube-icon.webp';
 import SocialMediaButton from './SocialMediaButton/SocialMediaButton';
 import styles from './Footer.module.css';
 import { forwardRef } from 'react';

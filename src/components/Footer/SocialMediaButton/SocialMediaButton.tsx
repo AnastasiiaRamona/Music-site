@@ -1,8 +1,8 @@
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import styles from './SocialMediaButton.module.css';
 
 type SocialMediaButtonProps = {
-  url: StaticImageData;
+  url: string;
   alt: string;
   href: string;
 };
@@ -16,6 +16,8 @@ export default function SocialMediaButton({ url, alt, href }: SocialMediaButtonP
         src={url}
         alt={alt}
         className={styles['social-media-button__image']}
+        width={30}
+        height={30}
       />
     </a>
   );

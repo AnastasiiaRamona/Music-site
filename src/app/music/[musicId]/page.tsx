@@ -1,14 +1,14 @@
 import { albums } from '../../../data/albums';
-import Image, { StaticImageData } from 'next/image';
-import appleMusicSrc from '../../../assets/apple-music.webp';
-import spotifySrc from '../../../assets/spotify.webp';
-import amazonSrc from '../../../assets/amazon.webp';
+import Image from 'next/image';
+const appleMusicSrc = '/assets/apple-music.webp';
+const spotifySrc = '/assets/spotify.webp';
+const amazonSrc = '/assets/amazon.webp';
 import styles from './page.module.css';
 
 type AlbumProps = {
   album?: {
     albumId: string;
-    coverSrc: StaticImageData;
+    coverSrc: string;
     title: string;
     appleMusicLink: string;
     spotifyLink: string;
@@ -29,8 +29,8 @@ function IframeComponent({ src, className }: { src: string; className: string })
   );
 }
 
-function ImageComponent({ src, alt, className }: { src: StaticImageData; alt: string; className: string }) {
-  return <Image loading="lazy" src={src} alt={alt} className={className} unoptimized={true} />;
+function ImageComponent({ src, alt, className }: { src: string; alt: string; className: string }) {
+  return <Image loading="lazy" src={src} alt={alt} className={className} unoptimized={true} width={50} height={50} />;
 }
 
 function MusicId({ album }: AlbumProps) {

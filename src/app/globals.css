@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Clawmark';
+  src: url('/fonts/Clawmark-OVo1p.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --bca-gradient: linear-gradient(135deg, #032a7825, #6aaeb36d, #0ba6ff4b);
   --primary-color: #20283a;
@@ -10,15 +17,8 @@
   --font-size-base: 16px;
   --font-weight-normal: 400;
   --font-weight-bold: 700;
-  --primary-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --primary-font-family: 'Clawmark';
   background-color: black;
-}
-
-@font-face {
-  font-family: 'Clawmark';
-  src: url('/fonts/Clawmark-OVo1p.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
 
 * {

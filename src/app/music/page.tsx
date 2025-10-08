@@ -3,11 +3,11 @@
 import { useEffect } from 'react';
 import CoverGallery from '../../components/Cover/Cover';
 import { albums } from '../../data/albums';
-import { StaticImageData } from 'next/image';
+import Header from '@/components/Header/Header';
 
 const covers = albums.map((album) => ({
   id: album.albumId,
-  url: album.coverSrc as StaticImageData,
+  url: album.coverSrc,
   alt: album.title,
   text: album.title,
   unoptimized: true,
@@ -23,8 +23,11 @@ export default function Music() {
   }, []);
 
   return (
-    <section>
-      <CoverGallery covers={covers} />
-    </section>
+    <>
+      <Header></Header>
+      <section>
+        <CoverGallery covers={covers} />
+      </section>
+    </>
   );
 }

@@ -68,17 +68,17 @@
 }
 
 .layer-base {
-  background-image: url('../../assets/room-base.webp');
+  background-image: url('/assets/room-base.webp');
   transform: translate3d(0, calc(var(--scrollTop) / 2), 0);
 }
 
 .layer-table {
-  background-image: url('../../assets/room-table.webp');
+  background-image: url('/assets/room-table.webp');
   transform: translate3d(0, calc(var(--scrollTop) / 2.7), 0);
 }
 
 .layer-bottom {
-  background-image: url('../../assets/room-bottom.webp');
+  background-image: url('/assets/room-bottom.webp');
 }
 
 .new-release-section {
@@ -87,12 +87,12 @@
 }
 
 .layer-top {
-  background-image: url('../../assets/bright-background-top.png');
+  background-image: url('/assets/bright-background-top.png');
   z-index: 101;
   background-position: top center;
   transform: translate3d(0, calc(var(--scrollTop) * -0.10), 0);
 }
 
 .layer-waves {
-  background-image: url('../../assets/bright-background.jpg');
+  background-image: url('/assets/bright-background.webp');
 }

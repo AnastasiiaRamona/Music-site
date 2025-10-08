@@ -1,19 +1,19 @@
-import artistSrc from '../../assets/image.webp';
+const artistSrc = '/assets/image.webp';
 import styles from './page.module.css';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { Vibes } from 'next/font/google';
 
 const vibes = Vibes({ weight: '400', subsets: ['latin'] });
 
 type ImageData = {
-  src: StaticImageData;
+  src: string;
   alt: string;
   className: string;
   unoptimized: boolean;
 };
 
 function ImageComponent({ src, alt, className }: ImageData) {
-  return <Image loading="lazy" src={src} alt={alt} className={className} placeholder="blur" />;
+  return <Image loading="lazy" src={src} alt={alt} className={className} width={300} height={300} />;
 }
 
 export default function About() {

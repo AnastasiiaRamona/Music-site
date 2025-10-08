@@ -1,33 +1,34 @@
-import coverSrc1 from '../assets/covers/friend-of-mine_2_11zon.webp';
-import coverSrc2 from '../assets/covers/you_6_11zon.webp';
-import coverSrc3 from '../assets/covers/unsolved-problem_5_11zon.webp';
-import coverSrc4 from '../assets/covers/album_9_11zon.webp';
-import coverSrc5 from '../assets/covers/dont-look-down_8_11zon.webp';
-import coverSrc6 from '../assets/covers/console_7_11zon.webp';
-import coverSrc7 from '../assets/covers/the-first-time_4_11zon.webp';
-import coverSrc8 from '../assets/covers/luminance_1_11zon.webp';
-import coverSrc9 from '../assets/covers/rondo_3_11zon.webp';
-import coverSrc10 from '../assets/covers/distant-melodies.webp';
-import coverSrc11 from '../assets/covers/the-last-puzzle_page-0001-min.webp';
-import coverSrc12 from '../assets/covers/Jacket-denim.webp';
-import coverSrc13 from '../assets/covers/awake-and-alive.jpg';
-import coverSrc14 from '../assets/covers/skyglitch.webp';
-import coverSrc15 from '../assets/covers/Tropical-Lemonade_11zon.webp';
-import coverSrc16 from '../assets/covers/the-white-city-s-dance.webp';
-import coverSrc17 from '../assets/covers/to-simulants-with-love.webp';
-import coverSrc18 from '../assets/covers/The-Art-of-Rebellion.webp';
-import coverSrc19 from '../assets/covers/the-remastered-collection.webp';
-import image from '../assets/image.webp';
-import appleMusicSrc from '../assets/apple-music.webp';
-import spotifySrc from '../assets/spotify.webp';
-import amazonSrc from '../assets/amazon.webp';
-import telegramSrc from '../assets/telegram-icon.webp';
-import youTubeSrc from '../assets/youtube-icon.webp';
-import instagramSrc from '../assets/instagram-icon.webp';
-import backgroundSrc2 from '../assets/background-2.webp';
-import backgroundSrc3 from '../assets/background-4.webp';
-import backgroundSrc4 from '../assets/background.jpg';
-import backgroundSrc5 from '../assets/background-3.webp';
+const coverSrc1 = '/assets/covers/friend-of-mine_2_11zon.webp';
+const coverSrc2 = '/assets/covers/you_6_11zon.webp';
+const coverSrc3 = '/assets/covers/unsolved-problem_5_11zon.webp';
+const coverSrc4 = '/assets/covers/album_9_11zon.webp';
+const coverSrc5 = '/assets/covers/dont-look-down_8_11zon.webp';
+const coverSrc6 = '/assets/covers/console_7_11zon.webp';
+const coverSrc7 = '/assets/covers/the-first-time_4_11zon.webp';
+const coverSrc8 = '/assets/covers/luminance_1_11zon.webp';
+const coverSrc9 = '/assets/covers/rondo_3_11zon.webp';
+const coverSrc10 = '/assets/covers/distant-melodies.webp';
+const coverSrc11 = '/assets/covers/the-last-puzzle_page-0001-min.webp';
+const coverSrc12 = '/assets/covers/Jacket-denim.webp';
+const coverSrc13 = '/assets/covers/awake-and-alive.jpg';
+const coverSrc14 = '/assets/covers/skyglitch.webp';
+const coverSrc15 = '/assets/covers/Tropical-Lemonade_11zon.webp';
+const coverSrc16 = '/assets/covers/the-white-city-s-dance.webp';
+const coverSrc17 = '/assets/covers/to-simulants-with-love.webp';
+const coverSrc18 = '/assets/covers/The-Art-of-Rebellion.webp';
+const coverSrc19 = '/assets/covers/the-remastered-collection.webp';
+const coverSrc20 = '/assets/covers/Twenty-Eight-Past Four.webp';
+const image = '/assets/image.webp';
+const appleMusicSrc = '/assets/apple-music.webp';
+const spotifySrc = '/assets/spotify.webp';
+const amazonSrc = '/assets/amazon.webp';
+const telegramSrc = '/assets/telegram-icon.webp';
+const youTubeSrc = '/assets/youtube-icon.webp';
+const instagramSrc = '/assets/instagram-icon.webp';
+const backgroundSrc2 = '/assets/background-2.webp';
+const backgroundSrc3 = '/assets/background-4.webp';
+const backgroundSrc4 = '/assets/background.jpg';
+const backgroundSrc5 = '/assets/background-3.webp';
 
 export const images = [
   coverSrc1,
@@ -61,6 +62,17 @@ export const images = [
 
 export const albums = [
   {
+    albumId: 'twenty-eight-past-four',
+    coverSrc: coverSrc20,
+    title: 'Twenty-Eight Past Four',
+    audioSrc: '/audios/twenty-eight-past-four.opus',
+    appleMusicLink: 'https://music.apple.com/us/album/twenty-eight-past-four-single/1836226480',
+    spotifyLink: 'https://open.spotify.com/track/6f5Q2m8mpqoxwr4ufw5CDk?si=40b9a7331314467b',
+    youtubeLink: 'https://www.youtube.com/embed/6v8FdZhZ4z8?si=lz8ayBpgvKCd8Phy',
+    amazonLink:
+      'https://amazon.com/music/player/albums/B0FP334JVP?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_4TQYSD5xUwhuCYf6td8D545gE',
+  },
+  {
     albumId: 'the-remastered-collection',
     coverSrc: coverSrc19,
     title: 'The Remastered Collection',
@@ -74,6 +86,7 @@ export const albums = [
     albumId: 'the-art-of-rebellion',
     coverSrc: coverSrc18,
     title: 'The Art of Rebellion',
+    audioSrc: '/audios/the-art-of-rebellion.opus',
     appleMusicLink: 'https://music.apple.com/us/song/the-art-of-rebellion/1822143361',
     spotifyLink: 'https://open.spotify.com/track/3gubxAlboj9QY8p2CUmKCV?si=d2c566c4994b4e55',
     youtubeLink: 'https://www.youtube.com/embed/nxTxNi88uVQ?si=E1iwWM4vwV92KcE_',
@@ -84,6 +97,7 @@ export const albums = [
     albumId: 'to-simulants-with-love',
     coverSrc: coverSrc17,
     title: 'To Simulants, with Love',
+    audioSrc: '/audios/to-simulants-with-love.opus',
     appleMusicLink: 'https://music.apple.com/us/song/to-simulants-with-love/1819341969',
     spotifyLink: 'https://open.spotify.com/track/0Y2sTT4gqzRR3jS75n728N?si=e802deff137d48a4',
     youtubeLink: 'https://www.youtube.com/embed/OPH9QYIAChs?si=qsMUTJXAx2YwFc3g',
@@ -93,7 +107,8 @@ export const albums = [
   {
     albumId: 'the-white-city-s-dance',
     coverSrc: coverSrc16,
-    title: 'The White City’s Dance',
+    title: `The White City's Dance`,
+    audioSrc: '/audios/the-white-city_s-dance.opus',
     appleMusicLink: 'https://music.apple.com/us/album/the-white-citys-dance-single/1798050325',
     spotifyLink: 'https://open.spotify.com/artist/0xVXQ2ZodJ7EAsjBvoQBBH?si=DaARL2vUQk65EHtQ4Q6e7w',
     youtubeLink: 'https://www.youtube.com/embed/0TVaGchFiAM?si=q5K3yteHu0DGa8BE',
@@ -134,6 +149,7 @@ export const albums = [
     albumId: 'jacket-denim',
     coverSrc: coverSrc12,
     title: 'Jacket Denim',
+    audioSrc: '/audios/jacket-Denim.opus',
     appleMusicLink: 'https://music.apple.com/ru/album/jacket-denim/1776427593?i=1776427596',
     spotifyLink: 'https://open.spotify.com/artist/0xVXQ2ZodJ7EAsjBvoQBBH?si=NYB8GjDmS8emV9J3-_oJAw',
     youtubeLink: 'https://www.youtube.com/embed/HbU9yPWFWeM?si=r1kNcwpHbCXtB6T5',
@@ -163,6 +179,7 @@ export const albums = [
     albumId: 'friend-of-mine',
     coverSrc: coverSrc1,
     title: 'Friend of Mine',
+    audioSrc: '/audios/friend-of-mine.opus',
     appleMusicLink: 'https://music.apple.com/us/album/friend-of-mine-single/1748733009',
     spotifyLink: 'https://open.spotify.com/album/2oqiVrOzXVzuALzr2WUZBN',
     youtubeLink: 'https://www.youtube.com/embed/dLrnlyDI8Gg?si=2p_KwbatAU97USQ8',
@@ -199,6 +216,7 @@ export const albums = [
     albumId: 'dont-look-down',
     coverSrc: coverSrc5,
     title: "Don't Look Down (The Journey Never Ends)",
+    audioSrc: '/audios/don_t-look-down.opus',
     appleMusicLink: 'http://itunes.apple.com/album/id/1707820334',
     spotifyLink: 'https://open.spotify.com/album/7qXqB7synzYPHR2m7aOCb0',
     youtubeLink: 'https://www.youtube.com/embed/15sGmrwl3SA?si=bgUW4hWs7WFcljDx',
@@ -208,6 +226,7 @@ export const albums = [
     albumId: 'console-log-you-will-hear-the-voice-of-reason',
     coverSrc: coverSrc6,
     title: "console.log('You will hear the voice of reason')",
+    audioSrc: '/audios/console.log.opus',
     appleMusicLink: 'http://itunes.apple.com/album/id/1695674135',
     spotifyLink: 'https://open.spotify.com/album/7H8oFonDY3H6AzUVrtCnYm',
     youtubeLink: 'https://www.youtube.com/embed/Ro3Dppj_314?si=w-6W497rHHe-PjBS',

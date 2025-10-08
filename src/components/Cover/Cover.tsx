@@ -1,10 +1,12 @@
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import styles from './Cover.module.css';
 import Link from 'next/link';
+import { useAudioPlayer } from '../../contexts/AudioPlayerContext';
+import { albums } from '../../data/albums';
 
 type CoverData = {
   id: string;
-  url: StaticImageData;
+  url: string;
   alt: string;
   text: string;
   unoptimized: boolean;
@@ -15,6 +17,24 @@ type CoverGalleryProps = {
 };
 
 function Cover({ id, url, alt, text }: CoverData) {
+  const { showPlayerAndPlay } = useAudioPlayer();
+
+  const handlePlayClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Find the album data
+    const album = albums.find(album => album.albumId === id);
+    if (album && album.audioSrc) {
+      showPlayerAndPlay({
+        title: album.title,
+        coverSrc: album.coverSrc,
+        audioSrc: album.audioSrc,
+        albumId: album.albumId,
+      });
+    }
+  };
+
   return (
     <Link legacyBehavior href={`/music/${id}`}>
       <div className={styles['cover-container']}>
@@ -24,10 +44,20 @@ function Cover({ id, url, alt, text }: CoverData) {
           loading="lazy"
           className={styles['cover-image']}
           unoptimized={true}
-          placeholder="blur"
+          width={300}
+          height={300}
         />
-        <div className={styles['overlay']}>
-          <p>{text}</p>
+        <div
+          className={styles['play-icon']}
+          onClick={handlePlayClick}
+        >
+          <Image
+            src="/assets/play.png"
+            alt="Play"
+            width={20}
+            height={20}
+            unoptimized={true}
+          />
         </div>
       </div>
     </Link>

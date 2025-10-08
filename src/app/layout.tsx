@@ -6,6 +6,8 @@ import { Halant } from 'next/font/google';
 import StartPage from '../components/StartPage/StartPage';
 import { images } from '../data/albums';
 import Head from 'next/head';
+import { AudioPlayerProvider } from '../contexts/AudioPlayerContext';
+import ClientLayout from '../components/ClientLayout/ClientLayout';
 
 const overlock = Halant({ weight: '400', subsets: ['latin'] });
 
@@ -24,6 +26,7 @@ export const viewport = {
   viewportFit: 'cover',
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,7 +40,11 @@ export default function RootLayout({
         ))}
       </Head>
       <body>
-        <StartPage>{children}</StartPage>
+        <AudioPlayerProvider>
+          <StartPage>
+            <ClientLayout>{children}</ClientLayout>
+          </StartPage>
+        </AudioPlayerProvider>
       </body>
     </html>
   );
