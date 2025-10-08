@@ -188,7 +188,7 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
 
             <button className={styles.seekBtn} onClick={playPreviousTrack} title="Previous Track">
               <svg width="20" height="20" viewBox="0 0 24 24">
-                <path d="M6 6h2v12H6V6zm8.5 6l8.5 6V6l-8.5 6z" />
+                <path d="M6 6h2v12H6V6zM10 12l8.5 6V6L10 12z" />
               </svg>
             </button>
 
