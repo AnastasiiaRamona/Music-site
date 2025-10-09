@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import 'normalize.css';
 
 import './globals.css';
-import { Halant } from 'next/font/google';
+import { Halant, Lato } from 'next/font/google';
 import StartPage from '../components/StartPage/StartPage';
 import { images } from '../data/albums';
 import Head from 'next/head';
@@ -10,6 +10,9 @@ import { AudioPlayerProvider } from '../contexts/AudioPlayerContext';
 import ClientLayout from '../components/ClientLayout/ClientLayout';
 
 const overlock = Halant({ weight: '400', subsets: ['latin'] });
+const lato = Lato({ weight: ['300', '400', '700'], subsets: ['latin'] });
+
+export { lato };
 
 export const metadata: Metadata = {
   title: 'ANASTASIIA RAMONA',
