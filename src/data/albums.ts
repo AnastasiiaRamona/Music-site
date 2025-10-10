@@ -76,6 +76,39 @@ export const albums = [
     albumId: 'the-remastered-collection',
     coverSrc: coverSrc19,
     title: 'The Remastered Collection',
+    isAlbum: true,
+    tracks: [
+      {
+        trackId: 'jacket-denim',
+        title: 'Jacket Denim',
+        audioSrc: '/audios/jacket-Denim.opus',
+        coverSrc: coverSrc12, // Individual cover for this track
+      },
+      {
+        trackId: 'dont-look-down',
+        title: "Don't Look Down (The Journey Never Ends)",
+        audioSrc: '/audios/you-should-not/1. don_t-look-down.opus',
+        coverSrc: coverSrc5, // Individual cover for this track
+      },
+      {
+        trackId: 'the-white-city-s-dance',
+        title: `The White City's Dance`,
+        audioSrc: '/audios/the-white-city_s-dance.opus',
+        coverSrc: coverSrc16, // Individual cover for this track
+      },
+      {
+        trackId: 'console-log-you-will-hear-the-voice-of-reason',
+        title: "console.log('You will hear the voice of reason')",
+        audioSrc: '/audios/you-should-not/3. console.log.opus',
+        coverSrc: coverSrc6, // Individual cover for this track
+      },
+      {
+        trackId: 'friend-of-mine',
+        title: 'Friend of Mine',
+        audioSrc: '/audios/friend-of-mine.opus',
+        coverSrc: coverSrc1, // Individual cover for this track
+      },
+    ],
     appleMusicLink: 'https://music.apple.com/us/album/the-remastered-collection-ep/1829676969',
     spotifyLink: 'https://open.spotify.com/album/7rwLlPuNaKIFHc6VoWRaXl?si=_o1WSREJSe-Q8_BB7EkGzA',
     youtubeLink: 'https://www.youtube.com/embed/MXlyeXoNhAk?si=Q-BEXTlCUCUxJqA7',
@@ -119,6 +152,7 @@ export const albums = [
     albumId: 'tropical-lemonade',
     coverSrc: coverSrc15,
     title: 'Tropical Lemonade',
+    audioSrc: '/audios/tropical-lemonade.opus',
     appleMusicLink: 'https://music.apple.com/us/album/tropical-lemonade/1791435321?i=1791435327',
     spotifyLink: 'https://open.spotify.com/track/0PmUp7tTZzWQlb88V4sF7R?si=0052d6eefaf44d1a',
     youtubeLink: 'https://www.youtube.com/embed/geuKULViku4?si=fy0nPC-WrIfGYbdv',
@@ -129,6 +163,7 @@ export const albums = [
     albumId: 'skyglitch',
     coverSrc: coverSrc14,
     title: 'Skyglitch',
+    audioSrc: '/audios/skyglitch.opus',
     appleMusicLink: 'https://music.apple.com/ru/album/skyglitch/1784440250?i=1784440254',
     spotifyLink: 'https://open.spotify.com/track/41bTrJK7YkoJHXvK3TwSay?si=3a63b9d8cfb04d6d',
     youtubeLink: 'https://www.youtube.com/embed/v5IZktSMhcc?si=Y4zrvqpEaSkop6OS',
@@ -139,6 +174,7 @@ export const albums = [
     albumId: 'awake-and-alive',
     coverSrc: coverSrc13,
     title: 'Awake & Alive',
+    audioSrc: '/audios/awake-and-alive.opus',
     appleMusicLink: 'https://music.apple.com/ru/album/awake-alive/1783133647?i=1783133650',
     spotifyLink: 'https://open.spotify.com/track/0k3zJ9Kv0ZatfvObiRMJmN?si=37e48a02aa67461a',
     youtubeLink: 'https://www.youtube.com/embed/KgRRJNzONHU?si=nwoKgWhdGIVVVu4_',
@@ -160,6 +196,7 @@ export const albums = [
     albumId: 'the-last-puzzle',
     coverSrc: coverSrc11,
     title: 'The Last Puzzle',
+    audioSrc: '/audios/the-last-puzzle.opus',
     appleMusicLink: 'https://music.apple.com/ru/album/the-last-puzzle/1772101087?i=1772101370',
     spotifyLink: 'https://open.spotify.com/track/0sJ0epXoAZAXEzdp8nRsk9?si=97c9dc6668934423',
     youtubeLink: 'https://www.youtube.com/embed/tzb_NJIxY00?si=GdkYg9EROUgQfoz7',
@@ -170,6 +207,7 @@ export const albums = [
     albumId: 'distant-melodies',
     coverSrc: coverSrc10,
     title: 'Distant Melodies',
+    audioSrc: '/audios/distant-melodies.opus',
     appleMusicLink: 'https://music.apple.com/ru/album/distant-melodies-single/1756027382',
     spotifyLink: 'https://open.spotify.com/track/178i6OksNV3YHH58iqBPVC?si=f0ab3c6893994c56',
     youtubeLink: 'https://www.youtube.com/embed/ySYcoEfrl90?si=czs8Ex9UZXROD1S5',
@@ -189,6 +227,7 @@ export const albums = [
     albumId: 'you',
     coverSrc: coverSrc2,
     title: 'You',
+    audioSrc: '/audios/you.opus',
     appleMusicLink: 'https://music.apple.com/us/album/you-single/1742230053',
     spotifyLink: 'https://open.spotify.com/album/2TbHDFdeTzfYu6NnRl21LQ',
     youtubeLink: 'https://www.youtube.com/embed/_ToJ1QrCDuQ?si=gjAibUMyWtkMtHGH',
@@ -198,6 +237,7 @@ export const albums = [
     albumId: 'unsolved-problem',
     coverSrc: coverSrc3,
     title: 'Unsolved Problem',
+    audioSrc: '/audios/unsolved-problem.opus',
     appleMusicLink: 'https://music.apple.com/ru/album/unsolved-problem-single/1737744319',
     spotifyLink: 'https://open.spotify.com/album/72KW6QQnUp445Fr2LkOOFX',
     youtubeLink: 'https://www.youtube.com/embed/RvMWOWhwfws?si=1lgug8cfwxRxUVZt',
@@ -207,6 +247,64 @@ export const albums = [
     albumId: 'you-shouldnt-let-one-thing-be-the-meaning-of-your-life',
     coverSrc: coverSrc4,
     title: "You Shouldn't Let One Thing Be the Meaning of Your Life",
+    isAlbum: true,
+    tracks: [
+      {
+        trackId: 'dont-look-down',
+        title: "Don't Look Down (The Journey Never Ends)",
+        audioSrc: '/audios/you-should-not/1. don_t-look-down.opus',
+        coverSrc: coverSrc5, // Individual cover for this track
+      },
+      {
+        trackId: 'the-first-time-simply',
+        title: 'The First Time Simply',
+        audioSrc: '/audios/you-should-not/2. the-first-time-simply.opus',
+        coverSrc: coverSrc7, // Individual cover for this track
+      },
+      {
+        trackId: 'console-log-you-will-hear-the-voice-of-reason',
+        title: "console.log('You will hear the voice of reason')",
+        audioSrc: '/audios/you-should-not/3. console.log.opus',
+        coverSrc: coverSrc6, // Individual cover for this track
+      },
+      {
+        trackId: 'seas-song',
+        title: "Sea's Song",
+        audioSrc: '/audios/you-should-not/4. sea\'s-song.opus',
+      },
+      {
+        trackId: 'rondo-avventura-fantasy',
+        title: 'Rondò Avventura Fantasy',
+        audioSrc: '/audios/you-should-not/5. rondo.opus',
+        coverSrc: coverSrc9, // Individual cover for this track
+      },
+      {
+        trackId: 'want-to-change-my-name',
+        title: 'Хочу изменить свое имя',
+        audioSrc: '/audios/you-should-not/6. хочу-изменить-свое-имя.opus',
+      },
+      {
+        trackId: 'selfless-but-capricious',
+        title: 'Бескорыстны но капризны',
+        audioSrc: '/audios/you-should-not/7. бескорыстны-но-капризны.opus',
+      },
+      {
+        trackId: 'luminance',
+        title: 'Luminance',
+        audioSrc: '/audios/you-should-not/8. luminance.opus',
+        coverSrc: coverSrc8, // Individual cover for this track
+      },
+      {
+        trackId: 'new-world',
+        title: 'New World',
+        audioSrc: '/audios/you-should-not/9. new-world.opus',
+      },
+      {
+        trackId: 'stop-me-now',
+        title: 'Stop Me Now',
+        audioSrc: '/audios/you-should-not/10. stop-me-now.opus',
+      },
+    ],
     appleMusicLink: 'http://itunes.apple.com/album/id/1711577197',
     spotifyLink: 'https://open.spotify.com/album/6R1iTqqYgTvWOZ3FYIqfUA',
     youtubeLink: 'https://www.youtube.com/embed/45Sa4AA9WwI?si=86MMWpvc4K8ipPxW',
@@ -216,7 +314,7 @@ export const albums = [
     albumId: 'dont-look-down',
     coverSrc: coverSrc5,
     title: "Don't Look Down (The Journey Never Ends)",
-    audioSrc: '/audios/don_t-look-down.opus',
+    audioSrc: '/audios/you-should-not/1. don_t-look-down.opus',
     appleMusicLink: 'http://itunes.apple.com/album/id/1707820334',
     spotifyLink: 'https://open.spotify.com/album/7qXqB7synzYPHR2m7aOCb0',
     youtubeLink: 'https://www.youtube.com/embed/15sGmrwl3SA?si=bgUW4hWs7WFcljDx',
@@ -226,7 +324,7 @@ export const albums = [
     albumId: 'console-log-you-will-hear-the-voice-of-reason',
     coverSrc: coverSrc6,
     title: "console.log('You will hear the voice of reason')",
-    audioSrc: '/audios/console.log.opus',
+    audioSrc: '/audios/you-should-not/3. console.log.opus',
     appleMusicLink: 'http://itunes.apple.com/album/id/1695674135',
     spotifyLink: 'https://open.spotify.com/album/7H8oFonDY3H6AzUVrtCnYm',
     youtubeLink: 'https://www.youtube.com/embed/Ro3Dppj_314?si=w-6W497rHHe-PjBS',
@@ -236,6 +334,7 @@ export const albums = [
     albumId: 'the-first-time-simply',
     coverSrc: coverSrc7,
     title: 'The First Time Simply',
+    audioSrc: '/audios/you-should-not/2. the-first-time-simply.opus',
     appleMusicLink: 'http://itunes.apple.com/album/id/1690552406',
     spotifyLink: 'https://open.spotify.com/album/5S1dHyXCYIqr4LOxeKc70P',
     youtubeLink: 'https://www.youtube.com/embed/bIs_lXtiJ3I?si=bgAwAm1CQGXrucRE',
@@ -245,6 +344,7 @@ export const albums = [
     albumId: 'luminance',
     coverSrc: coverSrc8,
     title: 'Luminance',
+    audioSrc: '/audios/you-should-not/8. luminance.opus',
     appleMusicLink: 'http://itunes.apple.com/album/id/1685252464',
     spotifyLink: 'https://open.spotify.com/album/5S1dHyXCYIqr4LOxeKc70P',
     youtubeLink: 'https://www.youtube.com/embed/61W0OCEsq-U?si=ISzE-MBhHhoasteG',
@@ -254,6 +354,7 @@ export const albums = [
     albumId: 'rondo-avventura-fantasy',
     coverSrc: coverSrc9,
     title: 'Rondò Avventura Fantasy',
+    audioSrc: '/audios/you-should-not/5. rondo.opus',
     appleMusicLink: 'http://itunes.apple.com/album/id/1681087270',
     spotifyLink: 'https://open.spotify.com/album/5rM52lPHOg8fnVRYuudySj',
     youtubeLink: 'https://www.youtube.com/embed/6xTkf3dpqWI?si=VLsTNGnG2QNbN4pn',

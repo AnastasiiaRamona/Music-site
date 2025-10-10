@@ -15,15 +15,51 @@ const covers = albums.map((album) => ({
   unoptimized: true,
 }));
 
-// Filter songs that have audioSrc
-const songs = albums
-  .filter((album) => album.audioSrc)
-  .map((album) => ({
-    id: album.albumId,
-    title: album.title,
-    coverSrc: album.coverSrc,
-    audioSrc: album.audioSrc,
-  }));
+// Filter songs that have audioSrc or are albums with tracks
+const songs: Array<{
+  id: string;
+  title: string;
+  coverSrc: string;
+  audioSrc: string;
+  order: number;
+}> = [];
+
+const addedTrackIds = new Set<string>();
+
+// First pass: add all single tracks in their order
+albums.forEach((album, albumIndex) => {
+  if (album.audioSrc && !album.isAlbum) {
+    songs.push({
+      id: album.albumId,
+      title: album.title,
+      coverSrc: album.coverSrc,
+      audioSrc: album.audioSrc,
+      order: albumIndex * 1000,
+    });
+    addedTrackIds.add(album.albumId);
+  }
+});
+
+// Second pass: add album tracks in their order (only if not already added as singles)
+albums.forEach((album, albumIndex) => {
+  if (album.isAlbum && album.tracks) {
+    album.tracks.forEach((track, trackIndex) => {
+      if (!addedTrackIds.has(track.trackId)) {
+        songs.push({
+          id: track.trackId,
+          title: track.title,
+          coverSrc: track.coverSrc || album.coverSrc,
+          audioSrc: track.audioSrc,
+          order: albumIndex * 1000 + trackIndex,
+        });
+        addedTrackIds.add(track.trackId);
+      }
+    });
+  }
+});
+
+// Sort by order to maintain the sequence from data
+songs.sort((a, b) => a.order - b.order);
 
 export default function Music() {
   const [currentView, setCurrentView] = useState<'gallery' | 'list'>('gallery');
@@ -44,7 +80,7 @@ export default function Music() {
         {currentView === 'gallery' ? (
           <CoverGallery covers={covers} />
         ) : (
-          <SongList songs={songs} />
+          <SongList songs={songs.map(({ order, ...song }) => song)} />
         )}
       </section>
     </>

@@ -45,14 +45,29 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
 
     // Create playlist with all tracks that have audioSrc
     const { albums } = require('../data/albums');
-    const tracksWithAudio = albums
-      .filter((album: any) => album.audioSrc)
-      .map((album: any) => ({
-        title: album.title,
-        coverSrc: album.coverSrc,
-        audioSrc: album.audioSrc,
-        albumId: album.albumId
-      }));
+    const tracksWithAudio: Track[] = [];
+
+    albums.forEach((album: any) => {
+      if (album.isAlbum && album.tracks) {
+        // If it's an album, add all its tracks
+        album.tracks.forEach((track: any) => {
+          tracksWithAudio.push({
+            title: track.title,
+            coverSrc: track.coverSrc || album.coverSrc,
+            audioSrc: track.audioSrc,
+            albumId: track.trackId
+          });
+        });
+      } else if (album.audioSrc) {
+        // If it's a single track
+        tracksWithAudio.push({
+          title: album.title,
+          coverSrc: album.coverSrc,
+          audioSrc: album.audioSrc,
+          albumId: album.albumId
+        });
+      }
+    });
 
     setPlaylist(tracksWithAudio);
     const trackIndex = tracksWithAudio.findIndex((t: Track) => t.albumId === track.albumId);

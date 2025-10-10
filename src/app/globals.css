@@ -30,16 +30,11 @@
 html,
 body {
   line-height: 1.15;
+  overflow-x: hidden;
 }
 
 body {
-  /* background: url('../assets/background.jpg') no-repeat; */
   background-size: cover;
-  /* min-height: 100vh;
-  background-attachment: scroll;
-  -webkit-overflow-scrolling: touch;
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased; */
 }
 
 a {
@@ -59,17 +54,17 @@ a:hover {
 }
 
 ::-webkit-scrollbar-track {
-  background: #a8b1b8;
+  background: #414446;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #444444be;
+  background-color: rgb(142, 128, 138);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #06638e;
+  background: #874b78;
 }
 
 /* Lato font class */

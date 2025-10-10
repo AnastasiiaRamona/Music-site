@@ -3,7 +3,6 @@ import 'normalize.css';
 
 import './globals.css';
 import { Halant, Lato } from 'next/font/google';
-import StartPage from '../components/StartPage/StartPage';
 import { images } from '../data/albums';
 import Head from 'next/head';
 import { AudioPlayerProvider } from '../contexts/AudioPlayerContext';
@@ -44,9 +43,7 @@ export default function RootLayout({
       </Head>
       <body>
         <AudioPlayerProvider>
-          <StartPage>
-            <ClientLayout>{children}</ClientLayout>
-          </StartPage>
+          <ClientLayout>{children}</ClientLayout>
         </AudioPlayerProvider>
       </body>
     </html>
