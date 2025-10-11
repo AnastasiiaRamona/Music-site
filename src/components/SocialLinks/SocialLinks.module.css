@@ -1,0 +1,93 @@
+.socialLinks {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 120px;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  transition: transform 0.2s ease;
+  text-decoration: none;
+}
+
+.socialLink:hover {
+  transform: scale(1.1);
+}
+
+.socialLink img {
+  width: 24px;
+  height: 24px;
+}
+
+/* YouTube icon is larger */
+.socialLink:has(img[alt="YouTube"]) {
+  width: 48px;
+  height: 48px;
+}
+
+.socialLink:has(img[alt="YouTube"]) img {
+  width: 48px;
+  height: 48px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .socialLinks {
+    min-width: 80px;
+    gap: 8px;
+  }
+
+  .socialLink {
+    width: 28px;
+    height: 28px;
+  }
+
+  .socialLink img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .socialLink:has(img[alt="YouTube"]) {
+    width: 40px;
+    height: 40px;
+  }
+
+  .socialLink:has(img[alt="YouTube"]) img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .socialLinks {
+    min-width: auto;
+    width: 100%;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .socialLink {
+    width: 24px;
+    height: 24px;
+  }
+
+  .socialLink img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .socialLink:has(img[alt="YouTube"]) {
+    width: 36px;
+    height: 36px;
+  }
+
+  .socialLink:has(img[alt="YouTube"]) img {
+    width: 36px;
+    height: 36px;
+  }
+}

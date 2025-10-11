@@ -7,6 +7,10 @@ interface Track {
   coverSrc: string;
   audioSrc: string;
   albumId: string;
+  spotifyLink?: string;
+  appleMusicLink?: string;
+  youtubeLink?: string;
+  amazonLink?: string;
 }
 
 interface AudioPlayerContextType {
@@ -14,12 +18,15 @@ interface AudioPlayerContextType {
   currentTrack: Track | null;
   shouldAutoPlay: boolean;
   isShuffled: boolean;
+  isPlaying: boolean;
   showPlayer: (track: Track) => void;
   showPlayerAndPlay: (track: Track) => void;
   hidePlayer: () => void;
   toggleShuffle: () => void;
+  togglePlayPause: () => void;
   playNextTrack: () => void;
   playPreviousTrack: () => void;
+  setAudioElement: (audio: HTMLAudioElement | null) => void;
 }
 
 const AudioPlayerContext = createContext<AudioPlayerContextType | undefined>(undefined);
@@ -29,8 +36,10 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
   const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
   const [isShuffled, setIsShuffled] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [playlist, setPlaylist] = useState<Track[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
 
   const showPlayer = (track: Track) => {
     setCurrentTrack(track);
@@ -42,6 +51,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     setCurrentTrack(track);
     setIsPlayerVisible(true);
     setShouldAutoPlay(true);
+    setIsPlaying(true);
 
     // Create playlist with all tracks that have audioSrc
     const { albums } = require('../data/albums');
@@ -55,7 +65,11 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
             title: track.title,
             coverSrc: track.coverSrc || album.coverSrc,
             audioSrc: track.audioSrc,
-            albumId: track.trackId
+            albumId: track.trackId,
+            spotifyLink: album.spotifyLink,
+            appleMusicLink: album.appleMusicLink,
+            youtubeLink: album.youtubeLink,
+            amazonLink: album.amazonLink
           });
         });
       } else if (album.audioSrc) {
@@ -64,7 +78,11 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
           title: album.title,
           coverSrc: album.coverSrc,
           audioSrc: album.audioSrc,
-          albumId: album.albumId
+          albumId: album.albumId,
+          spotifyLink: album.spotifyLink,
+          appleMusicLink: album.appleMusicLink,
+          youtubeLink: album.youtubeLink,
+          amazonLink: album.amazonLink
         });
       }
     });
@@ -82,6 +100,21 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
 
   const toggleShuffle = () => {
     setIsShuffled(!isShuffled);
+  };
+
+  const togglePlayPause = () => {
+    if (audioElement) {
+      if (isPlaying) {
+        audioElement.pause();
+      } else {
+        audioElement.play();
+      }
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  const setAudioElementRef = (audio: HTMLAudioElement | null) => {
+    setAudioElement(audio);
   };
 
   const playNextTrack = () => {
@@ -127,12 +160,15 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
         currentTrack,
         shouldAutoPlay,
         isShuffled,
+        isPlaying,
         showPlayer,
         showPlayerAndPlay,
         hidePlayer,
         toggleShuffle,
+        togglePlayPause,
         playNextTrack,
         playPreviousTrack,
+        setAudioElement: setAudioElementRef,
       }}
     >
       {children}

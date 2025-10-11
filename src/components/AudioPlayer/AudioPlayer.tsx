@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import styles from './AudioPlayer.module.css';
 import { useAudioPlayer } from '../../contexts/AudioPlayerContext';
+import SocialLinks from '../SocialLinks/SocialLinks';
 
 interface AudioPlayerProps {
   isVisible: boolean;
@@ -11,18 +12,26 @@ interface AudioPlayerProps {
     title: string;
     coverSrc: string;
     audioSrc: string;
+    spotifyLink?: string;
+    appleMusicLink?: string;
+    youtubeLink?: string;
+    amazonLink?: string;
   } | null;
   shouldAutoPlay?: boolean;
   onClose: () => void;
 }
 
 export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = false, onClose }: AudioPlayerProps) {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const { isShuffled, toggleShuffle, playNextTrack, playPreviousTrack } = useAudioPlayer();
+  const { isShuffled, toggleShuffle, playNextTrack, playPreviousTrack, isPlaying, togglePlayPause, setAudioElement } = useAudioPlayer();
+
+  // Pass audio element to context
+  useEffect(() => {
+    setAudioElement(audioRef.current);
+  }, [setAudioElement]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -30,23 +39,39 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
 
       const updateTime = () => setCurrentTime(audio.currentTime);
       const updateDuration = () => setDuration(audio.duration);
+      const handlePlay = () => {
+        // Sync with context when audio actually plays
+        if (!isPlaying) {
+          togglePlayPause();
+        }
+      };
+      const handlePause = () => {
+        // Sync with context when audio actually pauses
+        if (isPlaying) {
+          togglePlayPause();
+        }
+      };
       const handleEnded = () => {
-        setIsPlaying(false);
         // Auto-play next track when current track ends
         playNextTrack();
       };
 
       audio.addEventListener('timeupdate', updateTime);
       audio.addEventListener('loadedmetadata', updateDuration);
+      audio.addEventListener('play', handlePlay);
+      audio.addEventListener('pause', handlePause);
       audio.addEventListener('ended', handleEnded);
 
       return () => {
         audio.removeEventListener('timeupdate', updateTime);
         audio.removeEventListener('loadedmetadata', updateDuration);
+        audio.removeEventListener('play', handlePlay);
+        audio.removeEventListener('pause', handlePause);
         audio.removeEventListener('ended', handleEnded);
       };
     }
-  }, [playNextTrack]);
+  }, [playNextTrack, isPlaying, togglePlayPause]);
+
 
   useEffect(() => {
     if (audioRef.current) {
@@ -55,15 +80,8 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
   }, [volume]);
 
   const togglePlay = useCallback(() => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  }, [isPlaying]);
+    togglePlayPause();
+  }, [togglePlayPause]);
 
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newTime = parseFloat(e.target.value);
@@ -107,7 +125,7 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
       const playAudio = async () => {
         try {
           await audioRef.current?.play();
-          setIsPlaying(true);
+          // isPlaying is already set to true in showPlayerAndPlay
         } catch (error) {
           console.log('Autoplay was prevented:', error);
         }
@@ -255,6 +273,14 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
             className={styles.volumeSlider}
           />
         </div>
+
+        {/* Social Media Links */}
+        <SocialLinks
+          spotifyLink={currentTrack.spotifyLink}
+          appleMusicLink={currentTrack.appleMusicLink}
+          youtubeLink={currentTrack.youtubeLink}
+          amazonLink={currentTrack.amazonLink}
+        />
 
         {/* Close Button */}
         <button className={styles.closeBtn} onClick={onClose}>

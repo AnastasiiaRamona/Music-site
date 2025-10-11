@@ -34,6 +34,10 @@ function Cover({ id, url, alt, text }: CoverData) {
           coverSrc: firstTrack.coverSrc || album.coverSrc,
           audioSrc: firstTrack.audioSrc,
           albumId: firstTrack.trackId,
+          spotifyLink: album.spotifyLink,
+          appleMusicLink: album.appleMusicLink,
+          youtubeLink: album.youtubeLink,
+          amazonLink: album.amazonLink,
         });
       } else if (album.audioSrc) {
         // If it's a single track
@@ -42,37 +46,39 @@ function Cover({ id, url, alt, text }: CoverData) {
           coverSrc: album.coverSrc,
           audioSrc: album.audioSrc,
           albumId: album.albumId,
+          spotifyLink: album.spotifyLink,
+          appleMusicLink: album.appleMusicLink,
+          youtubeLink: album.youtubeLink,
+          amazonLink: album.amazonLink,
         });
       }
     }
   };
 
   return (
-    <Link legacyBehavior href={`/music/${id}`}>
-      <div className={styles['cover-container']}>
+    <div className={styles['cover-container']}>
+      <Image
+        src={url}
+        alt={alt}
+        loading="lazy"
+        className={styles['cover-image']}
+        unoptimized={true}
+        width={300}
+        height={300}
+      />
+      <div
+        className={styles['play-icon']}
+        onClick={handlePlayClick}
+      >
         <Image
-          src={url}
-          alt={alt}
-          loading="lazy"
-          className={styles['cover-image']}
+          src="/assets/play.png"
+          alt="Play"
+          width={20}
+          height={20}
           unoptimized={true}
-          width={300}
-          height={300}
         />
-        <div
-          className={styles['play-icon']}
-          onClick={handlePlayClick}
-        >
-          <Image
-            src="/assets/play.png"
-            alt="Play"
-            width={20}
-            height={20}
-            unoptimized={true}
-          />
-        </div>
       </div>
-    </Link>
+    </div>
   );
 }
 

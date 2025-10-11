@@ -22,6 +22,10 @@ const songs: Array<{
   coverSrc: string;
   audioSrc: string;
   order: number;
+  spotifyLink?: string;
+  appleMusicLink?: string;
+  youtubeLink?: string;
+  amazonLink?: string;
 }> = [];
 
 const addedTrackIds = new Set<string>();
@@ -35,6 +39,10 @@ albums.forEach((album, albumIndex) => {
       coverSrc: album.coverSrc,
       audioSrc: album.audioSrc,
       order: albumIndex * 1000,
+      spotifyLink: album.spotifyLink,
+      appleMusicLink: album.appleMusicLink,
+      youtubeLink: album.youtubeLink,
+      amazonLink: album.amazonLink,
     });
     addedTrackIds.add(album.albumId);
   }
@@ -51,6 +59,10 @@ albums.forEach((album, albumIndex) => {
           coverSrc: track.coverSrc || album.coverSrc,
           audioSrc: track.audioSrc,
           order: albumIndex * 1000 + trackIndex,
+          spotifyLink: album.spotifyLink,
+          appleMusicLink: album.appleMusicLink,
+          youtubeLink: album.youtubeLink,
+          amazonLink: album.amazonLink,
         });
         addedTrackIds.add(track.trackId);
       }

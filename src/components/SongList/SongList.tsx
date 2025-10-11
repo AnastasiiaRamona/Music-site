@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import styles from './SongList.module.css';
 import { useAudioPlayer } from '../../contexts/AudioPlayerContext';
-import { albums } from '../../data/albums';
 
 interface SongListProps {
   songs: Array<{
@@ -12,20 +11,34 @@ interface SongListProps {
     title: string;
     coverSrc: string;
     audioSrc: string;
+    spotifyLink?: string;
+    appleMusicLink?: string;
+    youtubeLink?: string;
+    amazonLink?: string;
   }>;
 }
 
 function SongItem({ song, index }: { song: any; index: number }) {
-  const { showPlayerAndPlay, currentTrack } = useAudioPlayer();
+  const { showPlayerAndPlay, currentTrack, isPlaying, togglePlayPause } = useAudioPlayer();
   const [isHovered, setIsHovered] = useState(false);
 
   const handlePlayClick = () => {
-    showPlayerAndPlay({
-      title: song.title,
-      coverSrc: song.coverSrc,
-      audioSrc: song.audioSrc,
-      albumId: song.id,
-    });
+    if (isCurrentTrack) {
+      // If this is the current track, toggle play/pause
+      togglePlayPause();
+    } else {
+      // Otherwise, play this track
+      showPlayerAndPlay({
+        title: song.title,
+        coverSrc: song.coverSrc,
+        audioSrc: song.audioSrc,
+        albumId: song.id,
+        spotifyLink: song.spotifyLink,
+        appleMusicLink: song.appleMusicLink,
+        youtubeLink: song.youtubeLink,
+        amazonLink: song.amazonLink,
+      });
+    }
   };
 
   const isCurrentTrack = currentTrack?.albumId === song.id;
@@ -39,9 +52,15 @@ function SongItem({ song, index }: { song: any; index: number }) {
       <div className={styles.songIndex}>
         {isHovered || isCurrentTrack ? (
           <button className={styles.playButton} onClick={handlePlayClick}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M8 5v14l11-7z" />
-            </svg>
+            {isCurrentTrack && isPlaying ? (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+              </svg>
+            ) : (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            )}
           </button>
         ) : (
           <span className={styles.indexNumber}>{index + 1}</span>
@@ -63,10 +82,6 @@ function SongItem({ song, index }: { song: any; index: number }) {
           {song.title}
         </div>
         <div className={styles.songArtist}>Anastasiia Ramona</div>
-      </div>
-
-      <div className={styles.songDuration}>
-        {/* Duration would go here if available */}
       </div>
     </div>
   );
