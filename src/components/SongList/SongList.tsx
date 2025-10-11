@@ -33,6 +33,7 @@ function SongItem({ song, index }: { song: any; index: number }) {
         coverSrc: song.coverSrc,
         audioSrc: song.audioSrc,
         albumId: song.id,
+        parentAlbumId: song.parentAlbumId, // Add parent album ID
         spotifyLink: song.spotifyLink,
         appleMusicLink: song.appleMusicLink,
         youtubeLink: song.youtubeLink,

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import LatestRelease from '@/components/LatestRelease/LatestRelease';
 import AnimatedText from '@/components/AnimatedText/AnimatedText';
 import NavigationSection from '@/components/NavigationSection/NavigationSection';
+import Link from 'next/link';
 
 export default function Home() {
   useEffect(() => {
@@ -51,7 +52,7 @@ export default function Home() {
 
     <section className={styles['new-release-section']}>
       <div className={styles['layers']}>
-        <h3><AnimatedText text={latestReleaseText} /></h3>
+        <h3><Link href="/music"><AnimatedText text={latestReleaseText} /></Link></h3>
         <div className={`${styles.layer} ${styles['layer-top']}`}></div>
         <div className={`${styles.layer} ${styles['layer-waves']}`}></div>
         <LatestRelease />

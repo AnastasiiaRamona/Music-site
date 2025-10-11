@@ -22,6 +22,7 @@ const songs: Array<{
   coverSrc: string;
   audioSrc: string;
   order: number;
+  parentAlbumId?: string;
   spotifyLink?: string;
   appleMusicLink?: string;
   youtubeLink?: string;
@@ -59,6 +60,7 @@ albums.forEach((album, albumIndex) => {
           coverSrc: track.coverSrc || album.coverSrc,
           audioSrc: track.audioSrc,
           order: albumIndex * 1000 + trackIndex,
+          parentAlbumId: album.albumId, // Add parent album ID
           spotifyLink: album.spotifyLink,
           appleMusicLink: album.appleMusicLink,
           youtubeLink: album.youtubeLink,

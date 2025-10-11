@@ -7,6 +7,7 @@ interface Track {
   coverSrc: string;
   audioSrc: string;
   albumId: string;
+  parentAlbumId?: string; // Add parent album ID
   spotifyLink?: string;
   appleMusicLink?: string;
   youtubeLink?: string;
@@ -57,35 +58,67 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     const { albums } = require('../data/albums');
     const tracksWithAudio: Track[] = [];
 
-    albums.forEach((album: any) => {
-      if (album.isAlbum && album.tracks) {
-        // If it's an album, add all its tracks
-        album.tracks.forEach((track: any) => {
+    // Find the album that contains this track
+    let sourceAlbum;
+    if (track.parentAlbumId) {
+      // If parentAlbumId is provided, use it to find the correct album
+      sourceAlbum = albums.find((album: any) => album.albumId === track.parentAlbumId);
+    } else {
+      // Fallback to the old logic
+      sourceAlbum = albums.find((album: any) => {
+        if (album.isAlbum && album.tracks) {
+          return album.tracks.some((albumTrack: any) => albumTrack.trackId === track.albumId);
+        }
+        return album.albumId === track.albumId;
+      });
+    }
+
+    if (sourceAlbum && sourceAlbum.isAlbum && sourceAlbum.tracks) {
+      // If it's an album, create playlist only with tracks from this album
+      sourceAlbum.tracks.forEach((albumTrack: any) => {
+        tracksWithAudio.push({
+          title: albumTrack.title,
+          coverSrc: albumTrack.coverSrc || sourceAlbum.coverSrc,
+          audioSrc: albumTrack.audioSrc,
+          albumId: albumTrack.trackId,
+          spotifyLink: sourceAlbum.spotifyLink,
+          appleMusicLink: sourceAlbum.appleMusicLink,
+          youtubeLink: sourceAlbum.youtubeLink,
+          amazonLink: sourceAlbum.amazonLink
+        });
+      });
+    } else {
+      // If it's a single track, create playlist with all tracks
+      albums.forEach((album: any) => {
+        if (album.isAlbum && album.tracks) {
+          // If it's an album, add all its tracks
+          album.tracks.forEach((albumTrack: any) => {
+            tracksWithAudio.push({
+              title: albumTrack.title,
+              coverSrc: albumTrack.coverSrc || album.coverSrc,
+              audioSrc: albumTrack.audioSrc,
+              albumId: albumTrack.trackId,
+              spotifyLink: album.spotifyLink,
+              appleMusicLink: album.appleMusicLink,
+              youtubeLink: album.youtubeLink,
+              amazonLink: album.amazonLink
+            });
+          });
+        } else if (album.audioSrc) {
+          // If it's a single track
           tracksWithAudio.push({
-            title: track.title,
-            coverSrc: track.coverSrc || album.coverSrc,
-            audioSrc: track.audioSrc,
-            albumId: track.trackId,
+            title: album.title,
+            coverSrc: album.coverSrc,
+            audioSrc: album.audioSrc,
+            albumId: album.albumId,
             spotifyLink: album.spotifyLink,
             appleMusicLink: album.appleMusicLink,
             youtubeLink: album.youtubeLink,
             amazonLink: album.amazonLink
           });
-        });
-      } else if (album.audioSrc) {
-        // If it's a single track
-        tracksWithAudio.push({
-          title: album.title,
-          coverSrc: album.coverSrc,
-          audioSrc: album.audioSrc,
-          albumId: album.albumId,
-          spotifyLink: album.spotifyLink,
-          appleMusicLink: album.appleMusicLink,
-          youtubeLink: album.youtubeLink,
-          amazonLink: album.amazonLink
-        });
-      }
-    });
+        }
+      });
+    }
 
     setPlaylist(tracksWithAudio);
     const trackIndex = tracksWithAudio.findIndex((t: Track) => t.albumId === track.albumId);

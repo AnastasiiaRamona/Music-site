@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import styles from './Header.module.css';
+import BackButton from '../BackButton/BackButton';
 
 function Header() {
   useEffect(() => {
@@ -23,6 +24,7 @@ function Header() {
         <source src="/videos/video.mp4" type="video/mp4" />
       </video>
       <div className={`${styles.layer} ${styles['layer-bottom']}`}></div>
+      <BackButton href="/" />
     </header>
   );
 }

@@ -1,0 +1,68 @@
+.backButton {
+  position: absolute;
+  left: 2rem;
+  top: 2rem;
+  z-index: 1000;
+
+  font-family: 'Clawmark';
+  font-size: 1.5rem;
+  font-weight: 100;
+  color: #ffffff;
+  text-decoration: none;
+
+  background: rgba(65, 29, 1, 0.588);
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+
+  text-shadow:
+    0 0 4px #411d01,
+    0 0 8px #411d01,
+    0 0 12px #411d01;
+
+  box-shadow:
+    0 0 10px rgba(131, 130, 129, 0.5),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+
+  transition: all 0.3s ease;
+
+  backdrop-filter: blur(5px);
+}
+
+.backButton:hover {
+  background: rgba(65, 29, 1, 0.9);
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 15px rgba(65, 29, 1, 0.7),
+    inset 0 0 15px rgba(255, 255, 255, 0.2);
+
+  text-shadow:
+    0 0 6px #411d01,
+    0 0 12px #411d01,
+    0 0 18px #411d01;
+}
+
+.backButton:active {
+  transform: translateY(0);
+  box-shadow:
+    0 2px 8px rgba(65, 29, 1, 0.6),
+    inset 0 0 8px rgba(255, 255, 255, 0.15);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .backButton {
+    left: 1rem;
+    top: 1rem;
+    font-size: 1.2rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .backButton {
+    left: 0.5rem;
+    top: 0.5rem;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}

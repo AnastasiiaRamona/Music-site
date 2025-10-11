@@ -34,6 +34,7 @@ function Cover({ id, url, alt, text }: CoverData) {
           coverSrc: firstTrack.coverSrc || album.coverSrc,
           audioSrc: firstTrack.audioSrc,
           albumId: firstTrack.trackId,
+          parentAlbumId: album.albumId, // Add parent album ID
           spotifyLink: album.spotifyLink,
           appleMusicLink: album.appleMusicLink,
           youtubeLink: album.youtubeLink,
