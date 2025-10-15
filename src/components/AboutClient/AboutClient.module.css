@@ -1,0 +1,149 @@
+.content {
+  width: 50%;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.content h2 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 30px;
+  color: var(--white);
+  text-align: center;
+}
+
+.clawmarkFont {
+  font-family: var(--primary-font-family);
+}
+
+.artistBio {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: var(--white);
+  text-align: center;
+  margin: 0;
+  font-family: var(--secondary-font-family);
+  margin-bottom: 30px;
+}
+
+.quotesSection {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.quoteBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border-left: 4px solid var(--secondary-color);
+  backdrop-filter: blur(10px);
+}
+
+.quoteText {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--white);
+  text-align: center;
+  margin: 0 0 15px 0;
+  font-family: var(--secondary-font-family);
+  font-style: italic;
+  opacity: 0.95;
+  max-width: 600px;
+}
+
+.magazineName {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  text-align: center;
+  margin: 0;
+  font-family: var(--secondary-font-family);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 1024px) {
+  .content {
+    width: 100%;
+    padding: 40px 30px;
+    height: 50vh;
+  }
+
+  .content h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+
+  .artistBio {
+    font-size: 1.2rem;
+  }
+
+  .quoteText {
+    font-size: 1.1rem;
+  }
+
+  .magazineName {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 30px 20px;
+  }
+
+  .content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .artistBio {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .quoteText {
+    font-size: 1rem;
+  }
+
+  .magazineName {
+    font-size: 0.75rem;
+  }
+
+  .quoteBlock {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .content h2 {
+    font-size: 2rem;
+  }
+
+  .artistBio {
+    font-size: 1rem;
+  }
+
+  .quoteText {
+    font-size: 0.9rem;
+  }
+
+  .magazineName {
+    font-size: 0.7rem;
+  }
+
+  .quoteBlock {
+    padding: 12px;
+  }
+}

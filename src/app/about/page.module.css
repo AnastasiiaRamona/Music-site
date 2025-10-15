@@ -1,122 +1,36 @@
 .about {
-  padding: 50px;
   height: 100vh;
-  background: var(--strong-light);
-}
-
-.about h2 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin: 0;
-  margin-bottom: 20px;
+  overflow: hidden;
 }
 
 .hero {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  gap: 40px;
-  height: 80%;
+  height: 100vh;
+  position: relative;
 }
 
-.artistBio {
-  font-size: xx-large;
-  color: var(--primary-color);
-  text-align: justify;
-  margin: 0;
-}
-
-.artistImageWrapper {
-  border-radius: 20px;
-  height: 59vh;
-  width: 60vw;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+.imageContainer {
+  position: relative;
+  width: 50%;
+  height: 100vh;
   overflow: hidden;
 }
 
-.artistImage {
+.mainImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: all 0.3s ease;
+  object-position: center;
 }
 
-.artistImage:hover {
-  transform: scale(1.1);
-  transition: all 0.3s ease;
-}
 
-@media screen and (max-device-height: 830px) {
-  .artistImageWrapper {
-    height: 50vh;
-    width: 50vw;
-  }
-}
-
-@media screen and (max-device-height: 700px) {
-  .hero {
-    flex-direction: row;
-    gap: 20px;
-    align-items: flex-start;
-  }
-
-  .artistBio {
-    margin: 0;
-    font-size: x-large;
-  }
-
-  .artistImageWrapper {
-    height: 50vh;
-    width: 50vw;
-  }
-}
-
-@media screen and (min-device-height: 770px) {
+@media screen and (max-width: 1024px) {
   .hero {
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
   }
 
-  .artistImageWrapper {
-    height: 40vh;
-  }
-
-  .artistBio {
-    font-size: xx-large;
-  }
-}
-
-@media screen and (max-device-height: 484px) {
-  .artistBio {
-    font-size: large;
-  }
-}
-
-@media screen and (max-device-width: 785px) {
-  .hero {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .artistImageWrapper {
-    height: 40vh;
-  }
-
-  .artistBio {
-    font-size: large;
-  }
-
-  .about h2 {
-    margin: 0;
-    font-size: x-large;
-  }
-}
-
-@media screen and (max-device-width: 534px) {
-  .artistImageWrapper {
-    height: 30vh;
-    width: 78vw;
+  .imageContainer {
+    width: 100%;
+    height: 50vh;
   }
 }
