@@ -28,7 +28,6 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
   const audioRef = useRef<HTMLAudioElement>(null);
   const { isShuffled, toggleShuffle, playNextTrack, playPreviousTrack, isPlaying, togglePlayPause, setAudioElement } = useAudioPlayer();
 
-  // Pass audio element to context
   useEffect(() => {
     setAudioElement(audioRef.current);
   }, [setAudioElement]);
@@ -40,19 +39,16 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
       const updateTime = () => setCurrentTime(audio.currentTime);
       const updateDuration = () => setDuration(audio.duration);
       const handlePlay = () => {
-        // Sync with context when audio actually plays
         if (!isPlaying) {
           togglePlayPause();
         }
       };
       const handlePause = () => {
-        // Sync with context when audio actually pauses
         if (isPlaying) {
           togglePlayPause();
         }
       };
       const handleEnded = () => {
-        // Auto-play next track when current track ends
         playNextTrack();
       };
 
@@ -119,13 +115,11 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
-  // Auto-play effect
   useEffect(() => {
     if (shouldAutoPlay && audioRef.current && currentTrack) {
       const playAudio = async () => {
         try {
           await audioRef.current?.play();
-          // isPlaying is already set to true in showPlayerAndPlay
         } catch (error) {
           console.log('Autoplay was prevented:', error);
         }
@@ -134,7 +128,6 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
     }
   }, [shouldAutoPlay, currentTrack]);
 
-  // Keyboard shortcuts
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (!isVisible) return;
@@ -174,24 +167,24 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
       />
 
       <div className={styles.playerContent}>
-        {/* Track Info */}
         <div className={styles.trackInfo}>
-          <div className={styles.albumCover}>
-            <Image
-              src={currentTrack.coverSrc}
-              alt={currentTrack.title}
-              width={56}
-              height={56}
-              unoptimized={true}
-            />
-          </div>
+          {currentTrack.coverSrc && (
+            <div className={styles.albumCover}>
+              <Image
+                src={currentTrack.coverSrc}
+                alt={currentTrack.title}
+                width={56}
+                height={56}
+                unoptimized={true}
+              />
+            </div>
+          )}
           <div className={styles.trackDetails}>
             <div className={styles.trackTitle}>{currentTrack.title}</div>
             <div className={styles.trackArtist}>Anastasiia Ramona</div>
           </div>
         </div>
 
-        {/* Controls */}
         <div className={styles.controls}>
           <div className={styles.playbackControls}>
             <button
@@ -258,7 +251,6 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
           </div>
         </div>
 
-        {/* Volume Control */}
         <div className={styles.volumeControl}>
           <svg width="16" height="16" viewBox="0 0 16 16">
             <path d="M9.383 3.076A1 1 0 0 1 10 4v8a1 1 0 0 1-1.617.793L5.5 10.5H2a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1h3.5l2.883-2.293a1 1 0 0 1 1.617.793z" />
@@ -274,15 +266,15 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
           />
         </div>
 
-        {/* Social Media Links */}
-        <SocialLinks
-          spotifyLink={currentTrack.spotifyLink}
-          appleMusicLink={currentTrack.appleMusicLink}
-          youtubeLink={currentTrack.youtubeLink}
-          amazonLink={currentTrack.amazonLink}
-        />
+        {(currentTrack.spotifyLink || currentTrack.appleMusicLink || currentTrack.youtubeLink || currentTrack.amazonLink) && (
+          <SocialLinks
+            spotifyLink={currentTrack.spotifyLink}
+            appleMusicLink={currentTrack.appleMusicLink}
+            youtubeLink={currentTrack.youtubeLink}
+            amazonLink={currentTrack.amazonLink}
+          />
+        )}
 
-        {/* Close Button */}
         <button className={styles.closeBtn} onClick={onClose}>
           <svg width="16" height="16" viewBox="0 0 16 16">
             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />

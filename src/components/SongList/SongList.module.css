@@ -19,8 +19,20 @@
   letter-spacing: 1px;
 }
 
+.songListHeader.noCover {
+  grid-template-columns: 40px 1fr 60px;
+}
+
 .headerIndex {
   text-align: center;
+}
+
+.headerCover {
+  text-align: center;
+}
+
+.headerTitle {
+  text-align: left;
 }
 
 .headerDuration {
@@ -42,6 +54,10 @@
   transition: all 0.2s ease;
   cursor: pointer;
   position: relative;
+}
+
+.songItem.noCover {
+  grid-template-columns: 40px 1fr 60px;
 }
 
 .songItem:hover {

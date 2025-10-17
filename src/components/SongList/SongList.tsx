@@ -18,7 +18,7 @@ interface SongListProps {
   }>;
 }
 
-function SongItem({ song, index }: { song: any; index: number }) {
+function SongItem({ song, index, hasCover }: { song: any; index: number; hasCover: boolean }) {
   const { showPlayerAndPlay, currentTrack, isPlaying, togglePlayPause } = useAudioPlayer();
   const [isHovered, setIsHovered] = useState(false);
 
@@ -46,7 +46,7 @@ function SongItem({ song, index }: { song: any; index: number }) {
 
   return (
     <div
-      className={`${styles.songItem} ${isCurrentTrack ? styles.currentTrack : ''}`}
+      className={`${styles.songItem} ${!hasCover ? styles.noCover : ''} ${isCurrentTrack ? styles.currentTrack : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -68,15 +68,17 @@ function SongItem({ song, index }: { song: any; index: number }) {
         )}
       </div>
 
-      <div className={styles.songCover}>
-        <Image
-          src={song.coverSrc}
-          alt={song.title}
-          width={40}
-          height={40}
-          unoptimized={true}
-        />
-      </div>
+      {song.coverSrc && (
+        <div className={styles.songCover}>
+          <Image
+            src={song.coverSrc}
+            alt={song.title}
+            width={40}
+            height={40}
+            unoptimized={true}
+          />
+        </div>
+      )}
 
       <div className={styles.songInfo}>
         <div className={`${styles.songTitle} ${isCurrentTrack ? styles.currentTrackTitle : ''}`}>
@@ -89,17 +91,21 @@ function SongItem({ song, index }: { song: any; index: number }) {
 }
 
 export default function SongList({ songs }: SongListProps) {
+  // Check if any song has a cover to determine layout
+  const hasCovers = songs.some(song => song.coverSrc && song.coverSrc.trim() !== '');
+
   return (
     <div className={styles.songListContainer}>
-      <div className={styles.songListHeader}>
+      <div className={`${styles.songListHeader} ${!hasCovers ? styles.noCover : ''}`}>
         <div className={styles.headerIndex}>#</div>
+        {hasCovers && <div className={styles.headerCover}></div>}
         <div className={styles.headerTitle}>Title</div>
         <div className={styles.headerDuration}></div>
       </div>
 
       <div className={styles.songList}>
         {songs.map((song, index) => (
-          <SongItem key={song.id} song={song} index={index} />
+          <SongItem key={song.id} song={song} index={index} hasCover={hasCovers} />
         ))}
       </div>
     </div>

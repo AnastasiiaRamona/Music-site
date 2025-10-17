@@ -1,6 +1,8 @@
 'use client';
 
 import { createContext, useContext, useState, ReactNode } from 'react';
+import { albums } from '../data/albums';
+import { covers } from '../data/covers';
 
 interface Track {
   title: string;
@@ -54,41 +56,20 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     setShouldAutoPlay(true);
     setIsPlaying(true);
 
-    // Create playlist with all tracks that have audioSrc
-    const { albums } = require('../data/albums');
     const tracksWithAudio: Track[] = [];
 
-    // Find the album that contains this track
-    let sourceAlbum;
-    if (track.parentAlbumId) {
-      // If parentAlbumId is provided, use it to find the correct album
-      sourceAlbum = albums.find((album: any) => album.albumId === track.parentAlbumId);
-    } else {
-      // Fallback to the old logic
-      sourceAlbum = albums.find((album: any) => {
-        if (album.isAlbum && album.tracks) {
-          return album.tracks.some((albumTrack: any) => albumTrack.trackId === track.albumId);
-        }
-        return album.albumId === track.albumId;
-      });
-    }
+    const isCoverTrack = covers.some((cover: any) => cover.id === track.albumId);
 
-    if (sourceAlbum && sourceAlbum.isAlbum && sourceAlbum.tracks) {
-      // If it's an album, create playlist only with tracks from this album
-      sourceAlbum.tracks.forEach((albumTrack: any) => {
+    if (isCoverTrack) {
+      covers.forEach((cover: any) => {
         tracksWithAudio.push({
-          title: albumTrack.title,
-          coverSrc: albumTrack.coverSrc || sourceAlbum.coverSrc,
-          audioSrc: albumTrack.audioSrc,
-          albumId: albumTrack.trackId,
-          spotifyLink: sourceAlbum.spotifyLink,
-          appleMusicLink: sourceAlbum.appleMusicLink,
-          youtubeLink: sourceAlbum.youtubeLink,
-          amazonLink: sourceAlbum.amazonLink
+          title: cover.title,
+          coverSrc: cover.coverSrc,
+          audioSrc: cover.audioSrc,
+          albumId: cover.id,
         });
       });
-    } else {
-      // If it's a single track, create playlist with all tracks
+
       albums.forEach((album: any) => {
         if (album.isAlbum && album.tracks) {
           // If it's an album, add all its tracks
@@ -118,6 +99,70 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
           });
         }
       });
+    } else {
+      let sourceAlbum;
+      if (track.parentAlbumId) {
+        sourceAlbum = albums.find((album: any) => album.albumId === track.parentAlbumId);
+      } else {
+        sourceAlbum = albums.find((album: any) => {
+          if (album.isAlbum && album.tracks) {
+            return album.tracks.some((albumTrack: any) => albumTrack.trackId === track.albumId);
+          }
+          return album.albumId === track.albumId;
+        });
+      }
+
+      if (sourceAlbum && sourceAlbum.isAlbum && sourceAlbum.tracks) {
+        sourceAlbum.tracks.forEach((albumTrack: any) => {
+          tracksWithAudio.push({
+            title: albumTrack.title,
+            coverSrc: albumTrack.coverSrc || sourceAlbum.coverSrc,
+            audioSrc: albumTrack.audioSrc,
+            albumId: albumTrack.trackId,
+            spotifyLink: sourceAlbum.spotifyLink,
+            appleMusicLink: sourceAlbum.appleMusicLink,
+            youtubeLink: sourceAlbum.youtubeLink,
+            amazonLink: sourceAlbum.amazonLink
+          });
+        });
+      } else {
+        covers.forEach((cover: any) => {
+          tracksWithAudio.push({
+            title: cover.title,
+            coverSrc: cover.coverSrc,
+            audioSrc: cover.audioSrc,
+            albumId: cover.id,
+          });
+        });
+
+        albums.forEach((album: any) => {
+          if (album.isAlbum && album.tracks) {
+            album.tracks.forEach((albumTrack: any) => {
+              tracksWithAudio.push({
+                title: albumTrack.title,
+                coverSrc: albumTrack.coverSrc || album.coverSrc,
+                audioSrc: albumTrack.audioSrc,
+                albumId: albumTrack.trackId,
+                spotifyLink: album.spotifyLink,
+                appleMusicLink: album.appleMusicLink,
+                youtubeLink: album.youtubeLink,
+                amazonLink: album.amazonLink
+              });
+            });
+          } else if (album.audioSrc) {
+            tracksWithAudio.push({
+              title: album.title,
+              coverSrc: album.coverSrc,
+              audioSrc: album.audioSrc,
+              albumId: album.albumId,
+              spotifyLink: album.spotifyLink,
+              appleMusicLink: album.appleMusicLink,
+              youtubeLink: album.youtubeLink,
+              amazonLink: album.amazonLink
+            });
+          }
+        });
+      }
     }
 
     setPlaylist(tracksWithAudio);

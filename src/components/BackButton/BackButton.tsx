@@ -22,6 +22,7 @@ export default function BackButton({
         delay: 2,
         ease: [0.25, 0.46, 0.45, 0.94]
       }}
+      style={{ display: 'inline-block' }}
     >
       <Link href={href} className={styles.backButton}>
         {children}

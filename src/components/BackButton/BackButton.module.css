@@ -10,6 +10,9 @@
   color: #ffffff;
   text-decoration: none;
 
+  display: inline-block;
+  white-space: nowrap;
+
   background: rgba(65, 29, 1, 0.588);
   padding: 0.8rem 1.5rem;
   border-radius: 8px;

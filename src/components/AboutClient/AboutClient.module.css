@@ -28,11 +28,10 @@
   text-align: center;
   margin: 0;
   font-family: var(--secondary-font-family);
-  margin-bottom: 30px;
 }
 
 .quotesSection {
-  margin-top: 30px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 25px;
