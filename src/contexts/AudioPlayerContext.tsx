@@ -10,6 +10,8 @@ interface Track {
   audioSrc: string;
   albumId: string;
   parentAlbumId?: string; // Add parent album ID
+  lyricsPath?: string; // Path to lyrics file
+  isCover?: boolean; // Whether this is a cover track
   spotifyLink?: string;
   appleMusicLink?: string;
   youtubeLink?: string;
@@ -61,43 +63,15 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     const isCoverTrack = covers.some((cover: any) => cover.id === track.albumId);
 
     if (isCoverTrack) {
+      // Only add covers to the playlist
       covers.forEach((cover: any) => {
         tracksWithAudio.push({
           title: cover.title,
           coverSrc: cover.coverSrc,
           audioSrc: cover.audioSrc,
           albumId: cover.id,
+          isCover: true,
         });
-      });
-
-      albums.forEach((album: any) => {
-        if (album.isAlbum && album.tracks) {
-          // If it's an album, add all its tracks
-          album.tracks.forEach((albumTrack: any) => {
-            tracksWithAudio.push({
-              title: albumTrack.title,
-              coverSrc: albumTrack.coverSrc || album.coverSrc,
-              audioSrc: albumTrack.audioSrc,
-              albumId: albumTrack.trackId,
-              spotifyLink: album.spotifyLink,
-              appleMusicLink: album.appleMusicLink,
-              youtubeLink: album.youtubeLink,
-              amazonLink: album.amazonLink
-            });
-          });
-        } else if (album.audioSrc) {
-          // If it's a single track
-          tracksWithAudio.push({
-            title: album.title,
-            coverSrc: album.coverSrc,
-            audioSrc: album.audioSrc,
-            albumId: album.albumId,
-            spotifyLink: album.spotifyLink,
-            appleMusicLink: album.appleMusicLink,
-            youtubeLink: album.youtubeLink,
-            amazonLink: album.amazonLink
-          });
-        }
       });
     } else {
       let sourceAlbum;
@@ -119,6 +93,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
             coverSrc: albumTrack.coverSrc || sourceAlbum.coverSrc,
             audioSrc: albumTrack.audioSrc,
             albumId: albumTrack.trackId,
+            isCover: false,
             spotifyLink: sourceAlbum.spotifyLink,
             appleMusicLink: sourceAlbum.appleMusicLink,
             youtubeLink: sourceAlbum.youtubeLink,
@@ -132,6 +107,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
             coverSrc: cover.coverSrc,
             audioSrc: cover.audioSrc,
             albumId: cover.id,
+            isCover: true,
           });
         });
 
@@ -143,6 +119,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
                 coverSrc: albumTrack.coverSrc || album.coverSrc,
                 audioSrc: albumTrack.audioSrc,
                 albumId: albumTrack.trackId,
+                isCover: false,
                 spotifyLink: album.spotifyLink,
                 appleMusicLink: album.appleMusicLink,
                 youtubeLink: album.youtubeLink,
@@ -155,6 +132,8 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
               coverSrc: album.coverSrc,
               audioSrc: album.audioSrc,
               albumId: album.albumId,
+              isCover: false,
+              lyricsPath: album.lyricsPath,
               spotifyLink: album.spotifyLink,
               appleMusicLink: album.appleMusicLink,
               youtubeLink: album.youtubeLink,

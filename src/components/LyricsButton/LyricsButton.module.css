@@ -1,0 +1,46 @@
+.lyricsButton {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lyricsButton:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.lyricsButton.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.lyricsButton.active:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  transition: all 0.2s ease;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .lyricsButton {
+    padding: 6px;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+}

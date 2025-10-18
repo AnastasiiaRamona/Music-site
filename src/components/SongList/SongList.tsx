@@ -49,6 +49,8 @@ function SongItem({ song, index, hasCover }: { song: any; index: number; hasCove
       className={`${styles.songItem} ${!hasCover ? styles.noCover : ''} ${isCurrentTrack ? styles.currentTrack : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      title={song.title}
+      data-tooltip={song.title}
     >
       <div className={styles.songIndex}>
         {isHovered || isCurrentTrack ? (

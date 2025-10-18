@@ -6,6 +6,7 @@ import { Halant, Lato } from 'next/font/google';
 import { images } from '../data/albums';
 import Head from 'next/head';
 import { AudioPlayerProvider } from '../contexts/AudioPlayerContext';
+import { LyricsProvider } from '../contexts/LyricsContext';
 import ClientLayout from '../components/ClientLayout/ClientLayout';
 
 const overlock = Halant({ weight: '400', subsets: ['latin'] });
@@ -43,7 +44,9 @@ export default function RootLayout({
       </Head>
       <body>
         <AudioPlayerProvider>
-          <ClientLayout>{children}</ClientLayout>
+          <LyricsProvider>
+            <ClientLayout>{children}</ClientLayout>
+          </LyricsProvider>
         </AudioPlayerProvider>
       </body>
     </html>

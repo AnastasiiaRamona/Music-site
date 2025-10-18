@@ -69,6 +69,24 @@
   border: 1px solid rgba(11, 166, 255, 0.3);
 }
 
+.songItem[data-tooltip]:hover::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(128, 128, 128, 0.9);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin-top: 5px;
+}
+
 .songIndex {
   display: flex;
   align-items: center;
@@ -129,11 +147,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   transition: color 0.2s ease;
+  position: relative;
 }
 
 .songTitle:hover {
   color: #0ba6ff;
 }
+
 
 .currentTrackTitle {
   color: #0ba6ff;

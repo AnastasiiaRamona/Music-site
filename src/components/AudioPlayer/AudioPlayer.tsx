@@ -4,7 +4,9 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import styles from './AudioPlayer.module.css';
 import { useAudioPlayer } from '../../contexts/AudioPlayerContext';
+import { useLyrics } from '../../contexts/LyricsContext';
 import SocialLinks from '../SocialLinks/SocialLinks';
+import LyricsButton from '../LyricsButton/LyricsButton';
 
 interface AudioPlayerProps {
   isVisible: boolean;
@@ -12,6 +14,9 @@ interface AudioPlayerProps {
     title: string;
     coverSrc: string;
     audioSrc: string;
+    albumId: string;
+    lyricsPath?: string;
+    isCover?: boolean;
     spotifyLink?: string;
     appleMusicLink?: string;
     youtubeLink?: string;
@@ -27,6 +32,7 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
   const [volume, setVolume] = useState(1);
   const audioRef = useRef<HTMLAudioElement>(null);
   const { isShuffled, toggleShuffle, playNextTrack, playPreviousTrack, isPlaying, togglePlayPause, setAudioElement } = useAudioPlayer();
+  const { isOpen, toggleLyrics } = useLyrics();
 
   useEffect(() => {
     setAudioElement(audioRef.current);
@@ -232,6 +238,13 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
                 <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
               </svg>
             </button>
+
+            {(currentTrack?.spotifyLink || currentTrack?.appleMusicLink || currentTrack?.youtubeLink || currentTrack?.amazonLink) && (
+              <LyricsButton
+                onClick={() => currentTrack && toggleLyrics(currentTrack.albumId, currentTrack.title, currentTrack.lyricsPath)}
+                isActive={isOpen}
+              />
+            )}
           </div>
 
           <div className={styles.timeInfo}>
