@@ -18,19 +18,8 @@ const coverSrc17 = '/assets/covers/to-simulants-with-love.webp';
 const coverSrc18 = '/assets/covers/The-Art-of-Rebellion.webp';
 const coverSrc19 = '/assets/covers/the-remastered-collection.webp';
 const coverSrc20 = '/assets/covers/Twenty-Eight-Past Four.webp';
-const image = '/assets/image.webp';
-const appleMusicSrc = '/assets/apple-music.webp';
-const spotifySrc = '/assets/spotify.webp';
-const amazonSrc = '/assets/amazon.webp';
-const telegramSrc = '/assets/telegram-icon.webp';
-const youTubeSrc = '/assets/youtube-icon.webp';
-const instagramSrc = '/assets/instagram-icon.webp';
-const backgroundSrc2 = '/assets/background-2.webp';
-const backgroundSrc3 = '/assets/background-4.webp';
-const backgroundSrc4 = '/assets/background.jpg';
-const backgroundSrc5 = '/assets/background-3.webp';
 
-export const images = [
+export const preloadImages = [
   coverSrc1,
   coverSrc2,
   coverSrc3,
@@ -47,17 +36,10 @@ export const images = [
   coverSrc14,
   coverSrc15,
   coverSrc16,
-  image,
-  appleMusicSrc,
-  spotifySrc,
-  amazonSrc,
-  telegramSrc,
-  youTubeSrc,
-  instagramSrc,
-  backgroundSrc2,
-  backgroundSrc3,
-  backgroundSrc4,
-  backgroundSrc5,
+  coverSrc17,
+  coverSrc18,
+  coverSrc19,
+  coverSrc20,
 ];
 
 export const albums = [
@@ -83,36 +65,38 @@ export const albums = [
         trackId: 'jacket-denim',
         title: 'Jacket Denim',
         audioSrc: '/audios/jacket-Denim.opus',
-        coverSrc: coverSrc12, // Individual cover for this track
+        coverSrc: coverSrc12,
         lyricsPath: '/lyrics/jacket-denim.txt',
       },
       {
         trackId: 'dont-look-down',
         title: "Don't Look Down (The Journey Never Ends)",
         audioSrc: '/audios/you-should-not/1. don_t-look-down.opus',
-        coverSrc: coverSrc5, // Individual cover for this track
+        coverSrc: coverSrc5,
         lyricsPath: '/lyrics/dont-look-down.txt',
+        instrumental: true,
       },
       {
         trackId: 'the-white-city-s-dance',
         title: `The White City's Dance`,
         audioSrc: '/audios/the-white-city_s-dance.opus',
-        coverSrc: coverSrc16, // Individual cover for this track
+        coverSrc: coverSrc16,
         lyricsPath: '/lyrics/the-white-citys-dance.txt',
       },
       {
         trackId: 'console-log-you-will-hear-the-voice-of-reason',
         title: "console.log('You will hear the voice of reason')",
         audioSrc: '/audios/you-should-not/3. console.log.opus',
-        coverSrc: coverSrc6, // Individual cover for this track
+        coverSrc: coverSrc6,
         lyricsPath: '/lyrics/console-log.txt',
       },
       {
         trackId: 'friend-of-mine',
         title: 'Friend of Mine',
         audioSrc: '/audios/friend-of-mine.opus',
-        coverSrc: coverSrc1, // Individual cover for this track
+        coverSrc: coverSrc1,
         lyricsPath: '/lyrics/friend-of-mine.txt',
+        instrumental: true,
       },
     ],
     appleMusicLink: 'https://music.apple.com/us/album/the-remastered-collection-ep/1829676969',
@@ -175,6 +159,7 @@ export const albums = [
     title: 'Skyglitch',
     audioSrc: '/audios/skyglitch.opus',
     lyricsPath: '/lyrics/skyglitch.txt',
+    instrumental: true,
     appleMusicLink: 'https://music.apple.com/ru/album/skyglitch/1784440250?i=1784440254',
     spotifyLink: 'https://open.spotify.com/album/44C4r6BYwQsEnxrLqWlfBJ?si=4pfAYBJzREGERlavy-gTRw',
     youtubeLink: 'https://www.youtube.com/watch?v=v5IZktSMhcc',
@@ -234,6 +219,7 @@ export const albums = [
     title: 'Friend of Mine',
     audioSrc: '/audios/friend-of-mine.opus',
     lyricsPath: '/lyrics/friend-of-mine.txt',
+    instrumental: true,
     appleMusicLink: 'https://music.apple.com/us/album/friend-of-mine-single/1748733009',
     spotifyLink: 'https://open.spotify.com/album/2oqiVrOzXVzuALzr2WUZBN?si=Zmw8ZMgrQVqwFK7f3kwtKg',
     youtubeLink: 'https://www.youtube.com/watch?v=dLrnlyDI8Gg2p_KwbatAU97USQ8',
@@ -271,21 +257,22 @@ export const albums = [
         trackId: 'dont-look-down',
         title: "Don't Look Down (The Journey Never Ends)",
         audioSrc: '/audios/you-should-not/1. don_t-look-down.opus',
-        coverSrc: coverSrc5, // Individual cover for this track
+        coverSrc: coverSrc5,
         lyricsPath: '/lyrics/dont-look-down.txt',
+        instrumental: true,
       },
       {
         trackId: 'the-first-time-simply',
         title: 'The First Time Simply',
         audioSrc: '/audios/you-should-not/2. the-first-time-simply.opus',
-        coverSrc: coverSrc7, // Individual cover for this track
+        coverSrc: coverSrc7,
         lyricsPath: '/lyrics/the-first-time-simply.txt',
       },
       {
         trackId: 'console-log-you-will-hear-the-voice-of-reason',
         title: "console.log('You will hear the voice of reason')",
         audioSrc: '/audios/you-should-not/3. console.log.opus',
-        coverSrc: coverSrc6, // Individual cover for this track
+        coverSrc: coverSrc6,
         lyricsPath: '/lyrics/console-log.txt',
       },
       {
@@ -298,8 +285,9 @@ export const albums = [
         trackId: 'rondo-avventura-fantasy',
         title: 'Rondò Avventura Fantasy',
         audioSrc: '/audios/you-should-not/5. rondo.opus',
-        coverSrc: coverSrc9, // Individual cover for this track
+        coverSrc: coverSrc9,
         lyricsPath: '/lyrics/rondo-avventura-fantasy.txt',
+        instrumental: true,
       },
       {
         trackId: 'want-to-change-my-name',
@@ -317,7 +305,7 @@ export const albums = [
         trackId: 'luminance',
         title: 'Luminance',
         audioSrc: '/audios/you-should-not/8. luminance.opus',
-        coverSrc: coverSrc8, // Individual cover for this track
+        coverSrc: coverSrc8,
         lyricsPath: '/lyrics/luminance.txt',
       },
       {
@@ -325,6 +313,7 @@ export const albums = [
         title: 'New World',
         audioSrc: '/audios/you-should-not/9. new-world.opus',
         lyricsPath: '/lyrics/new-world.txt',
+        instrumental: true,
       },
       {
         trackId: 'stop-me-now',
@@ -344,6 +333,7 @@ export const albums = [
     title: "Don't Look Down (The Journey Never Ends)",
     audioSrc: '/audios/you-should-not/1. don_t-look-down.opus',
     lyricsPath: '/lyrics/dont-look-down.txt',
+    instrumental: true,
     appleMusicLink: 'http://itunes.apple.com/album/id/1707820334',
     spotifyLink: 'https://open.spotify.com/track/74vPNJB3azxz6v09vblsb6?si=67c3541e3dd14d0a',
     youtubeLink: 'https://www.youtube.com/watch?v=15sGmrwl3SA',
@@ -388,6 +378,7 @@ export const albums = [
     title: 'Rondò Avventura Fantasy',
     audioSrc: '/audios/you-should-not/5. rondo.opus',
     lyricsPath: '/lyrics/rondo-avventura-fantasy.txt',
+    instrumental: true,
     appleMusicLink: 'http://itunes.apple.com/album/id/1681087270',
     spotifyLink: 'https://open.spotify.com/album/5rM52lPHOg8fnVRYuudySj?si=9WsfUUw9SOa_NeXiE2OL1Q',
     youtubeLink: 'https://www.youtube.com/watch?v=6xTkf3dpqWI',

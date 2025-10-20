@@ -9,9 +9,10 @@ interface Track {
   coverSrc: string;
   audioSrc: string;
   albumId: string;
-  parentAlbumId?: string; // Add parent album ID
-  lyricsPath?: string; // Path to lyrics file
-  isCover?: boolean; // Whether this is a cover track
+  parentAlbumId?: string;
+  lyricsPath?: string;
+  isCover?: boolean;
+  instrumental?: boolean;
   spotifyLink?: string;
   appleMusicLink?: string;
   youtubeLink?: string;
@@ -63,7 +64,6 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     const isCoverTrack = covers.some((cover: any) => cover.id === track.albumId);
 
     if (isCoverTrack) {
-      // Only add covers to the playlist
       covers.forEach((cover: any) => {
         tracksWithAudio.push({
           title: cover.title,
@@ -94,6 +94,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
             audioSrc: albumTrack.audioSrc,
             albumId: albumTrack.trackId,
             isCover: false,
+            instrumental: albumTrack.instrumental,
             spotifyLink: sourceAlbum.spotifyLink,
             appleMusicLink: sourceAlbum.appleMusicLink,
             youtubeLink: sourceAlbum.youtubeLink,
@@ -120,6 +121,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
                 audioSrc: albumTrack.audioSrc,
                 albumId: albumTrack.trackId,
                 isCover: false,
+                instrumental: albumTrack.instrumental,
                 spotifyLink: album.spotifyLink,
                 appleMusicLink: album.appleMusicLink,
                 youtubeLink: album.youtubeLink,
@@ -133,6 +135,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
               audioSrc: album.audioSrc,
               albumId: album.albumId,
               isCover: false,
+              instrumental: album.instrumental,
               lyricsPath: album.lyricsPath,
               spotifyLink: album.spotifyLink,
               appleMusicLink: album.appleMusicLink,

@@ -7,7 +7,7 @@ export const aboutData = {
       magazine: "The Independent Artist Who Definitely Has It Together Magazine"
     },
     {
-      text: "Some say she's part human, part machine — a mind partly claimed by code. Yet it's the human part that writes, sings, and records: fragile, instinctive, alive. Her music drifts through indie rock, dream pop, and synth pop — tracing the fine line between burnout and inspiration.",
+      text: "Some say she's part human, part machine — a mind partly claimed by code. Yet it's the human part that writes, sings, and records: fragile, instinctive, alive.",
       magazine: "Too Tired To Tour Journal"
     }
   ]

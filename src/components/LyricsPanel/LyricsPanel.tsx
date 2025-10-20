@@ -25,7 +25,6 @@ export default function LyricsPanel({ isOpen, onClose, songId, songTitle, lyrics
   const loadLyrics = async () => {
     setIsLoading(true);
     try {
-      // Use lyricsPath if available, otherwise fallback to songId
       const path = lyricsPath || `/lyrics/${songId}.txt`;
       const response = await fetch(path);
       if (response.ok) {
@@ -45,7 +44,6 @@ export default function LyricsPanel({ isOpen, onClose, songId, songTitle, lyrics
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -55,7 +53,6 @@ export default function LyricsPanel({ isOpen, onClose, songId, songTitle, lyrics
             onClick={onClose}
           />
 
-          {/* Lyrics Panel */}
           <motion.div
             initial={{ x: '100%' }}
             animate={{ x: 0 }}

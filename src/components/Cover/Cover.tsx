@@ -23,30 +23,29 @@ function Cover({ id, url, alt, text }: CoverData) {
     e.preventDefault();
     e.stopPropagation();
 
-    // Find the album data
     const album = albums.find(album => album.albumId === id);
     if (album) {
       if (album.isAlbum && album.tracks) {
-        // If it's an album with tracks, play the first track
         const firstTrack = album.tracks[0];
         showPlayerAndPlay({
           title: firstTrack.title,
           coverSrc: firstTrack.coverSrc || album.coverSrc,
           audioSrc: firstTrack.audioSrc,
           albumId: firstTrack.trackId,
-          parentAlbumId: album.albumId, // Add parent album ID
+          parentAlbumId: album.albumId,
+          instrumental: firstTrack.instrumental,
           spotifyLink: album.spotifyLink,
           appleMusicLink: album.appleMusicLink,
           youtubeLink: album.youtubeLink,
           amazonLink: album.amazonLink,
         });
       } else if (album.audioSrc) {
-        // If it's a single track
         showPlayerAndPlay({
           title: album.title,
           coverSrc: album.coverSrc,
           audioSrc: album.audioSrc,
           albumId: album.albumId,
+          instrumental: album.instrumental,
           spotifyLink: album.spotifyLink,
           appleMusicLink: album.appleMusicLink,
           youtubeLink: album.youtubeLink,

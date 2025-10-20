@@ -17,6 +17,7 @@ interface AudioPlayerProps {
     albumId: string;
     lyricsPath?: string;
     isCover?: boolean;
+    instrumental?: boolean;
     spotifyLink?: string;
     appleMusicLink?: string;
     youtubeLink?: string;
@@ -239,7 +240,7 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
               </svg>
             </button>
 
-            {(currentTrack?.spotifyLink || currentTrack?.appleMusicLink || currentTrack?.youtubeLink || currentTrack?.amazonLink) && (
+            {!currentTrack?.instrumental && (currentTrack?.spotifyLink || currentTrack?.appleMusicLink || currentTrack?.youtubeLink || currentTrack?.amazonLink) && (
               <LyricsButton
                 onClick={() => currentTrack && toggleLyrics(currentTrack.albumId, currentTrack.title, currentTrack.lyricsPath)}
                 isActive={isOpen}

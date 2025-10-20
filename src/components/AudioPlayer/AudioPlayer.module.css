@@ -20,7 +20,6 @@
   margin: 0 auto;
 }
 
-/* Track Info */
 .trackInfo {
   display: flex;
   align-items: center;
@@ -74,7 +73,6 @@
   align-items: center;
 }
 
-/* Controls */
 .controls {
   display: flex;
   flex-direction: column;
@@ -222,7 +220,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Volume Control */
 .volumeControl {
   display: flex;
   align-items: center;
@@ -273,7 +270,6 @@
 }
 
 
-/* Close Button */
 .closeBtn {
   background: rgba(255, 255, 255, 0.1);
   border: none;
@@ -294,7 +290,6 @@
   transform: scale(1.05);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .playerContainer {
     padding: 8px 16px;

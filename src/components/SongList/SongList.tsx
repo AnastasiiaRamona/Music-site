@@ -24,16 +24,15 @@ function SongItem({ song, index, hasCover }: { song: any; index: number; hasCove
 
   const handlePlayClick = () => {
     if (isCurrentTrack) {
-      // If this is the current track, toggle play/pause
       togglePlayPause();
     } else {
-      // Otherwise, play this track
       showPlayerAndPlay({
         title: song.title,
         coverSrc: song.coverSrc,
         audioSrc: song.audioSrc,
         albumId: song.id,
-        parentAlbumId: song.parentAlbumId, // Add parent album ID
+        parentAlbumId: song.parentAlbumId,
+        instrumental: song.instrumental,
         spotifyLink: song.spotifyLink,
         appleMusicLink: song.appleMusicLink,
         youtubeLink: song.youtubeLink,
@@ -93,7 +92,6 @@ function SongItem({ song, index, hasCover }: { song: any; index: number; hasCove
 }
 
 export default function SongList({ songs }: SongListProps) {
-  // Check if any song has a cover to determine layout
   const hasCovers = songs.some(song => song.coverSrc && song.coverSrc.trim() !== '');
 
   return (

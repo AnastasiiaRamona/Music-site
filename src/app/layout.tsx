@@ -3,7 +3,7 @@ import 'normalize.css';
 
 import './globals.css';
 import { Halant, Lato } from 'next/font/google';
-import { images } from '../data/albums';
+import { getCriticalAssets } from '../data/preloadConfig';
 import Head from 'next/head';
 import { AudioPlayerProvider } from '../contexts/AudioPlayerContext';
 import { LyricsProvider } from '../contexts/LyricsContext';
@@ -38,8 +38,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${overlock.className}`}>
       <Head>
-        {images.map((src, index) => (
-          <link key={index} rel="preload" href={src.toString()} as="image" />
+        {getCriticalAssets().map((src, index) => (
+          <link key={index} rel="preload" href={src} as="image" />
         ))}
       </Head>
       <body>

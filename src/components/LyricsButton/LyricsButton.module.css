@@ -33,7 +33,6 @@
   transition: all 0.2s ease;
 }
 
-/* Responsive */
 @media screen and (max-width: 768px) {
   .lyricsButton {
     padding: 6px;

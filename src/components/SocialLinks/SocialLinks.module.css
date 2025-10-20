@@ -24,7 +24,6 @@
   height: 24px;
 }
 
-/* YouTube icon is larger */
 .socialLink:has(img[alt="YouTube"]) {
   width: 48px;
   height: 48px;
@@ -35,7 +34,6 @@
   height: 48px;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .socialLinks {
     min-width: 80px;
