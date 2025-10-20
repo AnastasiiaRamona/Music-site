@@ -1,0 +1,24 @@
+.social-media-button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: inline-block;
+  transition: all 0.3s ease;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+.social-media-button:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.social-media-button__image {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: brightness(1.2) contrast(1.1);
+}

@@ -1,14 +1,17 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './page.module.css';
 import { motion } from 'framer-motion';
 import LatestRelease from '@/components/LatestRelease/LatestRelease';
 import AnimatedText from '@/components/AnimatedText/AnimatedText';
 import NavigationSection from '@/components/NavigationSection/NavigationSection';
+import ContactPopup from '@/components/ContactPopup/ContactPopup';
 import Link from 'next/link';
 
 export default function Home() {
+  const [isContactPopupOpen, setIsContactPopupOpen] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -25,6 +28,15 @@ export default function Home() {
 
   const description = "Indie Dream Crafter";
   const latestReleaseText = "Grab the Latest Release";
+
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsContactPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsContactPopupOpen(false);
+  };
 
   return <>
     <section>
@@ -48,7 +60,10 @@ export default function Home() {
       </div>
     </section>
 
-    <NavigationSection />
+    <NavigationSection
+      onContactClick={handleContactClick}
+      isContactPopupOpen={isContactPopupOpen}
+    />
 
     <section className={styles['new-release-section']}>
       <div className={styles['layers']}>
@@ -62,5 +77,10 @@ export default function Home() {
         </article>
       </div>
     </section>
+
+    <ContactPopup
+      isOpen={isContactPopupOpen}
+      onClose={handleClosePopup}
+    />
   </>
 }

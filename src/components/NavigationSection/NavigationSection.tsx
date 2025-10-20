@@ -1,7 +1,12 @@
 import Link from 'next/link'
 import styles from './NavigationSection.module.css'
 
-export default function NavigationSection() {
+type NavigationSectionProps = {
+  onContactClick?: (e: React.MouseEvent) => void;
+  isContactPopupOpen?: boolean;
+};
+
+export default function NavigationSection({ onContactClick, isContactPopupOpen = false }: NavigationSectionProps) {
   return <section className={styles['navigation-section']}>
     <nav className={styles['site-navigation']}>
       <ul>
@@ -11,8 +16,24 @@ export default function NavigationSection() {
           Covers</Link></li>
         <li><Link href="/about" rel="preload">
           About</Link></li>
-        <li><Link href="/contact" rel="preload">
-          Contact</Link></li>
+        <li>
+          {onContactClick ? (
+            <span
+              onClick={isContactPopupOpen ? undefined : onContactClick}
+              style={{
+                cursor: isContactPopupOpen ? 'not-allowed' : 'pointer',
+                opacity: isContactPopupOpen ? 0.5 : 1,
+                pointerEvents: isContactPopupOpen ? 'none' : 'auto'
+              }}
+            >
+              Contact
+            </span>
+          ) : (
+            <Link href="/contact" rel="preload">
+              Contact
+            </Link>
+          )}
+        </li>
       </ul>
     </nav>
   </section>

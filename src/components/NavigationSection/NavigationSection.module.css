@@ -9,3 +9,14 @@
   align-items: center;
   gap: 10px;
 }
+
+.site-navigation span {
+  color: var(--white);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.site-navigation span:hover {
+  color: var(--secondary-color);
+}

@@ -9,7 +9,7 @@ export default function About() {
       <div className={styles.hero}>
         <div className={styles.imageContainer}>
           <Image
-            src="/assets/musician.webp"
+            src="/assets/musician-1.webp"
             alt="Anastasiia Ramona"
             fill
             className={styles.mainImage}
