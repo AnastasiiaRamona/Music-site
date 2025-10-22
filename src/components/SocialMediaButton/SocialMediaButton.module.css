@@ -3,7 +3,7 @@
   height: 40px;
   border: none;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--white-10);
   border-radius: 8px;
   display: inline-block;
   transition: all 0.3s ease;
@@ -13,7 +13,7 @@
 
 .social-media-button:hover {
   transform: scale(1.1);
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--white-20);
 }
 
 .social-media-button__image {
@@ -21,4 +21,46 @@
   height: 28px;
   object-fit: contain;
   filter: brightness(1.2) contrast(1.1);
+}
+
+/* Tablet styles */
+@media screen and (max-width: 1024px) {
+  .social-media-button {
+    width: 50px;
+    height: 50px;
+    padding: 8px;
+  }
+
+  .social-media-button__image {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+  .social-media-button {
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+  }
+
+  .social-media-button__image {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Small height screens */
+@media screen and (max-height: 802px) {
+  .social-media-button {
+    width: 50px;
+    height: 50px;
+    padding: 8px;
+  }
+
+  .social-media-button__image {
+    width: 34px;
+    height: 34px;
+  }
 }

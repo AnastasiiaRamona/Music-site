@@ -3,12 +3,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  border-top: 1px solid #333;
+  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-bg-secondary) 100%);
+  border-top: 1px solid var(--gray-dark);
   backdrop-filter: blur(20px);
   z-index: 1000;
   padding: 12px 24px;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 -4px 20px var(--shadow-medium);
   font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -30,7 +30,7 @@
 .albumCover {
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px var(--shadow-medium);
   width: 56px;
   height: 56px;
   flex-shrink: 0;
@@ -49,7 +49,7 @@
 }
 
 .trackTitle {
-  color: #fff;
+  color: var(--white);
   font-size: 14px;
   font-weight: 500;
   white-space: nowrap;
@@ -62,7 +62,7 @@
 }
 
 .trackArtist {
-  color: #b3b3b3;
+  color: var(--gray-light);
   font-size: 14px;
   white-space: nowrap;
   overflow: hidden;
@@ -91,7 +91,7 @@
 .controlBtn {
   background: none;
   border: none;
-  color: #fff;
+  color: var(--white);
   cursor: pointer;
   padding: 8px;
   border-radius: 4px;
@@ -99,18 +99,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--white-10);
 }
 
 .controlBtn:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  background: var(--white-20);
   transform: scale(1.05);
 }
 
 .controlBtn.active {
-  color: #1db954;
-  background: rgba(29, 185, 84, 0.2);
+  color: var(--spotify-green);
+  background: var(--spotify-green-20);
 }
 
 .playbackControls {
@@ -121,7 +121,7 @@
 }
 
 .playBtn {
-  background: #fff;
+  background: var(--white);
   border: none;
   border-radius: 50%;
   width: 48px;
@@ -131,20 +131,20 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
-  color: #000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  color: var(--black);
+  box-shadow: 0 4px 12px var(--shadow-medium);
   margin: 0 8px;
 }
 
 .playBtn:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 16px var(--shadow-dark);
 }
 
 .seekBtn {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--white-10);
   border: none;
-  color: #fff;
+  color: var(--white);
   cursor: pointer;
   padding: 8px;
   border-radius: 50%;
@@ -155,8 +155,8 @@
 }
 
 .seekBtn:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  background: var(--white-20);
   transform: scale(1.1);
 }
 
@@ -169,7 +169,7 @@
 }
 
 .time {
-  color: #b3b3b3;
+  color: var(--gray-light);
   font-size: 12px;
   font-weight: 500;
   min-width: 40px;
@@ -179,45 +179,45 @@
 .progressBar {
   flex: 1;
   height: 4px;
-  background: #404040;
+  background: var(--gray-medium);
   border-radius: 2px;
   outline: none;
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
-  background-image: linear-gradient(to right, #1db954 0%, #1db954 var(--progress, 0%), #404040 var(--progress, 0%), #404040 100%);
+  background-image: linear-gradient(to right, var(--spotify-green) 0%, var(--spotify-green) var(--progress, 0%), var(--gray-medium) var(--progress, 0%), var(--gray-medium) 100%);
 }
 
 .progressBar::-webkit-slider-thumb {
   appearance: none;
   width: 12px;
   height: 12px;
-  background: #fff;
+  background: var(--white);
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px var(--shadow-light);
   transition: all 0.2s ease;
 }
 
 .progressBar::-webkit-slider-thumb:hover {
   transform: scale(1.2);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px var(--shadow-medium);
 }
 
 .progressBar::-moz-range-thumb {
   width: 12px;
   height: 12px;
-  background: #fff;
+  background: var(--white);
   border-radius: 50%;
   cursor: pointer;
   border: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px var(--shadow-light);
   transition: all 0.2s ease;
 }
 
 .progressBar::-moz-range-thumb:hover {
   transform: scale(1.2);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px var(--shadow-medium);
 }
 
 .volumeControl {
@@ -230,7 +230,7 @@
 .volumeSlider {
   width: 80px;
   height: 4px;
-  background: #404040;
+  background: var(--gray-medium);
   border-radius: 2px;
   outline: none;
   cursor: pointer;
@@ -241,39 +241,39 @@
   appearance: none;
   width: 12px;
   height: 12px;
-  background: #fff;
+  background: var(--white);
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px var(--shadow-light);
   transition: all 0.2s ease;
 }
 
 .volumeSlider::-webkit-slider-thumb:hover {
   transform: scale(1.2);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px var(--shadow-medium);
 }
 
 .volumeSlider::-moz-range-thumb {
   width: 12px;
   height: 12px;
-  background: #fff;
+  background: var(--white);
   border-radius: 50%;
   cursor: pointer;
   border: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px var(--shadow-light);
   transition: all 0.2s ease;
 }
 
 .volumeSlider::-moz-range-thumb:hover {
   transform: scale(1.2);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px var(--shadow-medium);
 }
 
 
 .closeBtn {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--white-10);
   border: none;
-  color: #fff;
+  color: var(--white);
   cursor: pointer;
   padding: 8px;
   border-radius: 4px;
@@ -285,8 +285,8 @@
 }
 
 .closeBtn:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  background: var(--white-20);
   transform: scale(1.05);
 }
 

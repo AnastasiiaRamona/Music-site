@@ -10,11 +10,11 @@ export default function NavigationSection({ onContactClick, isContactPopupOpen =
   return <section className={styles['navigation-section']}>
     <nav className={styles['site-navigation']}>
       <ul>
-        <li><Link href="/music" rel="preload">
+        <li><Link href="/music">
           Music</Link></li>
-        <li><Link href="/covers" rel="preload">
+        <li><Link href="/covers">
           Covers</Link></li>
-        <li><Link href="/about" rel="preload">
+        <li><Link href="/about">
           About</Link></li>
         <li>
           {onContactClick ? (
@@ -29,7 +29,7 @@ export default function NavigationSection({ onContactClick, isContactPopupOpen =
               Contact
             </span>
           ) : (
-            <Link href="/contact" rel="preload">
+            <Link href="/contact">
               Contact
             </Link>
           )}

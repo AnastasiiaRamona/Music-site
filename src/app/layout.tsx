@@ -38,9 +38,27 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${overlock.className}`}>
       <Head>
-        {getCriticalAssets().map((src, index) => (
-          <link key={index} rel="preload" href={src} as="image" />
-        ))}
+        {getCriticalAssets().map((src, index) => {
+          // Determine the correct 'as' attribute based on file extension
+          let asAttribute = 'image'; // default
+          if (src.endsWith('.otf') || src.endsWith('.woff') || src.endsWith('.woff2') || src.endsWith('.ttf')) {
+            asAttribute = 'font';
+          } else if (src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.ogg')) {
+            asAttribute = 'video';
+          } else if (src.endsWith('.mp3') || src.endsWith('.opus') || src.endsWith('.wav')) {
+            asAttribute = 'audio';
+          }
+
+          return (
+            <link
+              key={index}
+              rel="preload"
+              href={src}
+              as={asAttribute}
+              {...(asAttribute === 'font' && { crossOrigin: 'anonymous' })}
+            />
+          );
+        })}
       </Head>
       <body>
         <AudioPlayerProvider>

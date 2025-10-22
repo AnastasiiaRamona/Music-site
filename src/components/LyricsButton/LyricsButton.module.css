@@ -1,7 +1,7 @@
 .lyricsButton {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--white-10);
   border: none;
-  color: #fff;
+  color: var(--white);
   cursor: pointer;
   padding: 8px;
   border-radius: 50%;
@@ -12,19 +12,19 @@
 }
 
 .lyricsButton:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  background: var(--white-20);
   transform: scale(1.1);
 }
 
 .lyricsButton.active {
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background: var(--white-20);
+  color: var(--white);
 }
 
 .lyricsButton.active:hover {
-  background: rgba(255, 255, 255, 0.3);
-  color: #fff;
+  background: var(--white-30);
+  color: var(--white);
 }
 
 .icon {

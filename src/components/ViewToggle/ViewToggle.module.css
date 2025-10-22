@@ -1,12 +1,12 @@
 .toggleContainer {
   display: flex;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--white-10);
   border-radius: 8px;
   padding: 4px;
   margin: 20px auto;
   max-width: 200px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--white-20);
 }
 
 .toggleButton {
@@ -16,7 +16,7 @@
   padding: 8px 16px;
   border: none;
   background: transparent;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--white-70);
   cursor: pointer;
   border-radius: 6px;
   transition: all 0.3s ease;
@@ -29,13 +29,13 @@
 
 .toggleButton:hover {
   color: rgba(255, 255, 255, 0.9);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--white-10);
 }
 
 .toggleButton.active {
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  background: var(--white-20);
+  color: var(--white);
+  box-shadow: 0 2px 8px var(--shadow-light);
 }
 
 .toggleButton svg {

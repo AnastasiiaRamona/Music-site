@@ -22,6 +22,7 @@ export default function LatestRelease() {
         alt="Spinning vinyl"
         width={300}
         height={300}
+        priority
       />
       <Image className={styles['latest-release-cover']}
         src={latestReleaseSrc}

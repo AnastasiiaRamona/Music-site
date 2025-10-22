@@ -11,8 +11,8 @@
   grid-template-columns: 40px 40px 1fr 60px;
   gap: 16px;
   padding: 8px 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid var(--white-10);
+  color: var(--white-60);
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;
@@ -61,12 +61,12 @@
 }
 
 .songItem:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--white-10);
 }
 
 .songItem.currentTrack {
-  background: rgba(11, 166, 255, 0.1);
-  border: 1px solid rgba(11, 166, 255, 0.3);
+  background: var(--accent-blue-10);
+  border: 1px solid var(--accent-blue-30);
 }
 
 .songItem[data-tooltip]:hover::before {
@@ -75,7 +75,7 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(128, 128, 128, 0.9);
+  background: var(--gray-tooltip);
   color: white;
   padding: 6px 10px;
   border-radius: 4px;
@@ -83,7 +83,7 @@
   white-space: nowrap;
   z-index: 9999;
   pointer-events: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px var(--shadow-medium);
   margin-top: 5px;
 }
 
@@ -95,7 +95,7 @@
 }
 
 .indexNumber {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-60);
   font-size: 14px;
   font-weight: 400;
 }
@@ -103,7 +103,7 @@
 .playButton {
   background: none;
   border: none;
-  color: #fff;
+  color: var(--white);
   cursor: pointer;
   padding: 8px;
   border-radius: 50%;
@@ -116,14 +116,14 @@
 }
 
 .playButton:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--white-20);
   transform: scale(1.1);
 }
 
 .songCover {
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px var(--shadow-medium);
 }
 
 .songCover img {
@@ -140,7 +140,7 @@
 }
 
 .songTitle {
-  color: #fff;
+  color: var(--white);
   font-size: 16px;
   font-weight: 500;
   white-space: nowrap;
@@ -151,16 +151,16 @@
 }
 
 .songTitle:hover {
-  color: #0ba6ff;
+  color: var(--accent-blue);
 }
 
 
 .currentTrackTitle {
-  color: #0ba6ff;
+  color: var(--accent-blue);
 }
 
 .songArtist {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-60);
   font-size: 14px;
   white-space: nowrap;
   overflow: hidden;
@@ -168,7 +168,7 @@
 }
 
 .songDuration {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-60);
   font-size: 14px;
   text-align: center;
   font-weight: 400;

@@ -1,10 +1,10 @@
 .popup {
   position: fixed;
   left: 0;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-bg-secondary) 100%);
   border-radius: 0 15px 15px 0;
   padding: 20px 15px;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 0 10px var(--shadow-light);
   z-index: 1001;
   width: 80px;
   height: auto;
@@ -24,4 +24,63 @@
   flex-direction: column;
   gap: 15px;
   align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .popup {
+    width: 100px;
+    padding: 25px 20px;
+  }
+
+  .content {
+    gap: 20px;
+  }
+
+  .socialLinks {
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .popup {
+    width: 120px;
+    padding: 30px 25px;
+  }
+
+  .content {
+    gap: 25px;
+  }
+
+  .socialLinks {
+    gap: 25px;
+  }
+}
+
+@media screen and (max-height: 888px) {
+  .popup {
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-height: 802px) {
+  .popup {
+    width: 160px;
+    padding: 25px 20px;
+    max-height: 90vh;
+  }
+
+  .content {
+    gap: 20px;
+  }
+
+  .socialLinks {
+    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+  }
 }

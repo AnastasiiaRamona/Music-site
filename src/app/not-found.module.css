@@ -1,7 +1,7 @@
 .not-found {
   margin: 0;
   height: 100vh;
-  background: url('/assets/background-3.webp') no-repeat;
+  background: white;
   background-size: cover;
   display: flex;
   flex-direction: column;

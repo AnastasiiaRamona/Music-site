@@ -61,6 +61,22 @@ export const getCriticalAssets = () => [
   ...preloadConfig.fonts,
 ];
 
+// Only preload assets that are immediately visible on the page
+export const getImmediateAssets = () => [
+  ...preloadConfig.criticalImages,
+  ...preloadConfig.socialIcons,
+  ...preloadConfig.fonts,
+];
+
 export const getAlbumAssets = () => [
   ...preloadConfig.albumCovers,
+];
+
+// Preload only the most important album covers first
+export const getPriorityAlbumAssets = () => [
+  '/assets/covers/friend-of-mine_2_11zon.webp',
+  '/assets/covers/you_6_11zon.webp',
+  '/assets/covers/unsolved-problem_5_11zon.webp',
+  '/assets/covers/album_9_11zon.webp',
+  '/assets/covers/dont-look-down_8_11zon.webp',
 ];
