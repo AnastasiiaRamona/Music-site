@@ -1,12 +1,15 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
-import Image from 'next/image';
 import styles from './AudioPlayer.module.css';
 import { useAudioPlayer } from '../../contexts/AudioPlayerContext';
 import { useLyrics } from '../../contexts/LyricsContext';
 import SocialLinks from '../SocialLinks/SocialLinks';
-import LyricsButton from '../LyricsButton/LyricsButton';
+import TrackInfo from './TrackInfo';
+import PlaybackControls from './PlaybackControls';
+import ProgressBar from './ProgressBar';
+import VolumeControl from './VolumeControl';
+import MobilePlayer from './MobilePlayer';
 
 interface AudioPlayerProps {
   isVisible: boolean;
@@ -31,6 +34,10 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
+  const [isSocialLinksExpanded, setIsSocialLinksExpanded] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
+  const [isMediumView, setIsMediumView] = useState(false);
+  const [isMobileExpanded, setIsMobileExpanded] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const { isShuffled, toggleShuffle, playNextTrack, playPreviousTrack, isPlaying, togglePlayPause, setAudioElement } = useAudioPlayer();
   const { isOpen, toggleLyrics } = useLyrics();
@@ -38,6 +45,28 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
   useEffect(() => {
     setAudioElement(audioRef.current);
   }, [setAudioElement]);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      const width = window.innerWidth;
+      const isMobile = width <= 919;
+      const isMedium = width > 919 && width <= 1123;
+
+      setIsMobileView(isMobile);
+      setIsMediumView(isMedium);
+
+      if (!isMobile) {
+        setIsMobileExpanded(false);
+      }
+      if (!isMedium) {
+        setIsSocialLinksExpanded(false);
+      }
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -86,6 +115,21 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
     togglePlayPause();
   }, [togglePlayPause]);
 
+  const toggleSocialLinks = useCallback(() => {
+    setIsSocialLinksExpanded(!isSocialLinksExpanded);
+  }, [isSocialLinksExpanded]);
+
+  const closeSocialLinks = useCallback(() => {
+    setIsSocialLinksExpanded(false);
+  }, []);
+
+  const toggleMobileExpanded = useCallback((e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation();
+    }
+    setIsMobileExpanded(!isMobileExpanded);
+  }, [isMobileExpanded]);
+
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newTime = parseFloat(e.target.value);
     if (audioRef.current) {
@@ -116,11 +160,6 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
     setVolume(newVolume);
   };
 
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  };
 
   useEffect(() => {
     if (shouldAutoPlay && audioRef.current && currentTrack) {
@@ -163,138 +202,160 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [isVisible, togglePlay, seekBackward, seekForward, onClose]);
 
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (isSocialLinksExpanded) {
+        const target = e.target as Element;
+        if (!target.closest(`.${styles.socialLinksContainer}`)) {
+          closeSocialLinks();
+        }
+      }
+    };
+
+    if (isSocialLinksExpanded) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [isSocialLinksExpanded, closeSocialLinks]);
+
   if (!isVisible || !currentTrack) return null;
 
   return (
-    <div className={styles.playerContainer}>
+    <div className={`${styles.playerContainer} ${isMobileView && isMobileExpanded ? styles.mobileExpandedContainer : ''}`}>
       <audio
         ref={audioRef}
         src={currentTrack.audioSrc}
         preload="metadata"
       />
 
-      <div className={styles.playerContent}>
-        <div className={styles.trackInfo}>
-          {currentTrack.coverSrc && (
-            <div className={styles.albumCover}>
-              <Image
-                src={currentTrack.coverSrc}
-                alt={currentTrack.title}
-                width={56}
-                height={56}
-                unoptimized={true}
-              />
-            </div>
-          )}
-          <div className={styles.trackDetails}>
-            <div className={styles.trackTitle}>{currentTrack.title}</div>
-            <div className={styles.trackArtist}>Anastasiia Ramona</div>
-          </div>
-        </div>
+      {isMobileView ? (
+        <MobilePlayer
+          currentTrack={currentTrack}
+          isPlaying={isPlaying}
+          isShuffled={isShuffled}
+          currentTime={currentTime}
+          duration={duration}
+          volume={volume}
+          isExpanded={isMobileExpanded}
+          onTogglePlay={togglePlay}
+          onToggleShuffle={toggleShuffle}
+          onPreviousTrack={playPreviousTrack}
+          onNextTrack={playNextTrack}
+          onSeekBackward={seekBackward}
+          onSeekForward={seekForward}
+          onSeek={handleSeek}
+          onVolumeChange={handleVolumeChange}
+          onToggleExpanded={toggleMobileExpanded}
+          onClose={onClose}
+          onToggleLyrics={() => currentTrack && toggleLyrics(currentTrack.albumId, currentTrack.title, currentTrack.lyricsPath)}
+          isLyricsActive={isOpen}
+        />
+      ) : (
+        <div className={styles.playerContent}>
+          <TrackInfo
+            title={currentTrack.title}
+            coverSrc={currentTrack.coverSrc}
+          />
 
-        <div className={styles.controls}>
-          <div className={styles.playbackControls}>
-            <button
-              className={`${styles.controlBtn} ${isShuffled ? styles.active : ''}`}
-              onClick={toggleShuffle}
-              title="Shuffle"
-            >
-              <svg width="16" height="16" viewBox="0 0 16 16">
-                <path d="M13.151.922a.75.75 0 10-1.06 1.06L13.109 3H11.16a3.75 3.75 0 00-2.873 1.34l-6.173 7.356A2.25 2.25 0 01.39 12.5H0V14h.391a3.75 3.75 0 002.873-1.34l6.173-7.356a2.25 2.25 0 011.724-.804h1.949l-1.018 1.018a.75.75 0 001.06 1.06L15.98 3.75 13.15.922zM.391 3.5H0V2h.391c1.109 0 2.16.49 2.873 1.34L4.744 5.277l-.979.93-2.483-2.481A2.25 2.25 0 00.39 3.5z" />
-              </svg>
-            </button>
-
-            <button className={styles.seekBtn} onClick={playPreviousTrack} title="Previous Track">
-              <svg width="20" height="20" viewBox="0 0 24 24">
-                <path d="M6 6h2v12H6V6zM10 12l8.5 6V6L10 12z" />
-              </svg>
-            </button>
-
-            <button className={styles.seekBtn} onClick={seekBackward} title="Seek Backward 10s">
-              <svg width="20" height="20" viewBox="0 0 24 24">
-                <path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z" />
-              </svg>
-            </button>
-
-            <button className={styles.playBtn} onClick={togglePlay}>
-              {isPlaying ? (
-                <svg width="28" height="28" viewBox="0 0 24 24">
-                  <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
-                </svg>
-              ) : (
-                <svg width="28" height="28" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              )}
-            </button>
-
-            <button className={styles.seekBtn} onClick={seekForward} title="Seek Forward 10s">
-              <svg width="20" height="20" viewBox="0 0 24 24">
-                <path d="M13 6v12l8.5-6L13 6zM4 18l8.5-6L4 6v12z" />
-              </svg>
-            </button>
-
-            <button className={styles.seekBtn} onClick={playNextTrack} title="Next Track">
-              <svg width="20" height="20" viewBox="0 0 24 24">
-                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
-              </svg>
-            </button>
-
-            {!currentTrack?.instrumental && (currentTrack?.spotifyLink || currentTrack?.appleMusicLink || currentTrack?.youtubeLink || currentTrack?.amazonLink) && (
-              <LyricsButton
-                onClick={() => currentTrack && toggleLyrics(currentTrack.albumId, currentTrack.title, currentTrack.lyricsPath)}
-                isActive={isOpen}
-              />
-            )}
-          </div>
-
-          <div className={styles.timeInfo}>
-            <span className={styles.time}>{formatTime(currentTime)}</span>
-            <input
-              type="range"
-              min="0"
-              max={duration || 0}
-              value={currentTime}
-              onChange={handleSeek}
-              className={styles.progressBar}
-              style={{
-                '--progress': duration > 0 ? `${(currentTime / duration) * 100}%` : '0%'
-              } as React.CSSProperties}
+          <div className={styles.controls}>
+            <PlaybackControls
+              isPlaying={isPlaying}
+              isShuffled={isShuffled}
+              onTogglePlay={togglePlay}
+              onToggleShuffle={toggleShuffle}
+              onPreviousTrack={playPreviousTrack}
+              onNextTrack={playNextTrack}
+              onSeekBackward={seekBackward}
+              onSeekForward={seekForward}
+              onToggleLyrics={() => currentTrack && toggleLyrics(currentTrack.albumId, currentTrack.title, currentTrack.lyricsPath)}
+              isLyricsActive={isOpen}
+              isInstrumental={currentTrack.instrumental}
             />
-            <span className={styles.time}>{formatTime(duration)}</span>
+
+            <ProgressBar
+              currentTime={currentTime}
+              duration={duration}
+              onSeek={handleSeek}
+            />
           </div>
-        </div>
 
-        <div className={styles.volumeControl}>
-          <svg width="16" height="16" viewBox="0 0 16 16">
-            <path d="M9.383 3.076A1 1 0 0 1 10 4v8a1 1 0 0 1-1.617.793L5.5 10.5H2a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1h3.5l2.883-2.293a1 1 0 0 1 1.617.793z" />
-          </svg>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.01"
-            value={volume}
-            onChange={handleVolumeChange}
-            className={styles.volumeSlider}
+          <VolumeControl
+            volume={volume}
+            onVolumeChange={handleVolumeChange}
           />
+
+          {(currentTrack.spotifyLink || currentTrack.appleMusicLink || currentTrack.youtubeLink || currentTrack.amazonLink) && (
+            <>
+              {isMobileView ? (
+                <div className={styles.socialLinksContainer}>
+                  <button
+                    className={styles.socialLinksToggle}
+                    onClick={toggleSocialLinks}
+                    title={isSocialLinksExpanded ? "Hide social links" : "Show social links"}
+                  >
+                    {isSocialLinksExpanded ? (
+                      <svg width="16" height="16" viewBox="0 0 16 16">
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                      </svg>
+                    ) : (
+                      <svg width="16" height="16" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                      </svg>
+                    )}
+                  </button>
+                  <div className={`${styles.socialLinksWrapper} ${isSocialLinksExpanded ? styles.expanded : ''}`}>
+                    <SocialLinks
+                      spotifyLink={currentTrack.spotifyLink}
+                      appleMusicLink={currentTrack.appleMusicLink}
+                      youtubeLink={currentTrack.youtubeLink}
+                      amazonLink={currentTrack.amazonLink}
+                    />
+                  </div>
+                </div>
+              ) : isMediumView ? (
+                <div className={styles.socialLinksContainer}>
+                  <button
+                    className={styles.socialLinksToggle}
+                    onClick={toggleSocialLinks}
+                    title={isSocialLinksExpanded ? "Hide social links" : "Show social links"}
+                  >
+                    {isSocialLinksExpanded ? (
+                      <svg width="16" height="16" viewBox="0 0 16 16">
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                      </svg>
+                    ) : (
+                      <svg width="16" height="16" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                      </svg>
+                    )}
+                  </button>
+                  <div className={`${styles.socialLinksWrapper} ${isSocialLinksExpanded ? styles.expanded : ''}`}>
+                    <SocialLinks
+                      spotifyLink={currentTrack.spotifyLink}
+                      appleMusicLink={currentTrack.appleMusicLink}
+                      youtubeLink={currentTrack.youtubeLink}
+                      amazonLink={currentTrack.amazonLink}
+                    />
+                  </div>
+                </div>
+              ) : (
+                <SocialLinks
+                  spotifyLink={currentTrack.spotifyLink}
+                  appleMusicLink={currentTrack.appleMusicLink}
+                  youtubeLink={currentTrack.youtubeLink}
+                  amazonLink={currentTrack.amazonLink}
+                />
+              )}
+            </>
+          )}
+
+          <button className={styles.closeBtn} onClick={onClose}>
+            <svg width="16" height="16" viewBox="0 0 16 16">
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
         </div>
-
-        {(currentTrack.spotifyLink || currentTrack.appleMusicLink || currentTrack.youtubeLink || currentTrack.amazonLink) && (
-          <SocialLinks
-            spotifyLink={currentTrack.spotifyLink}
-            appleMusicLink={currentTrack.appleMusicLink}
-            youtubeLink={currentTrack.youtubeLink}
-            amazonLink={currentTrack.amazonLink}
-          />
-        )}
-
-        <button className={styles.closeBtn} onClick={onClose}>
-          <svg width="16" height="16" viewBox="0 0 16 16">
-            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-          </svg>
-        </button>
-      </div>
+      )}
     </div>
   );
 }

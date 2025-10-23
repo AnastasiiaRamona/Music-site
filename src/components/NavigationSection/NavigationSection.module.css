@@ -17,6 +17,15 @@
   transition: transform 0.2s ease-in-out;
 }
 
-.site-navigation span:hover {
+/* Hover эффекты только для устройств с курсором */
+@media (hover: hover) {
+  .site-navigation span:hover {
+    color: var(--blue);
+  }
+}
+
+/* Focus и active эффекты для мобильных устройств */
+.site-navigation span:focus,
+.site-navigation span:active {
   color: var(--blue);
 }

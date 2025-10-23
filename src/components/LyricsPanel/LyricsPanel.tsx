@@ -17,28 +17,28 @@ export default function LyricsPanel({ isOpen, onClose, songId, songTitle, lyrics
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    const loadLyrics = async () => {
+      setIsLoading(true);
+      try {
+        const path = lyricsPath || `/lyrics/${songId}.txt`;
+        const response = await fetch(path);
+        if (response.ok) {
+          const text = await response.text();
+          setLyrics(text);
+        } else {
+          setLyrics('Lyrics not available');
+        }
+      } catch (error) {
+        setLyrics('Error loading lyrics');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     if (isOpen && (songId || lyricsPath)) {
       loadLyrics();
     }
   }, [isOpen, songId, lyricsPath]);
-
-  const loadLyrics = async () => {
-    setIsLoading(true);
-    try {
-      const path = lyricsPath || `/lyrics/${songId}.txt`;
-      const response = await fetch(path);
-      if (response.ok) {
-        const text = await response.text();
-        setLyrics(text);
-      } else {
-        setLyrics('Lyrics not available');
-      }
-    } catch (error) {
-      setLyrics('Error loading lyrics');
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
     <AnimatePresence>

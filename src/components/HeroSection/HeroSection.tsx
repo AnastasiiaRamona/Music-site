@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect } from 'react';
-import styles from './Header.module.css';
+import styles from './HeroSection.module.css';
 import BackButton from '../BackButton/BackButton';
 
-function Header() {
+function HeroSection() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -31,4 +31,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeroSection;

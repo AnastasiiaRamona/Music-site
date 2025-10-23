@@ -31,7 +31,24 @@
   backdrop-filter: blur(5px);
 }
 
-.backButton:hover {
+/* Hover эффекты только для устройств с курсором */
+@media (hover: hover) {
+  .backButton:hover {
+    background: var(--brown-accent-90);
+    transform: translateY(-2px);
+    box-shadow:
+      0 4px 15px rgba(65, 29, 1, 0.7),
+      inset 0 0 15px rgba(255, 255, 255, 0.2);
+
+    text-shadow:
+      0 0 6px var(--brown-accent),
+      0 0 12px var(--brown-accent),
+      0 0 18px var(--brown-accent);
+  }
+}
+
+/* Focus эффекты для мобильных устройств */
+.backButton:focus {
   background: var(--brown-accent-90);
   transform: translateY(-2px);
   box-shadow:
@@ -49,22 +66,4 @@
   box-shadow:
     0 2px 8px rgba(65, 29, 1, 0.6),
     inset 0 0 8px rgba(255, 255, 255, 0.15);
-}
-
-@media (max-width: 768px) {
-  .backButton {
-    left: 1rem;
-    top: 1rem;
-    font-size: 1.2rem;
-    padding: 0.6rem 1.2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .backButton {
-    left: 0.5rem;
-    top: 0.5rem;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-  }
 }

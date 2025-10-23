@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import styles from './LyricsButton.module.css';
 
 interface LyricsButtonProps {
@@ -18,9 +19,11 @@ export default function LyricsButton({ onClick, isActive }: LyricsButtonProps) {
       transition={{ type: 'spring', stiffness: 400, damping: 17 }}
       title="Toggle Lyrics"
     >
-      <img
+      <Image
         src="/assets/song-lyrics.svg"
         alt="Lyrics"
+        width={20}
+        height={20}
         className={styles.icon}
       />
     </motion.button>

@@ -1,0 +1,88 @@
+.timeInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.time {
+  color: var(--gray-light);
+  font-size: 12px;
+  font-weight: 500;
+  min-width: 40px;
+  text-align: center;
+}
+
+.progressBar {
+  flex: 1;
+  height: 4px;
+  background: var(--gray-medium);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  background-image: linear-gradient(to right, var(--spotify-green) 0%, var(--spotify-green) var(--progress, 0%), var(--gray-medium) var(--progress, 0%), var(--gray-medium) 100%);
+}
+
+.progressBar::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: var(--white);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px var(--shadow-light);
+  transition: all 0.2s ease;
+}
+
+@media (hover: hover) {
+  .progressBar::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 8px var(--shadow-medium);
+  }
+}
+
+.progressBar::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: var(--white);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px var(--shadow-light);
+  transition: all 0.2s ease;
+}
+
+@media (hover: hover) {
+  .progressBar::-moz-range-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 8px var(--shadow-medium);
+  }
+}
+
+.mobile {
+  flex-wrap: wrap;
+}
+
+.mobile .time {
+  font-size: 12px;
+  min-width: 40px;
+}
+
+.mobile .progressBar {
+  height: 3px;
+}
+
+.mobile .progressBar::-webkit-slider-thumb {
+  width: 8px;
+  height: 8px;
+  box-shadow: 0 1px 3px var(--shadow-light);
+}
+
+.mobile .progressBar::-moz-range-thumb {
+  width: 8px;
+  height: 8px;
+  box-shadow: 0 1px 3px var(--shadow-light);
+}

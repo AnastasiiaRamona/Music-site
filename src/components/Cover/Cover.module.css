@@ -19,7 +19,17 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cover-container:hover {
+/* Hover эффекты только для устройств с курсором */
+@media (hover: hover) {
+  .cover-container:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 30px var(--shadow-medium);
+  }
+}
+
+/* Focus и active эффекты для мобильных устройств */
+.cover-container:focus,
+.cover-container:active {
   transform: scale(1.01);
   box-shadow: 0 10px 30px var(--shadow-medium);
 }
@@ -78,17 +88,66 @@
   filter: drop-shadow(0 4px 8px var(--shadow-medium));
 }
 
-.cover-container:hover .play-icon {
+/* Hover эффекты только для устройств с курсором */
+@media (hover: hover) {
+  .cover-container:hover .play-icon {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .play-icon:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: translateY(0) scale(1.05);
+  }
+
+  .play-icon:hover img {
+    transform: scale(1.15);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+  }
+}
+
+/* Скрыть play-icon на планшетах и мобильных устройствах */
+@media (max-width: 1024px) {
+  .play-icon {
+    display: none;
+  }
+
+  /* Разрешить клики на cover-container только на мобильных/планшетах */
+  .cover-container {
+    pointer-events: auto;
+  }
+}
+
+/* На десктопе предотвратить клики на cover-container, но сохранить hover */
+@media (min-width: 1025px) {
+  .cover-container {
+    pointer-events: auto;
+  }
+
+  .cover-image {
+    pointer-events: none;
+  }
+
+  .play-icon {
+    pointer-events: auto;
+  }
+}
+
+/* Focus и active эффекты для мобильных устройств */
+.cover-container:focus .play-icon,
+.cover-container:active .play-icon {
   opacity: 1;
   transform: translateY(0);
 }
 
-.play-icon:hover {
+.play-icon:focus,
+.play-icon:active {
   background: rgba(0, 0, 0, 0.5);
   transform: translateY(0) scale(1.05);
 }
 
-.play-icon:hover img {
+.play-icon:focus img,
+.play-icon:active img {
   transform: scale(1.15);
   filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
 }

@@ -1,5 +1,5 @@
 import { albums } from '../../data/albums';
-import Header from '@/components/Header/Header';
+import HeroSection from '@/components/HeroSection/HeroSection';
 import MusicPageClient from '@/components/MusicPageClient/MusicPageClient';
 
 function processAlbumsData() {
@@ -18,6 +18,7 @@ function processAlbumsData() {
     audioSrc: string;
     order: number;
     parentAlbumId?: string;
+    instrumental?: boolean;
     spotifyLink?: string;
     appleMusicLink?: string;
     youtubeLink?: string;
@@ -77,7 +78,7 @@ export default function Music() {
 
   return (
     <>
-      <Header />
+      <HeroSection />
       <MusicPageClient covers={covers} songs={songs} />
     </>
   );

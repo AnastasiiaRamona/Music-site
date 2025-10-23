@@ -59,7 +59,18 @@
   opacity: 0.7;
 }
 
-.closeButton:hover {
+/* Hover эффекты только для устройств с курсором */
+@media (hover: hover) {
+  .closeButton:hover {
+    background: var(--white-10);
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Focus и active эффекты для мобильных устройств */
+.closeButton:focus,
+.closeButton:active {
   background: var(--white-10);
   opacity: 1;
   transform: scale(1.1);
@@ -98,7 +109,16 @@
   transition: opacity 0.2s ease;
 }
 
-.line:hover {
+/* Hover эффекты только для устройств с курсором */
+@media (hover: hover) {
+  .line:hover {
+    opacity: 1;
+  }
+}
+
+/* Focus и active эффекты для мобильных устройств */
+.line:focus,
+.line:active {
   opacity: 1;
 }
 
@@ -116,8 +136,11 @@
   border-radius: 3px;
 }
 
-.content::-webkit-scrollbar-thumb:hover {
-  background: var(--blue);
+/* Hover эффекты только для устройств с курсором */
+@media (hover: hover) {
+  .content::-webkit-scrollbar-thumb:hover {
+    background: var(--blue);
+  }
 }
 
 @media screen and (max-width: 1024px) {

@@ -16,7 +16,7 @@ type CoverGalleryProps = {
   covers: CoverData[];
 };
 
-function Cover({ id, url, alt, text }: CoverData) {
+function Cover({ id, url, alt }: CoverData) {
   const { showPlayerAndPlay } = useAudioPlayer();
 
   const handlePlayClick = (e: React.MouseEvent) => {
@@ -55,8 +55,23 @@ function Cover({ id, url, alt, text }: CoverData) {
     }
   };
 
+  const handleContainerClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget || (e.target as HTMLElement).closest('.play-icon')) {
+      return;
+    }
+
+    if (window.innerWidth > 1024) {
+      return;
+    }
+
+    handlePlayClick(e);
+  };
+
   return (
-    <div className={styles['cover-container']}>
+    <div
+      className={styles['cover-container']}
+      onClick={handleContainerClick}
+    >
       <Image
         src={url}
         alt={alt}

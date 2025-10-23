@@ -17,11 +17,10 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
   const { isOpen, currentSongId, currentSongTitle, currentLyricsPath, closeLyrics } = useLyrics();
   const [shouldPreloadAlbums, setShouldPreloadAlbums] = useState(false);
 
-  // Preload album covers only when user navigates to music-related pages
   useEffect(() => {
     const timer = setTimeout(() => {
       setShouldPreloadAlbums(true);
-    }, 2000); // Wait 2 seconds after page load before preloading album covers
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);

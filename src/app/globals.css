@@ -62,7 +62,14 @@ a {
   color: var(--white);
 }
 
-a:hover {
+@media (hover: hover) {
+  a:hover {
+    color: var(--blue);
+  }
+}
+
+a:focus,
+a:active {
   color: var(--blue);
 }
 
@@ -81,6 +88,14 @@ a:hover {
   border-radius: 5px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-blue);
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+@media (hover: hover) {
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-blue);
+  }
 }

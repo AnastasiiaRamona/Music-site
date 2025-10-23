@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from './SongList.module.css';
 import { useAudioPlayer } from '../../contexts/AudioPlayerContext';
@@ -21,6 +21,18 @@ interface SongListProps {
 function SongItem({ song, index, hasCover }: { song: any; index: number; hasCover: boolean }) {
   const { showPlayerAndPlay, currentTrack, isPlaying, togglePlayPause } = useAudioPlayer();
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handlePlayClick = () => {
     if (isCurrentTrack) {
@@ -41,6 +53,13 @@ function SongItem({ song, index, hasCover }: { song: any; index: number; hasCove
     }
   };
 
+  const handleTrackClick = (e: React.MouseEvent) => {
+    if (window.innerWidth < 1024) {
+      e.stopPropagation();
+      handlePlayClick();
+    }
+  };
+
   const isCurrentTrack = currentTrack?.albumId === song.id;
 
   return (
@@ -48,11 +67,12 @@ function SongItem({ song, index, hasCover }: { song: any; index: number; hasCove
       className={`${styles.songItem} ${!hasCover ? styles.noCover : ''} ${isCurrentTrack ? styles.currentTrack : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={handleTrackClick}
       title={song.title}
       data-tooltip={song.title}
     >
       <div className={styles.songIndex}>
-        {isHovered || isCurrentTrack ? (
+        {((isMobile && isCurrentTrack) || (!isMobile && (isHovered || isCurrentTrack))) ? (
           <button className={styles.playButton} onClick={handlePlayClick}>
             {isCurrentTrack && isPlaying ? (
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">

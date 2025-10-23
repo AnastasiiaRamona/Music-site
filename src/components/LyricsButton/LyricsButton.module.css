@@ -11,7 +11,23 @@
   justify-content: center;
 }
 
-.lyricsButton:hover {
+/* Hover эффекты только для устройств с курсором */
+@media (hover: hover) {
+  .lyricsButton:hover {
+    color: var(--white);
+    background: var(--white-20);
+    transform: scale(1.1);
+  }
+
+  .lyricsButton.active:hover {
+    background: var(--white-30);
+    color: var(--white);
+  }
+}
+
+/* Focus и active эффекты для мобильных устройств */
+.lyricsButton:focus,
+.lyricsButton:active {
   color: var(--white);
   background: var(--white-20);
   transform: scale(1.1);
@@ -22,7 +38,8 @@
   color: var(--white);
 }
 
-.lyricsButton.active:hover {
+.lyricsButton.active:focus,
+.lyricsButton.active:active {
   background: var(--white-30);
   color: var(--white);
 }

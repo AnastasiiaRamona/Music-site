@@ -11,9 +11,11 @@
   box-sizing: border-box;
 }
 
-.social-media-button:hover {
-  transform: scale(1.1);
-  background: var(--white-20);
+@media (hover: hover) {
+  .social-media-button:hover {
+    transform: scale(1.1);
+    background: var(--white-20);
+  }
 }
 
 .social-media-button__image {
@@ -35,9 +37,14 @@
     width: 34px;
     height: 34px;
   }
+
+  /* Отключить hover эффекты на планшетах */
+  .social-media-button:hover {
+    transform: none;
+    background: var(--white-10);
+  }
 }
 
-/* Mobile styles */
 @media screen and (max-width: 768px) {
   .social-media-button {
     width: 60px;
@@ -49,9 +56,13 @@
     width: 40px;
     height: 40px;
   }
+
+  .social-media-button:hover {
+    transform: none;
+    background: var(--white-10);
+  }
 }
 
-/* Small height screens */
 @media screen and (max-height: 802px) {
   .social-media-button {
     width: 50px;

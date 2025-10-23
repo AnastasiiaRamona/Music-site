@@ -1,0 +1,73 @@
+.trackInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 220px;
+}
+
+.albumCover {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow-medium);
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+.albumCover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trackDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.trackTitle {
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 170px;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.trackArtist {
+  color: var(--gray-light);
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.mobile {
+  width: auto;
+  flex: 1;
+  min-width: 0;
+}
+
+.mobile .albumCover {
+  width: 40px;
+  height: 40px;
+}
+
+.mobile .trackTitle {
+  font-size: 14px;
+  max-width: none;
+}
+
+.mobile .trackArtist {
+  font-size: 12px;
+  max-width: none;
+}

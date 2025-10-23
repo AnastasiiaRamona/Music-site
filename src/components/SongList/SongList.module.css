@@ -40,6 +40,7 @@
 }
 
 .songList {
+  margin-top: 2vh;
   display: flex;
   flex-direction: column;
 }
@@ -60,7 +61,14 @@
   grid-template-columns: 40px 1fr 60px;
 }
 
-.songItem:hover {
+@media (hover: hover) and (min-width: 1024px) {
+  .songItem:hover {
+    background: var(--white-10);
+  }
+}
+
+.songItem:focus,
+.songItem:active {
   background: var(--white-10);
 }
 
@@ -69,22 +77,25 @@
   border: 1px solid var(--accent-blue-30);
 }
 
-.songItem[data-tooltip]:hover::before {
-  content: attr(data-tooltip);
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--gray-tooltip);
-  color: white;
-  padding: 6px 10px;
-  border-radius: 4px;
-  font-size: 12px;
-  white-space: nowrap;
-  z-index: 9999;
-  pointer-events: none;
-  box-shadow: 0 2px 8px var(--shadow-medium);
-  margin-top: 5px;
+/* Hover эффекты только для десктопа */
+@media (hover: hover) and (min-width: 1024px) {
+  .songItem[data-tooltip]:hover::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gray-tooltip);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 9999;
+    pointer-events: none;
+    box-shadow: 0 2px 8px var(--shadow-medium);
+    margin-top: 5px;
+  }
 }
 
 .songIndex {
@@ -115,7 +126,15 @@
   height: 32px;
 }
 
-.playButton:hover {
+@media (hover: hover) and (min-width: 1024px) {
+  .playButton:hover {
+    background: var(--white-20);
+    transform: scale(1.1);
+  }
+}
+
+.playButton:focus,
+.playButton:active {
   background: var(--white-20);
   transform: scale(1.1);
 }
@@ -150,10 +169,11 @@
   position: relative;
 }
 
-.songTitle:hover {
-  color: var(--accent-blue);
+@media (hover: hover) and (min-width: 1024px) {
+  .songTitle:hover {
+    color: var(--accent-blue);
+  }
 }
-
 
 .currentTrackTitle {
   color: var(--accent-blue);

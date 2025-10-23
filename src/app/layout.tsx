@@ -16,7 +16,7 @@ export { lato };
 
 export const metadata: Metadata = {
   title: 'ANASTASIIA RAMONA',
-  description: 'Indie-musician/singer-songwriter',
+  description: 'Indie musician &singer-songwriter',
   verification: {
     yandex: '18436f7da04f12f3',
   },
@@ -39,8 +39,7 @@ export default function RootLayout({
     <html lang="en" className={`${overlock.className}`}>
       <Head>
         {getCriticalAssets().map((src, index) => {
-          // Determine the correct 'as' attribute based on file extension
-          let asAttribute = 'image'; // default
+          let asAttribute = 'image';
           if (src.endsWith('.otf') || src.endsWith('.woff') || src.endsWith('.woff2') || src.endsWith('.ttf')) {
             asAttribute = 'font';
           } else if (src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.ogg')) {
