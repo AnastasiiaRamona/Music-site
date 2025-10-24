@@ -54,6 +54,7 @@ export default function RootLayout({
               rel="preload"
               href={src}
               as={asAttribute}
+              fetchPriority="high"
               {...(asAttribute === 'font' && { crossOrigin: 'anonymous' })}
             />
           );

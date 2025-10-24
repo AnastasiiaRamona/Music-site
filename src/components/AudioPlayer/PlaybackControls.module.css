@@ -83,9 +83,15 @@
   .playbackControls {
     gap: 7px;
   }
+
+  .playBtn {
+    margin: 0px;
+    width: 35px;
+    height: 35px;
+  }
 }
 
-@media screen and (max-width: 372px) {
+@media screen and (max-width: 380px) {
   .playbackControls {
     gap: 4px;
   }

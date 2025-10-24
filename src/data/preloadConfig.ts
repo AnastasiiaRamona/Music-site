@@ -51,9 +51,13 @@ export const preloadConfig = {
 };
 
 export const getCriticalAssets = () => [
-  ...preloadConfig.criticalImages,
-  ...preloadConfig.socialIcons,
-  ...preloadConfig.fonts,
+  '/assets/musician-1.webp',
+  '/assets/room-base.webp',
+  '/assets/room-table.webp',
+  '/assets/room-bottom.webp',
+  '/assets/bright-background-top.png',
+  '/assets/bright-background.webp',
+  '/fonts/Clawmark-OVo1p.otf',
 ];
 
 export const getPriorityAlbumAssets = () => [

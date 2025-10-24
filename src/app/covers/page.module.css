@@ -16,6 +16,9 @@
   align-items: center;
   padding: 2rem;
   box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
 }
 
 .songListWrapper {
@@ -27,6 +30,8 @@
   width: 60%;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
+  z-index: 1;
 }
 
 .videoContainer {
@@ -69,29 +74,45 @@
   min-height: 100vh;
 }
 
-@media (max-width: 1024px) {
-  .coversPage {
-    flex-direction: column;
-  }
-
-  .leftSide,
-  .rightSide {
-    width: 100%;
-  }
-
+@media screen and (max-width: 880px) {
   .leftSide {
-    height: 50vh;
+    width: 50%;
+    padding-right: 0;
   }
 
   .rightSide {
-    height: 50vh;
+    padding: 0;
   }
 
   .videoContainer {
-    height: 50vh;
+    transform: translateX(5%);
   }
 
-  .videoBorder {
-    height: 50vh;
+  .borderImage {
+    transform: scale(1.1);
+  }
+}
+
+@media screen and (max-width: 778px) {
+  .videoContainer {
+    transform: translateX(7%);
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .videoContainer {
+    transform: translateX(18%);
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .videoContainer {
+    transform: translateX(25%);
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .videoContainer {
+    transform: translateX(50%);
   }
 }
