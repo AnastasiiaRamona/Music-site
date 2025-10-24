@@ -77,7 +77,6 @@
   border: 1px solid var(--accent-blue-30);
 }
 
-/* Hover эффекты только для десктопа */
 @media (hover: hover) and (min-width: 1024px) {
   .songItem[data-tooltip]:hover::before {
     content: attr(data-tooltip);

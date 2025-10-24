@@ -112,20 +112,18 @@ function SongItem({ song, index, hasCover }: { song: any; index: number; hasCove
 }
 
 export default function SongList({ songs }: SongListProps) {
-  const hasCovers = songs.some(song => song.coverSrc && song.coverSrc.trim() !== '');
-
   return (
     <div className={styles.songListContainer}>
-      <div className={`${styles.songListHeader} ${!hasCovers ? styles.noCover : ''}`}>
+      <div className={styles.songListHeader}>
         <div className={styles.headerIndex}>#</div>
-        {hasCovers && <div className={styles.headerCover}></div>}
+        <div className={styles.headerCover}></div>
         <div className={styles.headerTitle}>Title</div>
         <div className={styles.headerDuration}></div>
       </div>
 
       <div className={styles.songList}>
         {songs.map((song, index) => (
-          <SongItem key={song.id} song={song} index={index} hasCover={hasCovers} />
+          <SongItem key={song.id} song={song} index={index} hasCover={true} />
         ))}
       </div>
     </div>

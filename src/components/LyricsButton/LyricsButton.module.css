@@ -11,7 +11,6 @@
   justify-content: center;
 }
 
-/* Hover эффекты только для устройств с курсором */
 @media (hover: hover) {
   .lyricsButton:hover {
     color: var(--white);
@@ -25,7 +24,6 @@
   }
 }
 
-/* Focus и active эффекты для мобильных устройств */
 .lyricsButton:focus,
 .lyricsButton:active {
   color: var(--white);
@@ -50,13 +48,8 @@
   transition: all 0.2s ease;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 919px) {
   .lyricsButton {
-    padding: 6px;
-  }
-
-  .icon {
-    width: 18px;
-    height: 18px;
+    padding: 9px;
   }
 }

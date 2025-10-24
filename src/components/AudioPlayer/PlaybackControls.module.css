@@ -79,6 +79,18 @@
   gap: 16px;
 }
 
+@media (max-width: 440px) {
+  .playbackControls {
+    gap: 7px;
+  }
+}
+
+@media screen and (max-width: 372px) {
+  .playbackControls {
+    gap: 4px;
+  }
+}
+
 .mobile .controlBtn {
   padding: 10px;
   border-radius: 50%;

@@ -19,7 +19,6 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover эффекты только для устройств с курсором */
 @media (hover: hover) {
   .cover-container:hover {
     transform: scale(1.01);
@@ -27,7 +26,6 @@
   }
 }
 
-/* Focus и active эффекты для мобильных устройств */
 .cover-container:focus,
 .cover-container:active {
   transform: scale(1.01);
@@ -88,7 +86,6 @@
   filter: drop-shadow(0 4px 8px var(--shadow-medium));
 }
 
-/* Hover эффекты только для устройств с курсором */
 @media (hover: hover) {
   .cover-container:hover .play-icon {
     opacity: 1;
@@ -106,19 +103,16 @@
   }
 }
 
-/* Скрыть play-icon на планшетах и мобильных устройствах */
 @media (max-width: 1024px) {
   .play-icon {
     display: none;
   }
 
-  /* Разрешить клики на cover-container только на мобильных/планшетах */
   .cover-container {
     pointer-events: auto;
   }
 }
 
-/* На десктопе предотвратить клики на cover-container, но сохранить hover */
 @media (min-width: 1025px) {
   .cover-container {
     pointer-events: auto;
@@ -133,7 +127,6 @@
   }
 }
 
-/* Focus и active эффекты для мобильных устройств */
 .cover-container:focus .play-icon,
 .cover-container:active .play-icon {
   opacity: 1;

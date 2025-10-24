@@ -5,7 +5,7 @@ import { useLyrics } from '../../contexts/LyricsContext';
 import AudioPlayer from '../AudioPlayer/AudioPlayer';
 import LyricsPanel from '../LyricsPanel/LyricsPanel';
 import AssetPreloader from '../AssetPreloader/AssetPreloader';
-import { getAlbumAssets, getPriorityAlbumAssets } from '../../data/preloadConfig';
+import { getPriorityAlbumAssets } from '../../data/preloadConfig';
 import { useEffect, useState } from 'react';
 
 interface ClientLayoutProps {

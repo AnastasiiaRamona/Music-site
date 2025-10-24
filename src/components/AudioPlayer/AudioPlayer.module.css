@@ -196,7 +196,6 @@
   transform: scale(0.95);
 }
 
-/* Средний диапазон: 919px - 1123px */
 @media screen and (max-width: 1123px) and (min-width: 920px) {
   .socialLinksContainer {
     position: relative;

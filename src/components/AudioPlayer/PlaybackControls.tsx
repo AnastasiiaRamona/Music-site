@@ -16,6 +16,7 @@ interface PlaybackControlsProps {
   onToggleLyrics?: () => void;
   isLyricsActive?: boolean;
   isInstrumental?: boolean;
+  isCover?: boolean;
   isMobile?: boolean;
 }
 
@@ -31,6 +32,7 @@ export default function PlaybackControls({
   onToggleLyrics,
   isLyricsActive = false,
   isInstrumental = false,
+  isCover = false,
   isMobile = false
 }: PlaybackControlsProps) {
   const PlayIcon = () => (
@@ -105,7 +107,7 @@ export default function PlaybackControls({
         <NextIcon />
       </button>
 
-      {!isInstrumental && onToggleLyrics && (
+      {!isInstrumental && !isCover && onToggleLyrics && (
         <LyricsButton
           onClick={onToggleLyrics}
           isActive={isLyricsActive}

@@ -27,7 +27,6 @@
   justify-content: center;
 }
 
-/* Hover эффекты только для устройств с курсором */
 @media (hover: hover) {
   .toggleButton:hover {
     color: rgba(255, 255, 255, 0.9);
@@ -39,7 +38,6 @@
   }
 }
 
-/* Focus и active эффекты для мобильных устройств */
 .toggleButton:focus,
 .toggleButton:active {
   color: rgba(255, 255, 255, 0.9);

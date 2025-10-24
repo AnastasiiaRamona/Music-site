@@ -67,6 +67,18 @@
   max-width: none;
 }
 
+@media screen and (max-width: 570px) {
+  .mobile .trackTitle {
+    max-width: 200px;
+  }
+}
+
+@media screen and (max-width: 448px) {
+  .mobile .trackTitle {
+    max-width: 120px;
+  }
+}
+
 .mobile .trackArtist {
   font-size: 12px;
   max-width: none;

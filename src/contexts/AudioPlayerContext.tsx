@@ -54,14 +54,18 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   };
 
   const showPlayerAndPlay = (track: Track) => {
-    setCurrentTrack(track);
+    const isCoverTrack = covers.some((cover: any) => cover.id === track.albumId);
+
+    setCurrentTrack({
+      ...track,
+      isCover: isCoverTrack
+    });
+
     setIsPlayerVisible(true);
     setShouldAutoPlay(true);
     setIsPlaying(true);
 
     const tracksWithAudio: Track[] = [];
-
-    const isCoverTrack = covers.some((cover: any) => cover.id === track.albumId);
 
     if (isCoverTrack) {
       covers.forEach((cover: any) => {

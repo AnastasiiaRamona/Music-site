@@ -3,7 +3,7 @@
   align-items: center;
   gap: 12px;
   width: 100%;
-  max-width: 400px;
+  max-width: 60vw;
 }
 
 .time {
@@ -24,6 +24,12 @@
   transition: all 0.2s ease;
   position: relative;
   background-image: linear-gradient(to right, var(--spotify-green) 0%, var(--spotify-green) var(--progress, 0%), var(--gray-medium) var(--progress, 0%), var(--gray-medium) 100%);
+}
+
+@media (max-width: 440px) {
+  .progressBar {
+    max-width: 100px;
+  }
 }
 
 .progressBar::-webkit-slider-thumb {

@@ -25,7 +25,6 @@
   filter: brightness(1.2) contrast(1.1);
 }
 
-/* Tablet styles */
 @media screen and (max-width: 1024px) {
   .social-media-button {
     width: 50px;
@@ -38,7 +37,6 @@
     height: 34px;
   }
 
-  /* Отключить hover эффекты на планшетах */
   .social-media-button:hover {
     transform: none;
     background: var(--white-10);

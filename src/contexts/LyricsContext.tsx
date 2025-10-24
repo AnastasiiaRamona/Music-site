@@ -22,10 +22,8 @@ export function LyricsProvider({ children }: { children: ReactNode }) {
   const [currentLyricsPath, setCurrentLyricsPath] = useState<string | null>(null);
   const pathname = usePathname();
 
-  // Close lyrics when navigating to different pages, but keep the ability to open them
   useEffect(() => {
     setIsOpen(false);
-    // Don't reset currentSongId and currentSongTitle here - keep them for potential reopening
   }, [pathname]);
 
   const openLyrics = (songId: string, songTitle: string, lyricsPath?: string) => {

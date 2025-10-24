@@ -270,6 +270,7 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
               onToggleLyrics={() => currentTrack && toggleLyrics(currentTrack.albumId, currentTrack.title, currentTrack.lyricsPath)}
               isLyricsActive={isOpen}
               isInstrumental={currentTrack.instrumental}
+              isCover={currentTrack.isCover}
             />
 
             <ProgressBar

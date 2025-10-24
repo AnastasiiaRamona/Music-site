@@ -2,7 +2,7 @@
   position: absolute;
   left: 2rem;
   top: 2rem;
-  z-index: 9999;
+  z-index: 1000;
 
   font-family: 'Clawmark';
   font-size: 1.5rem;
@@ -31,7 +31,6 @@
   backdrop-filter: blur(5px);
 }
 
-/* Hover эффекты только для устройств с курсором */
 @media (hover: hover) {
   .backButton:hover {
     background: var(--brown-accent-90);
@@ -47,7 +46,6 @@
   }
 }
 
-/* Focus эффекты для мобильных устройств */
 .backButton:focus {
   background: var(--brown-accent-90);
   transform: translateY(-2px);
