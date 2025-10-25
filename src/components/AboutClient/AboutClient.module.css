@@ -130,9 +130,7 @@ screen and (max-width: 950px) and (min-height: 1300px) {
   }
 }
 
-/* Мобильные устройства в портретной ориентации */
 @media screen and (max-width: 840px) and (orientation: portrait),
-/* Планшеты в портретной ориентации с большой высотой */
 screen and (min-height: 1262px) {
   .content {
     max-width: 90vw;
@@ -166,7 +164,6 @@ screen and (min-height: 1262px) {
   }
 }
 
-/* Мобильные устройства в портретной ориентации */
 @media screen and (max-width: 551px) and (orientation: portrait),
 screen and (max-height: 741px) and (orientation: portrait) {
   .content h2 {

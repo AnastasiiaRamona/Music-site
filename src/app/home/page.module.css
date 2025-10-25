@@ -235,3 +235,32 @@
     top: 19%;
   }
 }
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+  .layers h1 {
+    font-size: 2rem;
+    left: 27%;
+    top: 10%;
+  }
+
+  .layers h2 {
+    font-size: 1.5rem;
+    right: 20%;
+    top: 6%;
+  }
+
+  .layers h3 {
+    font-size: 2rem;
+    left: 10%;
+    top: 19%;
+    rotate: -7deg;
+  }
+
+  .new-release-additional-text p {
+    font-size: 1.8rem;
+    top: auto;
+    bottom: 15%;
+    right: 5%;
+    rotate: -7deg;
+  }
+}

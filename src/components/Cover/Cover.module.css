@@ -144,3 +144,28 @@
   transform: scale(1.15);
   filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
 }
+
+/* Landscape orientation for tablets and mobile devices */
+@media screen and (orientation: landscape) and (max-height: 600px) {
+  .cover-gallery {
+    gap: 12px;
+    padding: 15px;
+  }
+
+  .cover-container {
+    width: 35vh;
+    height: 35vh;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .cover-gallery {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .cover-container {
+    width: 30vh;
+    height: 30vh;
+  }
+}

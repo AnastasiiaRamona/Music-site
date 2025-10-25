@@ -27,3 +27,9 @@
 .site-navigation span:active {
   color: var(--blue);
 }
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+  .site-navigation {
+    font-size: 2rem;
+  }
+}

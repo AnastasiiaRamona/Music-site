@@ -84,3 +84,18 @@
     grid-gap: 15px;
   }
 }
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+  .content {
+    gap: 6px;
+  }
+
+  .socialLinks {
+    gap: 6px;
+    grid-gap: 7px;
+  }
+
+  .popup {
+    padding: 15px 10px;
+  }
+}

@@ -39,3 +39,18 @@
     transform: translateX(-250px);
   }
 }
+
+/* Landscape orientation for tablets and mobile devices */
+@media screen and (orientation: landscape) and (max-height: 600px) {
+  .video {
+    width: 100%;
+    transform: translate3d(0, calc(var(--scrollTop) / 2.7), 0);
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .video {
+    width: 100%;
+    transform: translate3d(0, calc(var(--scrollTop) / 2.7), 0);
+  }
+}

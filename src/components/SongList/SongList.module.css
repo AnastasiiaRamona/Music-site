@@ -271,3 +271,78 @@
     max-width: 40vw;
   }
 }
+
+/* Landscape orientation for tablets and mobile devices */
+@media screen and (orientation: landscape) and (max-height: 600px) {
+  .songListContainer {
+    padding: 15px;
+    margin-bottom: 5vh;
+  }
+
+  .songListHeader {
+    grid-template-columns: 35px 35px 1fr 55px;
+    gap: 14px;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+
+  .songItem {
+    grid-template-columns: 35px 35px 1fr 55px;
+    gap: 14px;
+    padding: 6px 14px;
+  }
+
+  .songCover {
+    width: 35px;
+    height: 35px;
+  }
+
+  .songTitle {
+    font-size: 15px;
+  }
+
+  .songArtist {
+    font-size: 13px;
+  }
+
+  .songDuration {
+    font-size: 13px;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .songListContainer {
+    padding: 10px;
+    margin-bottom: 3vh;
+  }
+
+  .songListHeader {
+    grid-template-columns: 30px 30px 1fr 50px;
+    gap: 12px;
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+
+  .songItem {
+    grid-template-columns: 30px 30px 1fr 50px;
+    gap: 12px;
+    padding: 5px 12px;
+  }
+
+  .songCover {
+    width: 30px;
+    height: 30px;
+  }
+
+  .songTitle {
+    font-size: 14px;
+  }
+
+  .songArtist {
+    font-size: 12px;
+  }
+
+  .songDuration {
+    font-size: 12px;
+  }
+}
