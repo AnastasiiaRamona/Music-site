@@ -272,7 +272,6 @@
   }
 }
 
-/* Landscape orientation for tablets and mobile devices */
 @media screen and (orientation: landscape) and (max-height: 600px) {
   .songListContainer {
     padding: 15px;

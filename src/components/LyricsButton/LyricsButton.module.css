@@ -1,5 +1,5 @@
 .lyricsButton {
-  background: var(--white-10);
+  background: var(--white-70);
   border: none;
   color: var(--white);
   cursor: pointer;
@@ -14,12 +14,12 @@
 @media (hover: hover) {
   .lyricsButton:hover {
     color: var(--white);
-    background: var(--white-20);
+    background: var(--white-90);
     transform: scale(1.1);
   }
 
   .lyricsButton.active:hover {
-    background: var(--white-30);
+    background: var(--white-90);
     color: var(--white);
   }
 }
