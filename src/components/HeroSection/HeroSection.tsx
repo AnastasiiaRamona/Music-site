@@ -26,7 +26,9 @@ function HeroSection() {
         <source src="/videos/video.mp4" type="video/mp4" />
       </video>
       <div className={`${styles.layer} ${styles['layer-bottom']}`}></div>
-      <BackButton href="/" />
+      <div style={{ position: 'absolute', top: '2rem', left: '2rem', zIndex: 100 }}>
+        <BackButton href="/" />
+      </div>
     </header>
   );
 }

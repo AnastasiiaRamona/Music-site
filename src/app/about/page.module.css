@@ -1,6 +1,5 @@
 .about {
   height: 100vh;
-  overflow: hidden;
 }
 
 .hero {
@@ -18,8 +17,98 @@
 }
 
 .mainImage {
-  object-position: center;
+  object-position: left center;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+@media screen and (max-width: 923px) {
+  .mainImage {
+    transform: translateX(-10%);
+  }
+}
+
+@media screen and (max-width: 840px) and (orientation: portrait),
+screen and (min-height: 1262px) {
+  .about {
+    height: auto;
+    overflow: visible;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column-reverse;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .imageContainer::before {
+    content: 'About me';
+    position: absolute;
+    top: 13%;
+    right: 5%;
+    color: var(--white);
+    z-index: 1;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    font-family: var(--primary-font-family);
+    text-shadow:
+      -1px -1px 0 var(--black),
+      1px -1px 0 var(--black),
+      -1px 1px 10px var(--black),
+      1px 1px 8px var(--black);
+  }
+
+  .imageContainer {
+    width: 100%;
+    height: 60vh;
+    order: 2;
+  }
+
+  .mainImage {
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
+    transform: translateX(2.5%);
+  }
+
+  .hero>div:last-child {
+    order: 1;
+    width: 100%;
+    margin-bottom: 8vh;
+  }
+}
+
+@media screen and (max-width: 564px) and (orientation: portrait) {
+  .imageContainer {
+    width: 100vw;
+    margin-left: 0;
+    overflow: hidden;
+  }
+
+  .mainImage {
+    width: 100vw;
+    height: auto;
+    object-fit: cover;
+    object-position: left center;
+    transform: translateX(0%);
+  }
+}
+
+@media screen and (max-width: 896px) and (orientation: landscape) {
+  .imageContainer {
+    width: 50%;
+    height: 100vh;
+  }
+
+  .mainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left center;
+    transform: translateX(-5%);
+  }
 }

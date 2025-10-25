@@ -9,7 +9,9 @@ import styles from './page.module.css';
 export default function CoversPage() {
   return (
     <div className={styles.coversPage}>
-      <BackButton />
+      <div style={{ position: 'absolute', top: '2rem', left: '2rem', zIndex: 100 }}>
+        <BackButton />
+      </div>
 
       <div className={styles.leftSide}>
         <div className={styles.songListWrapper}>
