@@ -17,22 +17,22 @@ export default function SocialLinks({
   return (
     <div className={styles.socialLinks}>
       {spotifyLink && (
-        <a href={spotifyLink} target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+        <a href={spotifyLink} target="_blank" rel="noopener noreferrer" className={styles.socialLink} title="Spotify">
           <Image src="/assets/spotify.webp" alt="Spotify" width={24} height={24} unoptimized={true} />
         </a>
       )}
       {appleMusicLink && (
-        <a href={appleMusicLink} target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+        <a href={appleMusicLink} target="_blank" rel="noopener noreferrer" className={styles.socialLink} title="Apple Music">
           <Image src="/assets/apple-music.webp" alt="Apple Music" width={24} height={24} unoptimized={true} />
         </a>
       )}
       {youtubeLink && (
-        <a href={youtubeLink} target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+        <a href={youtubeLink} target="_blank" rel="noopener noreferrer" className={styles.socialLink} title="YouTube">
           <Image src="/assets/youtube-icon.webp" alt="YouTube" width={38} height={38} unoptimized={true} />
         </a>
       )}
       {amazonLink && (
-        <a href={amazonLink} target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+        <a href={amazonLink} target="_blank" rel="noopener noreferrer" className={styles.socialLink} title='Amazon Music'>
           <Image src="/assets/amazon.webp" alt="Amazon Music" width={24} height={24} unoptimized={true} />
         </a>
       )}

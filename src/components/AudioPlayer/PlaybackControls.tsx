@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import styles from './PlaybackControls.module.css';
 import LyricsButton from '../LyricsButton/LyricsButton';
 
@@ -107,10 +106,11 @@ export default function PlaybackControls({
         <NextIcon />
       </button>
 
-      {!isInstrumental && !isCover && onToggleLyrics && (
+      {onToggleLyrics && (
         <LyricsButton
           onClick={onToggleLyrics}
           isActive={isLyricsActive}
+          disabled={isInstrumental || isCover}
         />
       )}
     </div>

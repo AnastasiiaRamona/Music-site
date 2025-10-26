@@ -69,7 +69,6 @@ function SongItem({ song, index, hasCover }: { song: any; index: number; hasCove
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleTrackClick}
       title={song.title}
-      data-tooltip={song.title}
     >
       <div className={styles.songIndex}>
         {((isMobile && isCurrentTrack) || (!isMobile && (isHovered || isCurrentTrack))) ? (

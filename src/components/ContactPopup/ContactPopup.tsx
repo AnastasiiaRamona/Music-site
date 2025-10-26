@@ -115,6 +115,7 @@ export default function ContactPopup({ isOpen, onClose }: ContactPopupProps) {
                     href={link.href}
                     url={link.iconSrc}
                     alt={link.alt}
+                    tooltip={link.tooltip}
                   />
                 ))}
               </motion.div>

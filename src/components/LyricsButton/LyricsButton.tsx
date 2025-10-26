@@ -7,24 +7,26 @@ import styles from './LyricsButton.module.css';
 interface LyricsButtonProps {
   onClick: () => void;
   isActive: boolean;
+  disabled?: boolean;
 }
 
-export default function LyricsButton({ onClick, isActive }: LyricsButtonProps) {
+export default function LyricsButton({ onClick, isActive, disabled = false }: LyricsButtonProps) {
   return (
     <motion.button
-      className={`${styles.lyricsButton} ${isActive ? styles.active : ''}`}
-      onClick={onClick}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      className={`${styles.lyricsButton} ${isActive ? styles.active : ''} ${disabled ? styles.disabled : ''}`}
+      onClick={disabled ? undefined : onClick}
+      disabled={disabled}
+      whileHover={disabled ? {} : { scale: 1.05 }}
+      whileTap={disabled ? {} : { scale: 0.95 }}
       transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-      title="Toggle Lyrics"
+      title={disabled ? "Lyrics not available" : "Toggle Lyrics"}
     >
       <Image
         src="/assets/song-lyrics.svg"
         alt="Lyrics"
         width={20}
         height={20}
-        className={styles.icon}
+        className={`${styles.icon} ${disabled ? styles.disabledIcon : ''}`}
       />
     </motion.button>
   );

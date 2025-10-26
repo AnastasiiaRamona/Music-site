@@ -94,6 +94,10 @@ a:active {
   user-select: none;
 }
 
+button>svg {
+  pointer-events: none;
+}
+
 @media (hover: hover) {
   ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-blue);

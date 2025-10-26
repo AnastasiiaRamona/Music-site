@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import styles from './Cover.module.css';
-import Link from 'next/link';
 import { useAudioPlayer } from '../../contexts/AudioPlayerContext';
 import { albums } from '../../data/albums';
+import { useState, useEffect } from 'react';
 
 type CoverData = {
   id: string;
@@ -17,11 +17,30 @@ type CoverGalleryProps = {
 };
 
 function Cover({ id, url, alt }: CoverData) {
-  const { showPlayerAndPlay } = useAudioPlayer();
+  const { showPlayerAndPlay, currentTrack, isPlaying, togglePlayPause } = useAudioPlayer();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const isCurrentTrack = currentTrack?.albumId === id;
 
   const handlePlayClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+
+    if (isCurrentTrack) {
+      togglePlayPause();
+      return;
+    }
 
     const album = albums.find(album => album.albumId === id);
     if (album) {
@@ -86,8 +105,8 @@ function Cover({ id, url, alt }: CoverData) {
         onClick={handlePlayClick}
       >
         <Image
-          src="/assets/play.png"
-          alt="Play"
+          src={isCurrentTrack && isPlaying ? "/assets/pause.png" : "/assets/play.png"}
+          alt={isCurrentTrack && isPlaying ? "Pause" : "Play"}
           width={20}
           height={20}
           unoptimized={true}

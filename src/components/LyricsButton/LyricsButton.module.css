@@ -48,6 +48,24 @@
   transition: all 0.2s ease;
 }
 
+.disabled {
+  background: var(--white-20) !important;
+  color: var(--white-50) !important;
+  cursor: not-allowed !important;
+  opacity: 0.5;
+}
+
+.disabled:hover {
+  background: var(--white-20) !important;
+  color: var(--white-50) !important;
+  transform: none !important;
+}
+
+.disabledIcon {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
 @media screen and (max-width: 919px) {
   .lyricsButton {
     padding: 9px;

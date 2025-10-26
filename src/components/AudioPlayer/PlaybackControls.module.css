@@ -27,8 +27,8 @@
 }
 
 .controlBtn.active {
-  color: var(--spotify-green);
-  background: var(--spotify-green-20);
+  color: var(--white);
+  background: var(--white-90);
 }
 
 .playBtn {

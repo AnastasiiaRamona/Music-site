@@ -111,10 +111,6 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
     }
   }, [volume]);
 
-  const togglePlay = useCallback(() => {
-    togglePlayPause();
-  }, [togglePlayPause]);
-
   const toggleSocialLinks = useCallback(() => {
     setIsSocialLinksExpanded(!isSocialLinksExpanded);
   }, [isSocialLinksExpanded]);
@@ -181,7 +177,7 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
       switch (e.code) {
         case 'Space':
           e.preventDefault();
-          togglePlay();
+          togglePlayPause();
           break;
         case 'ArrowLeft':
           e.preventDefault();
@@ -200,7 +196,7 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [isVisible, togglePlay, seekBackward, seekForward, onClose]);
+  }, [isVisible, togglePlayPause, seekBackward, seekForward, onClose]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -237,7 +233,7 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
           duration={duration}
           volume={volume}
           isExpanded={isMobileExpanded}
-          onTogglePlay={togglePlay}
+          onTogglePlay={togglePlayPause}
           onToggleShuffle={toggleShuffle}
           onPreviousTrack={playPreviousTrack}
           onNextTrack={playNextTrack}
@@ -261,7 +257,7 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
             <PlaybackControls
               isPlaying={isPlaying}
               isShuffled={isShuffled}
-              onTogglePlay={togglePlay}
+              onTogglePlay={togglePlayPause}
               onToggleShuffle={toggleShuffle}
               onPreviousTrack={playPreviousTrack}
               onNextTrack={playNextTrack}

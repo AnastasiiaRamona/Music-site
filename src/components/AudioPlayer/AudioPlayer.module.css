@@ -31,7 +31,7 @@
 }
 
 .closeBtn {
-  background: var(--white-10);
+  background: var(--white-70);
   border: none;
   color: var(--white);
   cursor: pointer;
@@ -47,7 +47,7 @@
 @media (hover: hover) {
   .closeBtn:hover {
     color: var(--white);
-    background: var(--white-20);
+    background: var(--white-90);
     transform: scale(1.05);
   }
 }
@@ -61,7 +61,7 @@
 }
 
 .socialLinksToggle {
-  background: var(--white-10);
+  background: var(--white-70);
   border: none;
   color: var(--white);
   cursor: pointer;
@@ -76,7 +76,7 @@
 @media (hover: hover) {
   .socialLinksToggle:hover {
     color: var(--white);
-    background: var(--white-20);
+    background: var(--white-90);
     transform: scale(1.05);
   }
 }
@@ -206,7 +206,7 @@
   }
 
   .socialLinksToggle {
-    background: var(--white-10);
+    background: var(--white-70);
     border: none;
     color: var(--white);
     cursor: pointer;
@@ -223,7 +223,7 @@
   @media (hover: hover) {
     .socialLinksToggle:hover {
       color: var(--white);
-      background: var(--white-20);
+      background: var(--white-90);
       transform: scale(1.05);
     }
   }

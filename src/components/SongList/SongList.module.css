@@ -23,10 +23,6 @@
   letter-spacing: 1px;
 }
 
-.songListHeader.noCover {
-  grid-template-columns: 40px 1fr 60px;
-}
-
 .headerIndex {
   text-align: center;
 }
@@ -57,7 +53,6 @@
   padding: 8px 16px;
   border-radius: 8px;
   transition: all 0.2s ease;
-  cursor: pointer;
   position: relative;
 }
 
@@ -75,26 +70,6 @@
 .songItem.currentTrack {
   background: var(--accent-blue-10);
   border: 1px solid var(--accent-blue-30);
-}
-
-@media (hover: hover) and (min-width: 1024px) {
-  .songItem[data-tooltip]:hover::before {
-    content: attr(data-tooltip);
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--gray-tooltip);
-    color: white;
-    padding: 6px 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    white-space: nowrap;
-    z-index: 9999;
-    pointer-events: none;
-    box-shadow: 0 2px 8px var(--shadow-medium);
-    margin-top: 5px;
-  }
 }
 
 .songIndex {
@@ -142,6 +117,8 @@
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 2px 8px var(--shadow-medium);
+  width: 42px;
+  height: 42px;
 }
 
 .songCover img {
