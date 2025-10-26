@@ -107,11 +107,6 @@
   transform: scale(0.95);
 }
 
-.mobile .controlBtn.active {
-  color: var(--spotify-green);
-  background: var(--spotify-green-20);
-}
-
 .mobile .seekBtn {
   padding: 10px;
   border-radius: 50%;
