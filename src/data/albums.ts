@@ -297,7 +297,7 @@ export const albums = [
       },
       {
         trackId: 'selfless-but-capricious',
-        title: 'Бескорыстны но капризны',
+        title: 'Бескорыстны, но капризны',
         audioSrc: '/audios/you-should-not/7. бескорыстны-но-капризны.opus',
         lyricsPath: '/lyrics/selfless-but-capricious.txt',
       },

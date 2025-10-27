@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import styles from './AudioPlayer.module.css';
 import { useAudioPlayer } from '../../contexts/AudioPlayerContext';
 import { useLyrics } from '../../contexts/LyricsContext';
@@ -10,6 +11,7 @@ import PlaybackControls from './PlaybackControls';
 import ProgressBar from './ProgressBar';
 import VolumeControl from './VolumeControl';
 import MobilePlayer from './MobilePlayer';
+import { MinusIcon, PlusIcon, CloseIconLarge } from '../Icons/Icons';
 
 interface AudioPlayerProps {
   isVisible: boolean;
@@ -33,13 +35,20 @@ interface AudioPlayerProps {
 export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = false, onClose }: AudioPlayerProps) {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(1);
+  const [volume, setVolume] = useState(() => {
+
+    if (typeof window !== 'undefined') {
+      const savedVolume = localStorage.getItem('audioPlayerVolume');
+      return savedVolume ? parseFloat(savedVolume) : 1;
+    }
+    return 1;
+  });
   const [isSocialLinksExpanded, setIsSocialLinksExpanded] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
   const [isMediumView, setIsMediumView] = useState(false);
   const [isMobileExpanded, setIsMobileExpanded] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const { isShuffled, toggleShuffle, playNextTrack, playPreviousTrack, isPlaying, togglePlayPause, setAudioElement } = useAudioPlayer();
+  const { isShuffled, toggleShuffle, playNextTrack, playPreviousTrack, isPlaying, togglePlayPause, isMuted, toggleMute, unmute, setAudioElement } = useAudioPlayer();
   const { isOpen, toggleLyrics } = useLyrics();
 
   useEffect(() => {
@@ -50,7 +59,7 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
     const checkScreenSize = () => {
       const width = window.innerWidth;
       const isMobile = width <= 919;
-      const isMedium = width > 919 && width <= 1123;
+      const isMedium = width > 919 && width <= 1309;
 
       setIsMobileView(isMobile);
       setIsMediumView(isMedium);
@@ -154,6 +163,13 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(e.target.value);
     setVolume(newVolume);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('audioPlayerVolume', newVolume.toString());
+    }
+    // Unmute when volume is changed
+    if (isMuted) {
+      unmute();
+    }
   };
 
 
@@ -241,6 +257,8 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
           onSeekForward={seekForward}
           onSeek={handleSeek}
           onVolumeChange={handleVolumeChange}
+          onToggleMute={toggleMute}
+          isMuted={isMuted}
           onToggleExpanded={toggleMobileExpanded}
           onClose={onClose}
           onToggleLyrics={() => currentTrack && toggleLyrics(currentTrack.albumId, currentTrack.title, currentTrack.lyricsPath)}
@@ -279,6 +297,8 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
           <VolumeControl
             volume={volume}
             onVolumeChange={handleVolumeChange}
+            onToggleMute={toggleMute}
+            isMuted={isMuted}
           />
 
           {(currentTrack.spotifyLink || currentTrack.appleMusicLink || currentTrack.youtubeLink || currentTrack.amazonLink) && (
@@ -291,13 +311,9 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
                     title={isSocialLinksExpanded ? "Hide social links" : "Show social links"}
                   >
                     {isSocialLinksExpanded ? (
-                      <svg width="16" height="16" viewBox="0 0 16 16">
-                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-                      </svg>
+                      <MinusIcon width={16} height={16} />
                     ) : (
-                      <svg width="16" height="16" viewBox="0 0 16 16">
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                      </svg>
+                      <PlusIcon width={16} height={16} />
                     )}
                   </button>
                   <div className={`${styles.socialLinksWrapper} ${isSocialLinksExpanded ? styles.expanded : ''}`}>
@@ -317,13 +333,9 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
                     title={isSocialLinksExpanded ? "Hide social links" : "Show social links"}
                   >
                     {isSocialLinksExpanded ? (
-                      <svg width="16" height="16" viewBox="0 0 16 16">
-                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-                      </svg>
+                      <MinusIcon width={16} height={16} />
                     ) : (
-                      <svg width="16" height="16" viewBox="0 0 16 16">
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                      </svg>
+                      <PlusIcon width={16} height={16} />
                     )}
                   </button>
                   <div className={`${styles.socialLinksWrapper} ${isSocialLinksExpanded ? styles.expanded : ''}`}>
@@ -347,9 +359,7 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
           )}
 
           <button className={styles.closeBtn} onClick={onClose}>
-            <svg width="16" height="16" viewBox="0 0 16 16">
-              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-            </svg>
+            <CloseIconLarge width={16} height={16} />
           </button>
         </div>
       )}

@@ -8,6 +8,7 @@ import PlaybackControls from './PlaybackControls';
 import ProgressBar from './ProgressBar';
 import VolumeControl from './VolumeControl';
 import SocialLinks from '../SocialLinks/SocialLinks';
+import { PlayIcon, PauseIcon, CloseIcon, MinusIcon, PlusIcon, ExpandIcon, CollapseIcon } from '../Icons/Icons';
 
 interface MobilePlayerProps {
   currentTrack: {
@@ -37,6 +38,8 @@ interface MobilePlayerProps {
   onSeekForward: () => void;
   onSeek: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onVolumeChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onToggleMute?: () => void;
+  isMuted?: boolean;
   onToggleExpanded: (e?: React.MouseEvent) => void;
   onClose: () => void;
   onToggleLyrics?: () => void;
@@ -59,6 +62,8 @@ export default function MobilePlayer({
   onSeekForward,
   onSeek,
   onVolumeChange,
+  onToggleMute,
+  isMuted = false,
   onToggleExpanded,
   onClose,
   onToggleLyrics,
@@ -86,35 +91,18 @@ export default function MobilePlayer({
           isMobile={true}
         />
 
-        <div className={styles.mobileProgressContainer}>
-          <input
-            type="range"
-            min="0"
-            max={duration || 0}
-            value={currentTime}
-            onChange={onSeek}
-            className={styles.mobileProgressBar}
-            style={{
-              '--progress': duration > 0 ? `${(currentTime / duration) * 100}%` : '0%'
-            } as React.CSSProperties}
-          />
-        </div>
 
         <div className={styles.mobileControls}>
           <button className={styles.mobilePlayBtn} onClick={(e) => { e.stopPropagation(); onTogglePlay(); }}>
             {isPlaying ? (
-              <svg width="20" height="20" viewBox="0 0 24 24">
-                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
-              </svg>
+              <PauseIcon width={20} height={20} />
             ) : (
-              <svg width="20" height="20" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
+              <PlayIcon width={20} height={20} />
             )}
           </button>
           <button className={styles.mobileExpandBtn} onClick={(e) => onToggleExpanded(e)}>
             <Image
-              src="/assets/expand.svg"
+              src={ExpandIcon}
               alt="Expand"
               width={16}
               height={16}
@@ -131,9 +119,7 @@ export default function MobilePlayer({
       <div className={styles.mobileExpandedContent}>
         <div className={styles.mobileExpandedHeader}>
           <button className={styles.mobileCloseBtn} onClick={onClose}>
-            <svg width="20" height="20" viewBox="0 0 16 16">
-              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-            </svg>
+            <CloseIcon width={16} height={16} />
           </button>
           <div className={styles.mobileExpandedHeaderControls}>
             {(currentTrack.spotifyLink || currentTrack.appleMusicLink || currentTrack.youtubeLink || currentTrack.amazonLink) && (
@@ -144,13 +130,9 @@ export default function MobilePlayer({
                   title={isSocialLinksExpanded ? "Hide social links" : "Show social links"}
                 >
                   {isSocialLinksExpanded ? (
-                    <svg width="16" height="16" viewBox="0 0 16 16">
-                      <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-                    </svg>
+                    <MinusIcon width={16} height={16} />
                   ) : (
-                    <svg width="16" height="16" viewBox="0 0 16 16">
-                      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                    </svg>
+                    <PlusIcon width={16} height={16} />
                   )}
                 </button>
                 <div className={`${styles.mobileExpandedSocialLinksWrapper} ${isSocialLinksExpanded ? styles.expanded : ''}`}>
@@ -165,7 +147,7 @@ export default function MobilePlayer({
             )}
             <button className={styles.mobileCollapseBtn} onClick={(e) => onToggleExpanded(e)}>
               <Image
-                src="/assets/collapse.svg"
+                src={CollapseIcon}
                 alt="Collapse"
                 width={20}
                 height={20}
@@ -223,6 +205,8 @@ export default function MobilePlayer({
             <VolumeControl
               volume={volume}
               onVolumeChange={onVolumeChange}
+              onToggleMute={onToggleMute}
+              isMuted={isMuted}
               isMobile={true}
             />
           </div>

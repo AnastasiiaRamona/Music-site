@@ -8,7 +8,6 @@
 .controlBtn {
   background: var(--white-70);
   border: none;
-  color: var(--white);
   cursor: pointer;
   padding: 8px;
   border-radius: 4px;
@@ -20,14 +19,12 @@
 
 @media (hover: hover) {
   .controlBtn:hover {
-    color: var(--white);
     background: var(--white-90);
     transform: scale(1.05);
   }
 }
 
 .controlBtn.active {
-  color: var(--white);
   background: var(--white-90);
 }
 
@@ -57,7 +54,6 @@
 .seekBtn {
   background: var(--white-70);
   border: none;
-  color: var(--white);
   cursor: pointer;
   padding: 8px;
   border-radius: 50%;
@@ -69,7 +65,6 @@
 
 @media (hover: hover) {
   .seekBtn:hover {
-    color: var(--white);
     background: var(--white-90);
     transform: scale(1.1);
   }
@@ -103,7 +98,7 @@
 }
 
 .mobile .controlBtn:active {
-  background: var(--white-20);
+  background: var(--white-90);
   transform: scale(0.95);
 }
 
@@ -113,7 +108,7 @@
 }
 
 .mobile .seekBtn:active {
-  background: var(--white-20);
+  background: var(--white-90);
   transform: scale(0.95);
 }
 
@@ -125,4 +120,10 @@
 
 .mobile .playBtn:active {
   transform: scale(0.95);
+}
+
+@media screen and (max-width: 350px) {
+  .playbackControls {
+    gap: 2px;
+  }
 }

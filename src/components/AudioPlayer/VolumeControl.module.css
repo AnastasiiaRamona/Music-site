@@ -11,6 +11,33 @@
   fill: var(--gray-light);
 }
 
+.volumeIconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.volumeIconButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.volumeIconButton:active {
+  transform: scale(0.95);
+}
+
+.volumeSliderContainer {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
 .volumeSlider {
   width: 80px;
   height: 4px;
@@ -19,6 +46,29 @@
   outline: none;
   cursor: pointer;
   transition: all 0.2s ease;
+}
+
+.volumeSlider:disabled {
+  opacity: 0.5;
+  cursor: pointer;
+  position: relative;
+}
+
+.volumeSlider:disabled::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 1;
+}
+
+@media (hover: hover) {
+  .volumeSlider:disabled:hover {
+    opacity: 0.7;
+  }
 }
 
 .volumeSlider::-webkit-slider-thumb {
@@ -59,12 +109,15 @@
 
 .mobile {
   min-width: auto;
-  gap: 8px;
+  gap: 5px;
+  display: flex;
+  align-items: center;
 }
+
 
 .mobile .volumeSlider {
   width: 60px;
-  height: 4px;
+  height: 3px;
 }
 
 .mobile .volumeSlider::-webkit-slider-thumb {
@@ -77,4 +130,16 @@
   width: 10px;
   height: 10px;
   box-shadow: 0 1px 3px var(--shadow-light);
+}
+
+@media (max-width: 768px) {
+  .volumeSlider::-webkit-slider-thumb:hover {
+    transform: none;
+    box-shadow: 0 2px 4px var(--shadow-light);
+  }
+
+  .volumeSlider::-moz-range-thumb:hover {
+    transform: none;
+    box-shadow: 0 2px 4px var(--shadow-light);
+  }
 }

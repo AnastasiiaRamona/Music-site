@@ -68,7 +68,6 @@
 .mobileExpandBtn {
   background: var(--white-70);
   border: none;
-  color: var(--white);
   cursor: pointer;
   padding: 6px;
   border-radius: 4px;
@@ -127,7 +126,6 @@
 .mobileCollapseBtn {
   background: var(--white-70);
   border: none;
-  color: var(--white);
   cursor: pointer;
   padding: 8px;
   border-radius: 4px;
@@ -245,7 +243,6 @@
 .mobileExpandedSocialLinksToggle {
   background: var(--white-70);
   border: none;
-  color: var(--white);
   cursor: pointer;
   padding: 8px;
   border-radius: 4px;

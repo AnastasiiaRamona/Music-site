@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './TrackInfo.module.css';
 
@@ -10,6 +11,25 @@ interface TrackInfoProps {
 }
 
 export default function TrackInfo({ title, coverSrc, isMobile = false }: TrackInfoProps) {
+  const textRef = useRef<HTMLSpanElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      if (textRef.current && containerRef.current) {
+        const textWidth = textRef.current.scrollWidth;
+        const containerWidth = containerRef.current.offsetWidth;
+        setShouldAnimate(textWidth > containerWidth);
+      }
+    };
+
+    checkOverflow();
+    window.addEventListener('resize', checkOverflow);
+
+    return () => window.removeEventListener('resize', checkOverflow);
+  }, [title]);
+
   return (
     <div className={`${styles.trackInfo} ${isMobile ? styles.mobile : ''}`}>
       {coverSrc && (
@@ -24,7 +44,14 @@ export default function TrackInfo({ title, coverSrc, isMobile = false }: TrackIn
         </div>
       )}
       <div className={styles.trackDetails}>
-        <div className={styles.trackTitle}>{title}</div>
+        <div ref={containerRef} className={styles.trackTitle}>
+          <span
+            ref={textRef}
+            className={`${styles.trackTitleText} ${shouldAnimate ? styles.animate : ''}`}
+          >
+            {title}
+          </span>
+        </div>
         <div className={styles.trackArtist}>Anastasiia Ramona</div>
       </div>
     </div>

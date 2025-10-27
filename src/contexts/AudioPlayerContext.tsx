@@ -25,6 +25,7 @@ interface AudioPlayerContextType {
   shouldAutoPlay: boolean;
   isShuffled: boolean;
   isPlaying: boolean;
+  isMuted: boolean;
   showPlayer: (track: Track) => void;
   showPlayerAndPlay: (track: Track) => void;
   hidePlayer: () => void;
@@ -32,6 +33,8 @@ interface AudioPlayerContextType {
   togglePlayPause: () => void;
   playNextTrack: () => void;
   playPreviousTrack: () => void;
+  toggleMute: () => void;
+  unmute: () => void;
   setAudioElement: (audio: HTMLAudioElement | null) => void;
 }
 
@@ -43,6 +46,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
   const [isShuffled, setIsShuffled] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   const [playlist, setPlaylist] = useState<Track[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
@@ -217,6 +221,20 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const toggleMute = () => {
+    if (audioElement) {
+      audioElement.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const unmute = () => {
+    if (audioElement) {
+      audioElement.muted = false;
+      setIsMuted(false);
+    }
+  };
+
   return (
     <AudioPlayerContext.Provider
       value={{
@@ -225,6 +243,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
         shouldAutoPlay,
         isShuffled,
         isPlaying,
+        isMuted,
         showPlayer,
         showPlayerAndPlay,
         hidePlayer,
@@ -232,6 +251,8 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
         togglePlayPause,
         playNextTrack,
         playPreviousTrack,
+        toggleMute,
+        unmute,
         setAudioElement: setAudioElementRef,
       }}
     >

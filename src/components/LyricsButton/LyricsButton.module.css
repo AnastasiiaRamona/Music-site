@@ -1,7 +1,6 @@
 .lyricsButton {
   background: var(--white-70);
   border: none;
-  color: var(--white);
   cursor: pointer;
   padding: 8px;
   border-radius: 50%;
@@ -13,33 +12,28 @@
 
 @media (hover: hover) {
   .lyricsButton:hover {
-    color: var(--white);
     background: var(--white-90);
     transform: scale(1.1);
   }
 
   .lyricsButton.active:hover {
     background: var(--white-90);
-    color: var(--white);
   }
 }
 
 .lyricsButton:focus,
 .lyricsButton:active {
-  color: var(--white);
   background: var(--white-20);
   transform: scale(1.1);
 }
 
 .lyricsButton.active {
   background: var(--white-20);
-  color: var(--white);
 }
 
 .lyricsButton.active:focus,
 .lyricsButton.active:active {
   background: var(--white-30);
-  color: var(--white);
 }
 
 .icon {

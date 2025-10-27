@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 220px;
+  width: 20vw;
 }
 
 .albumCover {
@@ -32,11 +32,39 @@
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 170px;
+  max-width: 18vw;
   min-height: 20px;
   display: flex;
   align-items: center;
+  position: relative;
+}
+
+.trackTitleText {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.trackTitleText.animate {
+  animation: scrollText 8s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(0);
+  }
+
+  80% {
+    transform: translateX(calc(-100% + 170px));
+  }
+
+  100% {
+    transform: translateX(calc(-100% + 170px));
+  }
 }
 
 .trackArtist {
@@ -67,15 +95,32 @@
   max-width: none;
 }
 
-@media screen and (max-width: 570px) {
-  .mobile .trackTitle {
-    max-width: 200px;
+.mobile .trackTitleText.animate {
+  animation: scrollTextMobile 8s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes scrollTextMobile {
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(0);
+  }
+
+  80% {
+    transform: translateX(calc(-100% + 57vw));
+  }
+
+  100% {
+    transform: translateX(calc(-100% + 57vw));
   }
 }
 
-@media screen and (max-width: 448px) {
+@media screen and (max-width: 570px) {
   .mobile .trackTitle {
-    max-width: 120px;
+    max-width: 57vw;
   }
 }
 

@@ -2,6 +2,7 @@
 
 import styles from './PlaybackControls.module.css';
 import LyricsButton from '../LyricsButton/LyricsButton';
+import { PlayIcon, PauseIcon, ShuffleIcon, PreviousIcon, NextIcon, SeekBackwardIcon, SeekForwardIcon } from '../Icons/Icons';
 
 interface PlaybackControlsProps {
   isPlaying: boolean;
@@ -34,47 +35,6 @@ export default function PlaybackControls({
   isCover = false,
   isMobile = false
 }: PlaybackControlsProps) {
-  const PlayIcon = () => (
-    <svg width={isMobile ? 28 : 28} height={isMobile ? 28 : 28} viewBox="0 0 24 24">
-      <path d="M8 5v14l11-7z" />
-    </svg>
-  );
-
-  const PauseIcon = () => (
-    <svg width={isMobile ? 28 : 28} height={isMobile ? 28 : 28} viewBox="0 0 24 24">
-      <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
-    </svg>
-  );
-
-  const ShuffleIcon = () => (
-    <svg width={isMobile ? 18 : 16} height={isMobile ? 18 : 16} viewBox="0 0 16 16">
-      <path d="M13.151.922a.75.75 0 10-1.06 1.06L13.109 3H11.16a3.75 3.75 0 00-2.873 1.34l-6.173 7.356A2.25 2.25 0 01.39 12.5H0V14h.391a3.75 3.75 0 002.873-1.34l6.173-7.356a2.25 2.25 0 011.724-.804h1.949l-1.018 1.018a.75.75 0 001.06 1.06L15.98 3.75 13.15.922zM.391 3.5H0V2h.391c1.109 0 2.16.49 2.873 1.34L4.744 5.277l-.979.93-2.483-2.481A2.25 2.25 0 00.39 3.5z" />
-    </svg>
-  );
-
-  const PreviousIcon = () => (
-    <svg width={isMobile ? 20 : 20} height={isMobile ? 20 : 20} viewBox="0 0 24 24">
-      <path d="M6 6h2v12H6V6zM10 12l8.5 6V6L10 12z" />
-    </svg>
-  );
-
-  const NextIcon = () => (
-    <svg width={isMobile ? 20 : 20} height={isMobile ? 20 : 20} viewBox="0 0 24 24">
-      <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
-    </svg>
-  );
-
-  const SeekBackwardIcon = () => (
-    <svg width={isMobile ? 20 : 20} height={isMobile ? 20 : 20} viewBox="0 0 24 24">
-      <path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z" />
-    </svg>
-  );
-
-  const SeekForwardIcon = () => (
-    <svg width={isMobile ? 20 : 20} height={isMobile ? 20 : 20} viewBox="0 0 24 24">
-      <path d="M13 6v12l8.5-6L13 6zM4 18l8.5-6L4 6v12z" />
-    </svg>
-  );
 
   return (
     <div className={`${styles.playbackControls} ${isMobile ? styles.mobile : ''}`}>
@@ -83,27 +43,27 @@ export default function PlaybackControls({
         onClick={onToggleShuffle}
         title="Shuffle"
       >
-        <ShuffleIcon />
+        <ShuffleIcon width={isMobile ? 18 : 16} height={isMobile ? 18 : 16} />
       </button>
 
       <button className={styles.seekBtn} onClick={onPreviousTrack} title="Previous Track">
-        <PreviousIcon />
+        <PreviousIcon width={isMobile ? 20 : 20} height={isMobile ? 20 : 20} />
       </button>
 
       <button className={styles.seekBtn} onClick={onSeekBackward} title="Seek Backward 10s">
-        <SeekBackwardIcon />
+        <SeekBackwardIcon width={isMobile ? 20 : 20} height={isMobile ? 20 : 20} />
       </button>
 
       <button className={styles.playBtn} onClick={onTogglePlay}>
-        {isPlaying ? <PauseIcon /> : <PlayIcon />}
+        {isPlaying ? <PauseIcon width={isMobile ? 28 : 28} height={isMobile ? 28 : 28} /> : <PlayIcon width={isMobile ? 28 : 28} height={isMobile ? 28 : 28} />}
       </button>
 
       <button className={styles.seekBtn} onClick={onSeekForward} title="Seek Forward 10s">
-        <SeekForwardIcon />
+        <SeekForwardIcon width={isMobile ? 20 : 20} height={isMobile ? 20 : 20} />
       </button>
 
       <button className={styles.seekBtn} onClick={onNextTrack} title="Next Track">
-        <NextIcon />
+        <NextIcon width={isMobile ? 20 : 20} height={isMobile ? 20 : 20} />
       </button>
 
       {onToggleLyrics && (

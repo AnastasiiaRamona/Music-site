@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import styles from './LyricsButton.module.css';
+import { SongLyricsIcon } from '../Icons/Icons';
 
 interface LyricsButtonProps {
   onClick: () => void;
@@ -22,7 +23,7 @@ export default function LyricsButton({ onClick, isActive, disabled = false }: Ly
       title={disabled ? "Lyrics not available" : "Toggle Lyrics"}
     >
       <Image
-        src="/assets/song-lyrics.svg"
+        src={SongLyricsIcon}
         alt="Lyrics"
         width={20}
         height={20}

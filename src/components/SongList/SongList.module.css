@@ -88,7 +88,6 @@
 .playButton {
   background: none;
   border: none;
-  color: var(--white);
   cursor: pointer;
   padding: 8px;
   border-radius: 50%;
@@ -143,12 +142,6 @@
   text-overflow: ellipsis;
   transition: color 0.2s ease;
   position: relative;
-}
-
-@media (hover: hover) and (min-width: 1024px) {
-  .songTitle:hover {
-    color: var(--accent-blue);
-  }
 }
 
 .currentTrackTitle {
