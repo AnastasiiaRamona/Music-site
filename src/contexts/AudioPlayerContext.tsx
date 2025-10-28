@@ -55,6 +55,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     setCurrentTrack(track);
     setIsPlayerVisible(true);
     setShouldAutoPlay(false);
+    setIsMuted(false);
   };
 
   const showPlayerAndPlay = (track: Track) => {
@@ -68,6 +69,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     setIsPlayerVisible(true);
     setShouldAutoPlay(true);
     setIsPlaying(true);
+    setIsMuted(false);
 
     const tracksWithAudio: Track[] = [];
 
@@ -164,6 +166,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     setIsPlayerVisible(false);
     setCurrentTrack(null);
     setShouldAutoPlay(false);
+    setIsMuted(false);
   };
 
   const toggleShuffle = () => {
