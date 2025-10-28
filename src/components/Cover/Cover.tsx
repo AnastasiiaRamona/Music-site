@@ -3,6 +3,7 @@ import styles from './Cover.module.css';
 import { useAudioPlayer } from '../../contexts/AudioPlayerContext';
 import { albums } from '../../data/albums';
 import { useState, useEffect } from 'react';
+import SkeletonImage from '../SkeletonImage/SkeletonImage';
 
 type CoverData = {
   id: string;
@@ -91,11 +92,12 @@ function Cover({ id, url, alt }: CoverData) {
       className={styles['cover-container']}
       onClick={handleContainerClick}
     >
-      <Image
+      <SkeletonImage
         src={url}
         alt={alt}
         loading="lazy"
         className={styles['cover-image']}
+        skeletonClassName="cover medium"
         unoptimized={true}
         width={300}
         height={300}
