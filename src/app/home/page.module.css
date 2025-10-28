@@ -44,8 +44,9 @@
     color: transparent;
     -webkit-text-stroke: 1.5px var(--brown-accent);
     z-index: -1;
-    filter: blur(2px);
-    opacity: 0.8;
+    filter: blur(1px);
+    opacity: 0.9;
+    transform: translate(0.5px, 0.5px);
   }
 
   .layers h1::after {
@@ -58,8 +59,9 @@
     color: transparent;
     -webkit-text-stroke: 1.5px var(--brown-accent);
     z-index: -2;
-    filter: blur(4px);
-    opacity: 0.6;
+    filter: blur(2px);
+    opacity: 0.7;
+    transform: translate(1px, 1px);
   }
 }
 
