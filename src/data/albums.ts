@@ -18,6 +18,7 @@ const coverSrc17 = '/assets/covers/to-simulants-with-love.webp';
 const coverSrc18 = '/assets/covers/The-Art-of-Rebellion.webp';
 const coverSrc19 = '/assets/covers/the-remastered-collection.webp';
 const coverSrc20 = '/assets/covers/Twenty-Eight-Past Four.webp';
+const coverSrc21 = '/assets/covers/north-of-me.webp';
 
 export const preloadImages = [
   coverSrc1,
@@ -40,9 +41,22 @@ export const preloadImages = [
   coverSrc18,
   coverSrc19,
   coverSrc20,
+  coverSrc21,
 ];
 
 export const albums = [
+  {
+    albumId: 'north-of-me',
+    coverSrc: coverSrc21,
+    title: 'North of Me',
+    audioSrc: '/audios/north-of-me.opus',
+    lyricsPath: '/lyrics/north-of-me.txt',
+    appleMusicLink: 'https://music.apple.com/us/song/north-of-me/1846913157',
+    spotifyLink: 'https://open.spotify.com/track/6v60BsZywcofdSJcysQQYV?si=0f09285397974e59',
+    youtubeLink: 'https://youtu.be/shDrwDTpKwc?si=0IULfCr-IaVoGUCe',
+    amazonLink:
+      'https://amazon.com/music/player/tracks/B0FWRY7D16?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_ZYhy148MzYzNaujOMFVnJloPL',
+  },
   {
     albumId: 'twenty-eight-past-four',
     coverSrc: coverSrc20,
