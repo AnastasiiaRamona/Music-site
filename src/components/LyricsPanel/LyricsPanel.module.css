@@ -26,7 +26,7 @@
 
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 20px 24px;
   border-bottom: 1px solid rgba(200, 236, 247, 0.1);
@@ -45,33 +45,6 @@
   white-space: nowrap;
 }
 
-.closeButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  opacity: 0.7;
-}
-
-@media (hover: hover) {
-  .closeButton:hover {
-    background: var(--white-10);
-    opacity: 1;
-    transform: scale(1.1);
-  }
-}
-
-.closeButton:focus,
-.closeButton:active {
-  background: var(--white-10);
-  opacity: 1;
-  transform: scale(1.1);
-}
 
 .content {
   flex: 1;
@@ -94,6 +67,10 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
 }
 
 .line {
@@ -104,11 +81,16 @@
   margin: 0;
   opacity: 0.9;
   transition: opacity 0.2s ease;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
 }
 
 @media (hover: hover) {
   .line:hover {
     opacity: 1;
+    cursor: text;
   }
 }
 
