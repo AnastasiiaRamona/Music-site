@@ -57,3 +57,19 @@
 .toggleButton svg {
   transition: transform 0.2s ease;
 }
+
+@supports (-webkit-touch-callout: none) {
+  .toggleButton svg {
+    fill: var(--white-70);
+  }
+
+  .toggleButton:hover svg,
+  .toggleButton:focus svg,
+  .toggleButton:active svg {
+    fill: rgba(255, 255, 255, 0.9);
+  }
+
+  .toggleButton.active svg {
+    fill: var(--white-70);
+  }
+}
