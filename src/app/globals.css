@@ -98,6 +98,21 @@ button>svg {
   pointer-events: none;
 }
 
+@supports (-webkit-touch-callout: none) {
+  img[src$=".svg"] {
+    filter: none;
+    -webkit-filter: none;
+  }
+
+  svg {
+    color: #000000;
+  }
+
+  button svg {
+    color: #000000;
+  }
+}
+
 @media (hover: hover) {
   ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-blue);
