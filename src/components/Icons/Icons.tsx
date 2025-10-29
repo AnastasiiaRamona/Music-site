@@ -66,7 +66,7 @@ export const VolumeMutedIcon: React.FC<IconProps> = ({ width = 16, height = 16, 
     <path d="M9.383 3.076A1 1 0 0 1 10 4v8a1 1 0 0 1-1.617.793L5.5 10.5H2a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1h3.5l2.883-2.293a1 1 0 0 1 1.617.793z" />
     <path
       d="M2 2l12 12"
-      stroke={fill}
+      stroke="var(--white-70, rgba(255, 255, 255, 0.7))"
       strokeWidth="1.5"
       strokeLinecap="round"
     />

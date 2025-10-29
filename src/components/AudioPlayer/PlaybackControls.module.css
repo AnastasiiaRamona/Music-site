@@ -25,7 +25,7 @@
 }
 
 .controlBtn.active {
-  background: var(--white-90);
+  background: var(--white);
 }
 
 .playBtn {

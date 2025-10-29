@@ -50,6 +50,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   const [playlist, setPlaylist] = useState<Track[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
+  const [playedTracks, setPlayedTracks] = useState<Set<string>>(new Set());
 
   const showPlayer = (track: Track) => {
     setCurrentTrack(track);
@@ -160,6 +161,10 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     setPlaylist(tracksWithAudio);
     const trackIndex = tracksWithAudio.findIndex((t: Track) => t.albumId === track.albumId);
     setCurrentIndex(trackIndex >= 0 ? trackIndex : 0);
+    setPlayedTracks(new Set());
+    if (isShuffled && track.albumId) {
+      setPlayedTracks(prev => new Set([...Array.from(prev), track.albumId]));
+    }
   };
 
   const hidePlayer = () => {
@@ -171,6 +176,9 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
 
   const toggleShuffle = () => {
     setIsShuffled(!isShuffled);
+    if (isShuffled) {
+      setPlayedTracks(new Set());
+    }
   };
 
   const togglePlayPause = () => {
@@ -188,12 +196,29 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     setAudioElement(audio);
   };
 
+  const getNextShuffledTrack = (currentTrackId: string): number => {
+    const availableTracks = playlist.filter(track => track.albumId !== currentTrackId);
+
+    if (availableTracks.length === 0) {
+      setPlayedTracks(new Set());
+      const randomIndex = Math.floor(Math.random() * playlist.length);
+      return randomIndex;
+    }
+
+    const randomTrack = availableTracks[Math.floor(Math.random() * availableTracks.length)];
+    const trackIndex = playlist.findIndex(track => track.albumId === randomTrack.albumId);
+
+    setPlayedTracks(prev => new Set([...Array.from(prev), randomTrack.albumId]));
+
+    return trackIndex;
+  };
+
   const playNextTrack = () => {
     if (playlist.length === 0) return;
 
     let nextIndex;
     if (isShuffled) {
-      nextIndex = Math.floor(Math.random() * playlist.length);
+      nextIndex = getNextShuffledTrack(currentTrack?.albumId || '');
     } else {
       nextIndex = (currentIndex + 1) % playlist.length;
     }
@@ -211,7 +236,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
 
     let prevIndex;
     if (isShuffled) {
-      prevIndex = Math.floor(Math.random() * playlist.length);
+      prevIndex = getNextShuffledTrack(currentTrack?.albumId || '');
     } else {
       prevIndex = currentIndex === 0 ? playlist.length - 1 : currentIndex - 1;
     }

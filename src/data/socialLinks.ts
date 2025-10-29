@@ -19,7 +19,7 @@ export const socialLinks: SocialLink[] = [
     tooltip: "YouTube"
   },
   {
-    href: "mailto:anastasiis.de.ramona@gmail.com",
+    href: "mailto:anastasiia.de.ramona@gmail.com",
     iconSrc: "/assets/email-icon.png",
     alt: "Email",
     tooltip: "Email"
