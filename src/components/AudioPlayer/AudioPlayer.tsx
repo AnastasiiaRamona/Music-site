@@ -166,6 +166,12 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
     toggleMute(volume, 'slider');
   };
 
+  useEffect(() => {
+    if (currentTrack) {
+      setCurrentTime(0);
+      setDuration(0);
+    }
+  }, [currentTrack]);
 
   useEffect(() => {
     if (shouldAutoPlay && audioRef.current && currentTrack) {
