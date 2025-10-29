@@ -35,20 +35,12 @@ interface AudioPlayerProps {
 export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = false, onClose }: AudioPlayerProps) {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(() => {
-
-    if (typeof window !== 'undefined') {
-      const savedVolume = localStorage.getItem('audioPlayerVolume');
-      return savedVolume ? parseFloat(savedVolume) : 1;
-    }
-    return 1;
-  });
   const [isSocialLinksExpanded, setIsSocialLinksExpanded] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
   const [isMediumView, setIsMediumView] = useState(false);
   const [isMobileExpanded, setIsMobileExpanded] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const { isShuffled, toggleShuffle, playNextTrack, playPreviousTrack, isPlaying, togglePlayPause, isMuted, toggleMute, unmute, setAudioElement } = useAudioPlayer();
+  const { isShuffled, toggleShuffle, playNextTrack, playPreviousTrack, isPlaying, togglePlayPause, isMuted, toggleMute, unmute, unmuteWithMaxVolume, volume, setVolume, muteReason, setAudioElement } = useAudioPlayer();
   const { isOpen, toggleLyrics } = useLyrics();
 
   useEffect(() => {
@@ -114,11 +106,6 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
   }, [playNextTrack, isPlaying, togglePlayPause]);
 
 
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = volume;
-    }
-  }, [volume]);
 
   const toggleSocialLinks = useCallback(() => {
     setIsSocialLinksExpanded(!isSocialLinksExpanded);
@@ -162,14 +149,21 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(e.target.value);
+
+    if (newVolume > 0 && isMuted) {
+      const restoredVolume = unmute();
+      setVolume(restoredVolume);
+    }
+
     setVolume(newVolume);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('audioPlayerVolume', newVolume.toString());
-    }
-    // Unmute when volume is changed
-    if (isMuted) {
-      unmute();
-    }
+  };
+
+  const handleUnmuteWithMaxVolume = () => {
+    unmuteWithMaxVolume();
+  };
+
+  const handleVolumeZero = () => {
+    toggleMute(volume, 'slider');
   };
 
 
@@ -257,8 +251,11 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
           onSeekForward={seekForward}
           onSeek={handleSeek}
           onVolumeChange={handleVolumeChange}
-          onToggleMute={toggleMute}
+          onToggleMute={(currentVolume, reason) => toggleMute(currentVolume, reason)}
+          onUnmuteWithMaxVolume={handleUnmuteWithMaxVolume}
           isMuted={isMuted}
+          muteReason={muteReason}
+          onVolumeZero={handleVolumeZero}
           onToggleExpanded={toggleMobileExpanded}
           onClose={onClose}
           onToggleLyrics={() => currentTrack && toggleLyrics(currentTrack.albumId, currentTrack.title, currentTrack.lyricsPath)}
@@ -297,8 +294,11 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
           <VolumeControl
             volume={volume}
             onVolumeChange={handleVolumeChange}
-            onToggleMute={toggleMute}
+            onToggleMute={(currentVolume, reason) => toggleMute(currentVolume, reason)}
+            onUnmuteWithMaxVolume={handleUnmuteWithMaxVolume}
             isMuted={isMuted}
+            muteReason={muteReason}
+            onVolumeZero={handleVolumeZero}
           />
 
           {(currentTrack.spotifyLink || currentTrack.appleMusicLink || currentTrack.youtubeLink || currentTrack.amazonLink) && (

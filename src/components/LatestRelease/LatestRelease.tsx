@@ -21,15 +21,15 @@ export default function LatestRelease() {
         src={vinylSrc}
         alt="Spinning vinyl"
         quality={100}
-        width={700}
-        height={700}
+        width={900}
+        height={900}
       />
       <Image className={styles['latest-release-cover']}
         src={latestReleaseSrc}
         alt="Latest release cover"
         quality={100}
-        width={700}
-        height={700}
+        width={900}
+        height={900}
       />
     </motion.div>
   </div>

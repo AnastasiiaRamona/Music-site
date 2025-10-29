@@ -73,6 +73,24 @@ export const VolumeMutedIcon: React.FC<IconProps> = ({ width = 16, height = 16, 
   </svg>
 );
 
+export const VolumeControlUnmute: React.FC<IconProps> = ({ width = 16, height = 16, className, fill = "currentColor" }) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox="0 0 16 16"
+    fill={fill}
+    className={className}
+  >
+    <path d="M9.383 3.076A1 1 0 0 1 10 4v8a1 1 0 0 1-1.617.793L5.5 10.5H2a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1h3.5l2.883-2.293a1 1 0 0 1 1.617.793z" />
+    <path
+      d="M2 2l12 12"
+      stroke="var(--white-70, rgba(255, 255, 255, 0.7))"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
 export const CloseIcon: React.FC<IconProps> = ({ width = 16, height = 16, className, fill = "currentColor" }) => (
   <svg width={width} height={height} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill={fill} className={className}>
     <path d="M3.75 3.75a.75.75 0 0 1 1.06 0L8 6.94l3.19-3.19a.75.75 0 1 1 1.06 1.06L9.06 8l3.19 3.19a.75.75 0 1 1-1.06 1.06L8 9.06l-3.19 3.19a.75.75 0 0 1-1.06-1.06L6.94 8 3.75 4.81a.75.75 0 0 1 0-1.06z" />

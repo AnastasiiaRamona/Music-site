@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { albums } from '../data/albums';
 import { covers } from '../data/covers';
 
@@ -26,6 +26,8 @@ interface AudioPlayerContextType {
   isShuffled: boolean;
   isPlaying: boolean;
   isMuted: boolean;
+  volume: number;
+  muteReason: 'button' | 'slider' | null;
   showPlayer: (track: Track) => void;
   showPlayerAndPlay: (track: Track) => void;
   hidePlayer: () => void;
@@ -33,8 +35,10 @@ interface AudioPlayerContextType {
   togglePlayPause: () => void;
   playNextTrack: () => void;
   playPreviousTrack: () => void;
-  toggleMute: () => void;
-  unmute: () => void;
+  toggleMute: (currentVolume?: number, reason?: 'button' | 'slider') => void;
+  unmute: () => number;
+  unmuteWithMaxVolume: () => void;
+  setVolume: (volume: number) => void;
   setAudioElement: (audio: HTMLAudioElement | null) => void;
 }
 
@@ -46,17 +50,39 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
   const [isShuffled, setIsShuffled] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedMuted = localStorage.getItem('audioPlayerMuted');
+      return savedMuted ? JSON.parse(savedMuted) : false;
+    }
+    return false;
+  });
+  const [volume, setVolume] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedVolume = localStorage.getItem('audioPlayerVolume');
+      return savedVolume ? parseFloat(savedVolume) : 1;
+    }
+    return 1;
+  });
+  const [previousVolume, setPreviousVolume] = useState(1);
+  const [muteReason, setMuteReason] = useState<'button' | 'slider' | null>(null);
   const [playlist, setPlaylist] = useState<Track[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
   const [playedTracks, setPlayedTracks] = useState<Set<string>>(new Set());
 
+  // Apply muted state and volume to audio element when they change
+  useEffect(() => {
+    if (audioElement) {
+      audioElement.muted = isMuted;
+      audioElement.volume = volume;
+    }
+  }, [audioElement, isMuted, volume]);
+
   const showPlayer = (track: Track) => {
     setCurrentTrack(track);
     setIsPlayerVisible(true);
     setShouldAutoPlay(false);
-    setIsMuted(false);
   };
 
   const showPlayerAndPlay = (track: Track) => {
@@ -70,7 +96,6 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     setIsPlayerVisible(true);
     setShouldAutoPlay(true);
     setIsPlaying(true);
-    setIsMuted(false);
 
     const tracksWithAudio: Track[] = [];
 
@@ -171,7 +196,6 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     setIsPlayerVisible(false);
     setCurrentTrack(null);
     setShouldAutoPlay(false);
-    setIsMuted(false);
   };
 
   const toggleShuffle = () => {
@@ -249,17 +273,48 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const toggleMute = () => {
-    if (audioElement) {
-      audioElement.muted = !isMuted;
-      setIsMuted(!isMuted);
+  const toggleMute = (currentVolume?: number, reason: 'button' | 'slider' = 'button') => {
+    const newMutedState = !isMuted;
+    setIsMuted(newMutedState);
+
+    if (newMutedState) {
+      if (currentVolume !== undefined) {
+        setPreviousVolume(currentVolume);
+      }
+      setMuteReason(reason);
+    } else {
+      setMuteReason(null);
+    }
+
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('audioPlayerMuted', JSON.stringify(newMutedState));
     }
   };
 
   const unmute = () => {
-    if (audioElement) {
-      audioElement.muted = false;
-      setIsMuted(false);
+    setIsMuted(false);
+    setMuteReason(null);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('audioPlayerMuted', JSON.stringify(false));
+    }
+    // Return the previous volume for restoration
+    return previousVolume;
+  };
+
+  const unmuteWithMaxVolume = () => {
+    setIsMuted(false);
+    setMuteReason(null);
+    setVolume(1);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('audioPlayerMuted', JSON.stringify(false));
+      localStorage.setItem('audioPlayerVolume', '1');
+    }
+  };
+
+  const handleSetVolume = (newVolume: number) => {
+    setVolume(newVolume);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('audioPlayerVolume', newVolume.toString());
     }
   };
 
@@ -272,6 +327,8 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
         isShuffled,
         isPlaying,
         isMuted,
+        volume,
+        muteReason,
         showPlayer,
         showPlayerAndPlay,
         hidePlayer,
@@ -281,6 +338,8 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
         playPreviousTrack,
         toggleMute,
         unmute,
+        unmuteWithMaxVolume,
+        setVolume: handleSetVolume,
         setAudioElement: setAudioElementRef,
       }}
     >

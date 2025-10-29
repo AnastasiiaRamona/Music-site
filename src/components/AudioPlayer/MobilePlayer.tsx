@@ -38,8 +38,11 @@ interface MobilePlayerProps {
   onSeekForward: () => void;
   onSeek: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onVolumeChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onToggleMute?: () => void;
+  onToggleMute?: (currentVolume?: number, reason?: 'button' | 'slider') => void;
+  onUnmuteWithMaxVolume?: () => void;
   isMuted?: boolean;
+  muteReason?: 'button' | 'slider' | null;
+  onVolumeZero?: () => void;
   onToggleExpanded: (e?: React.MouseEvent) => void;
   onClose: () => void;
   onToggleLyrics?: () => void;
@@ -63,7 +66,10 @@ export default function MobilePlayer({
   onSeek,
   onVolumeChange,
   onToggleMute,
+  onUnmuteWithMaxVolume,
   isMuted = false,
+  muteReason,
+  onVolumeZero,
   onToggleExpanded,
   onClose,
   onToggleLyrics,
@@ -206,8 +212,11 @@ export default function MobilePlayer({
               volume={volume}
               onVolumeChange={onVolumeChange}
               onToggleMute={onToggleMute}
+              onUnmuteWithMaxVolume={onUnmuteWithMaxVolume}
               isMuted={isMuted}
               isMobile={true}
+              muteReason={muteReason}
+              onVolumeZero={onVolumeZero}
             />
           </div>
         </div>
