@@ -43,8 +43,8 @@
     text-shadow:
       -1px -1px 0 var(--brown-accent),
       1px -1px 0 var(--brown-accent),
-      -1px 1px 10px var(--brown-accent),
-      1px 1px 8px var(--brown-accent);
+      -1px 1px 5px var(--brown-accent),
+      1px 1px 2px var(--brown-accent);
     rotate: -2deg;
   }
 
