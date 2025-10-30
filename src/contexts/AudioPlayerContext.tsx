@@ -44,12 +44,14 @@ interface AudioPlayerContextType {
 
 const AudioPlayerContext = createContext<AudioPlayerContextType | undefined>(undefined);
 
-function buildUnifiedTrackList(): Track[] {
-  const tracksWithAudio: Track[] = [];
+function buildUnifiedTrackLists(): { mainTracks: Track[]; coverTracks: Track[] } {
+  const mainTracks: Track[] = [];
+  const coverTracks: Track[] = [];
+
   albums.forEach(album => {
     if (album.isAlbum && album.tracks) {
       album.tracks.forEach(track => {
-        tracksWithAudio.push({
+        mainTracks.push({
           title: track.title,
           coverSrc: track.coverSrc || album.coverSrc,
           audioSrc: track.audioSrc,
@@ -63,7 +65,7 @@ function buildUnifiedTrackList(): Track[] {
         });
       });
     } else if (album.audioSrc) {
-      tracksWithAudio.push({
+      mainTracks.push({
         title: album.title,
         coverSrc: album.coverSrc,
         audioSrc: album.audioSrc,
@@ -76,8 +78,9 @@ function buildUnifiedTrackList(): Track[] {
       });
     }
   });
+
   coversData.forEach(c => {
-    tracksWithAudio.push({
+    coverTracks.push({
       title: c.title,
       coverSrc: c.coverSrc,
       audioSrc: c.audioSrc,
@@ -85,8 +88,10 @@ function buildUnifiedTrackList(): Track[] {
       isCover: true,
     });
   });
-  return tracksWithAudio;
+
+  return { mainTracks, coverTracks };
 }
+
 
 export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   const [isPlayerVisible, setIsPlayerVisible] = useState(false);
@@ -128,11 +133,13 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     setShouldAutoPlay(false);
   };
 
+  const { mainTracks, coverTracks } = buildUnifiedTrackLists();
+
   const showPlayerAndPlay = (track: Track) => {
     const isCover = coversData.some(c => c.id === track.albumId);
     let playlistToSet = [];
     if (isCover && isShuffled) {
-      playlistToSet = buildUnifiedTrackList();
+      playlistToSet = coverTracks;
     } else if (isCover) {
       playlistToSet = coversData.map(c => ({
         title: c.title,
@@ -142,7 +149,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
         isCover: true
       }));
     } else {
-      playlistToSet = buildUnifiedTrackList();
+      playlistToSet = mainTracks;
     }
     setPlaylist(playlistToSet);
     const trackIndex = playlistToSet.findIndex((t: any) => t.albumId === track.albumId);
