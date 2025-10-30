@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { albums } from '../data/albums';
-import { covers } from '../data/covers';
+import { covers as coversData } from '../data/covers';
 
 interface Track {
   title: string;
@@ -44,6 +44,50 @@ interface AudioPlayerContextType {
 
 const AudioPlayerContext = createContext<AudioPlayerContextType | undefined>(undefined);
 
+function buildUnifiedTrackList(): Track[] {
+  const tracksWithAudio: Track[] = [];
+  albums.forEach(album => {
+    if (album.isAlbum && album.tracks) {
+      album.tracks.forEach(track => {
+        tracksWithAudio.push({
+          title: track.title,
+          coverSrc: track.coverSrc || album.coverSrc,
+          audioSrc: track.audioSrc,
+          albumId: track.trackId,
+          parentAlbumId: album.albumId,
+          instrumental: track.instrumental,
+          spotifyLink: album.spotifyLink,
+          appleMusicLink: album.appleMusicLink,
+          youtubeLink: album.youtubeLink,
+          amazonLink: album.amazonLink,
+        });
+      });
+    } else if (album.audioSrc) {
+      tracksWithAudio.push({
+        title: album.title,
+        coverSrc: album.coverSrc,
+        audioSrc: album.audioSrc,
+        albumId: album.albumId,
+        instrumental: album.instrumental,
+        spotifyLink: album.spotifyLink,
+        appleMusicLink: album.appleMusicLink,
+        youtubeLink: album.youtubeLink,
+        amazonLink: album.amazonLink,
+      });
+    }
+  });
+  coversData.forEach(c => {
+    tracksWithAudio.push({
+      title: c.title,
+      coverSrc: c.coverSrc,
+      audioSrc: c.audioSrc,
+      albumId: c.id,
+      isCover: true,
+    });
+  });
+  return tracksWithAudio;
+}
+
 export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   const [isPlayerVisible, setIsPlayerVisible] = useState(false);
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
@@ -71,7 +115,6 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
   const [playedTracks, setPlayedTracks] = useState<Set<string>>(new Set());
 
-  // Apply muted state and volume to audio element when they change
   useEffect(() => {
     if (audioElement) {
       audioElement.muted = isMuted;
@@ -86,110 +129,28 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   };
 
   const showPlayerAndPlay = (track: Track) => {
-    const isCoverTrack = covers.some((cover: any) => cover.id === track.albumId);
-
-    setCurrentTrack({
-      ...track,
-      isCover: isCoverTrack
-    });
-
+    const isCover = coversData.some(c => c.id === track.albumId);
+    let playlistToSet = [];
+    if (isCover && isShuffled) {
+      playlistToSet = buildUnifiedTrackList();
+    } else if (isCover) {
+      playlistToSet = coversData.map(c => ({
+        title: c.title,
+        coverSrc: c.coverSrc,
+        audioSrc: c.audioSrc,
+        albumId: c.id,
+        isCover: true
+      }));
+    } else {
+      playlistToSet = buildUnifiedTrackList();
+    }
+    setPlaylist(playlistToSet);
+    const trackIndex = playlistToSet.findIndex((t: any) => t.albumId === track.albumId);
+    setCurrentIndex(trackIndex >= 0 ? trackIndex : 0);
+    setCurrentTrack(track);
     setIsPlayerVisible(true);
     setShouldAutoPlay(true);
-    setIsPlaying(true);
-
-    const tracksWithAudio: Track[] = [];
-
-    if (isCoverTrack) {
-      covers.forEach((cover: any) => {
-        tracksWithAudio.push({
-          title: cover.title,
-          coverSrc: cover.coverSrc,
-          audioSrc: cover.audioSrc,
-          albumId: cover.id,
-          isCover: true,
-        });
-      });
-    } else {
-      let sourceAlbum;
-      if (track.parentAlbumId) {
-        sourceAlbum = albums.find((album: any) => album.albumId === track.parentAlbumId);
-      } else {
-        sourceAlbum = albums.find((album: any) => {
-          if (album.isAlbum && album.tracks) {
-            return album.tracks.some((albumTrack: any) => albumTrack.trackId === track.albumId);
-          }
-          return album.albumId === track.albumId;
-        });
-      }
-
-      if (sourceAlbum && sourceAlbum.isAlbum && sourceAlbum.tracks) {
-        sourceAlbum.tracks.forEach((albumTrack: any) => {
-          tracksWithAudio.push({
-            title: albumTrack.title,
-            coverSrc: albumTrack.coverSrc || sourceAlbum.coverSrc,
-            audioSrc: albumTrack.audioSrc,
-            albumId: albumTrack.trackId,
-            isCover: false,
-            instrumental: albumTrack.instrumental,
-            spotifyLink: sourceAlbum.spotifyLink,
-            appleMusicLink: sourceAlbum.appleMusicLink,
-            youtubeLink: sourceAlbum.youtubeLink,
-            amazonLink: sourceAlbum.amazonLink
-          });
-        });
-      } else {
-        covers.forEach((cover: any) => {
-          tracksWithAudio.push({
-            title: cover.title,
-            coverSrc: cover.coverSrc,
-            audioSrc: cover.audioSrc,
-            albumId: cover.id,
-            isCover: true,
-          });
-        });
-
-        albums.forEach((album: any) => {
-          if (album.isAlbum && album.tracks) {
-            album.tracks.forEach((albumTrack: any) => {
-              tracksWithAudio.push({
-                title: albumTrack.title,
-                coverSrc: albumTrack.coverSrc || album.coverSrc,
-                audioSrc: albumTrack.audioSrc,
-                albumId: albumTrack.trackId,
-                isCover: false,
-                instrumental: albumTrack.instrumental,
-                spotifyLink: album.spotifyLink,
-                appleMusicLink: album.appleMusicLink,
-                youtubeLink: album.youtubeLink,
-                amazonLink: album.amazonLink
-              });
-            });
-          } else if (album.audioSrc) {
-            tracksWithAudio.push({
-              title: album.title,
-              coverSrc: album.coverSrc,
-              audioSrc: album.audioSrc,
-              albumId: album.albumId,
-              isCover: false,
-              instrumental: album.instrumental,
-              lyricsPath: album.lyricsPath,
-              spotifyLink: album.spotifyLink,
-              appleMusicLink: album.appleMusicLink,
-              youtubeLink: album.youtubeLink,
-              amazonLink: album.amazonLink
-            });
-          }
-        });
-      }
-    }
-
-    setPlaylist(tracksWithAudio);
-    const trackIndex = tracksWithAudio.findIndex((t: Track) => t.albumId === track.albumId);
-    setCurrentIndex(trackIndex >= 0 ? trackIndex : 0);
-    setPlayedTracks(new Set());
-    if (isShuffled && track.albumId) {
-      setPlayedTracks(prev => new Set([...Array.from(prev), track.albumId]));
-    }
+    setPlayedTracks(new Set(track.albumId ? [track.albumId] : []));
   };
 
   const hidePlayer = () => {
@@ -297,7 +258,6 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     if (typeof window !== 'undefined') {
       localStorage.setItem('audioPlayerMuted', JSON.stringify(false));
     }
-    // Return the previous volume for restoration
     return previousVolume;
   };
 

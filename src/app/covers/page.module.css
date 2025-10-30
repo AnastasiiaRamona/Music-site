@@ -116,3 +116,10 @@
     transform: translateX(50%);
   }
 }
+
+@media screen and (orientation: landscape),
+screen and (max-height: 600px) {
+  .borderImage {
+    transform: none;
+  }
+}
