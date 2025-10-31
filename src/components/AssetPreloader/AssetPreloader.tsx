@@ -37,7 +37,7 @@ export default function AssetPreloader({ images = [], audios = [], fonts = [] }:
     };
 
     const preloadAssets = async () => {
-      const promises: Promise<any>[] = [];
+      const promises: Promise<unknown>[] = [];
 
       images.forEach(src => {
         promises.push(preloadAsset(src, 'image'));

@@ -1,6 +1,14 @@
 const coversSrc = '/assets/covers/Covers.webp';
 
-export const covers = [
+export interface CoverData {
+  id: string;
+  title: string;
+  audioSrc: string;
+  coverSrc: string;
+  instrumental?: boolean;
+}
+
+export const covers: CoverData[] = [
   {
     id: 'always-wanna-die',
     title: 'I Always Wanna Die (Sometimes) (The 1975 Cover)',

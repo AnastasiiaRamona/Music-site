@@ -6,20 +6,24 @@ import styles from './SongList.module.css';
 import { useAudioPlayer } from '../../contexts/AudioPlayerContext';
 import { PlayIcon, PauseIcon } from '../Icons/Icons';
 
-interface SongListProps {
-  songs: Array<{
-    id: string;
-    title: string;
-    coverSrc: string;
-    audioSrc: string;
-    spotifyLink?: string;
-    appleMusicLink?: string;
-    youtubeLink?: string;
-    amazonLink?: string;
-  }>;
+interface SongItemData {
+  id: string;
+  title: string;
+  coverSrc: string;
+  audioSrc: string;
+  parentAlbumId?: string;
+  instrumental?: boolean;
+  spotifyLink?: string;
+  appleMusicLink?: string;
+  youtubeLink?: string;
+  amazonLink?: string;
 }
 
-function SongItem({ song, index, hasCover }: { song: any; index: number; hasCover: boolean }) {
+interface SongListProps {
+  songs: Array<SongItemData>;
+}
+
+function SongItem({ song, index, hasCover }: { song: SongItemData; index: number; hasCover: boolean }) {
   const { showPlayerAndPlay, currentTrack, isPlaying, togglePlayPause } = useAudioPlayer();
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);

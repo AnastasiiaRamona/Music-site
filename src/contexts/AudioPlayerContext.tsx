@@ -86,6 +86,7 @@ function buildUnifiedTrackLists(): { mainTracks: Track[]; coverTracks: Track[] }
       audioSrc: c.audioSrc,
       albumId: c.id,
       isCover: true,
+      instrumental: c.instrumental,
     });
   });
 
@@ -137,7 +138,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
 
   const showPlayerAndPlay = (track: Track) => {
     const isCover = coversData.some(c => c.id === track.albumId);
-    let playlistToSet = [];
+    let playlistToSet: Track[] = [];
     if (isCover && isShuffled) {
       playlistToSet = coverTracks;
     } else if (isCover) {
@@ -146,15 +147,17 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
         coverSrc: c.coverSrc,
         audioSrc: c.audioSrc,
         albumId: c.id,
-        isCover: true
+        isCover: true,
+        instrumental: c.instrumental
       }));
     } else {
       playlistToSet = mainTracks;
     }
     setPlaylist(playlistToSet);
-    const trackIndex = playlistToSet.findIndex((t: any) => t.albumId === track.albumId);
+    const trackIndex = playlistToSet.findIndex((t: Track) => t.albumId === track.albumId);
+    const finalTrack = trackIndex >= 0 ? playlistToSet[trackIndex] : track;
     setCurrentIndex(trackIndex >= 0 ? trackIndex : 0);
-    setCurrentTrack(track);
+    setCurrentTrack(finalTrack);
     setIsPlayerVisible(true);
     setShouldAutoPlay(true);
     setPlayedTracks(new Set(track.albumId ? [track.albumId] : []));
