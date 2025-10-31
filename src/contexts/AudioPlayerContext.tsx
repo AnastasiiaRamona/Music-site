@@ -120,6 +120,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
   const [playedTracks, setPlayedTracks] = useState<Set<string>>(new Set());
+  const [lastTrackBeforeReset, setLastTrackBeforeReset] = useState<string | null>(null);
 
   useEffect(() => {
     if (audioElement) {
@@ -161,6 +162,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
     setIsPlayerVisible(true);
     setShouldAutoPlay(true);
     setPlayedTracks(new Set(track.albumId ? [track.albumId] : []));
+    setLastTrackBeforeReset(null);
   };
 
   const hidePlayer = () => {
@@ -176,6 +178,7 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
       setPlayedTracks(new Set([currentTrack.albumId]));
     } else {
       setPlayedTracks(new Set());
+      setLastTrackBeforeReset(null);
     }
   };
 
@@ -196,25 +199,53 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
 
   const getNextShuffledTrack = (currentTrackId: string): number => {
     if (playedTracks.size >= playlist.length) {
+      setLastTrackBeforeReset(currentTrackId);
       setPlayedTracks(new Set());
     }
 
+    const excludeIds = new Set([currentTrackId]);
+    const isStartingNewCycle = playedTracks.size === 0;
+    if (isStartingNewCycle && lastTrackBeforeReset) {
+      excludeIds.add(lastTrackBeforeReset);
+    }
+
     const unplayedTracks = playlist.filter(track =>
-      !playedTracks.has(track.albumId) && track.albumId !== currentTrackId
+      !playedTracks.has(track.albumId) && !excludeIds.has(track.albumId)
     );
 
     if (unplayedTracks.length === 0) {
-      setPlayedTracks(new Set());
-      const randomIndex = Math.floor(Math.random() * playlist.length);
-      const selectedTrackId = playlist[randomIndex].albumId;
-      setPlayedTracks(new Set([selectedTrackId]));
-      return randomIndex;
+      const availableTracks = playlist.filter(track => !excludeIds.has(track.albumId));
+      if (availableTracks.length === 0) {
+        const randomIndex = Math.floor(Math.random() * playlist.length);
+        const selectedTrackId = playlist[randomIndex].albumId;
+        setPlayedTracks(new Set([selectedTrackId]));
+        setLastTrackBeforeReset(null);
+        return randomIndex;
+      }
+      const randomIndex = Math.floor(Math.random() * availableTracks.length);
+      const selectedTrack = availableTracks[randomIndex];
+      const trackIndex = playlist.findIndex(track => track.albumId === selectedTrack.albumId);
+      setPlayedTracks(new Set([selectedTrack.albumId]));
+      if (isStartingNewCycle) {
+        setLastTrackBeforeReset(null);
+      }
+      return trackIndex;
     }
 
     const randomTrack = unplayedTracks[Math.floor(Math.random() * unplayedTracks.length)];
     const trackIndex = playlist.findIndex(track => track.albumId === randomTrack.albumId);
 
-    setPlayedTracks(prev => new Set([...Array.from(prev), randomTrack.albumId]));
+    setPlayedTracks(prev => {
+      const newSet = new Set([...Array.from(prev), randomTrack.albumId]);
+      if (newSet.size === playlist.length) {
+        setLastTrackBeforeReset(randomTrack.albumId);
+      }
+      return newSet;
+    });
+
+    if (isStartingNewCycle && lastTrackBeforeReset) {
+      setLastTrackBeforeReset(null);
+    }
 
     return trackIndex;
   };
