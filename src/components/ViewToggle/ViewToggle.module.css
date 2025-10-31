@@ -1,0 +1,75 @@
+.toggleContainer {
+  display: flex;
+  background: var(--white-10);
+  border-radius: 8px;
+  padding: 4px;
+  margin: 20px auto;
+  max-width: 200px;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--white-20);
+}
+
+.toggleButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: var(--white-70);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  flex: 1;
+  justify-content: center;
+}
+
+@media (hover: hover) {
+  .toggleButton:hover {
+    color: rgba(255, 255, 255, 0.9);
+    background: var(--white-10);
+  }
+
+  .toggleButton:hover svg {
+    transform: scale(1.1);
+  }
+}
+
+.toggleButton:focus,
+.toggleButton:active {
+  color: rgba(255, 255, 255, 0.9);
+  background: var(--white-10);
+}
+
+.toggleButton:focus svg,
+.toggleButton:active svg {
+  transform: scale(1.1);
+}
+
+.toggleButton.active {
+  background: var(--white-20);
+  box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.toggleButton svg {
+  transition: transform 0.2s ease;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .toggleButton svg {
+    fill: var(--white-70);
+  }
+
+  .toggleButton:hover svg,
+  .toggleButton:focus svg,
+  .toggleButton:active svg {
+    fill: rgba(255, 255, 255, 0.9);
+  }
+
+  .toggleButton.active svg {
+    fill: var(--white-70);
+  }
+}

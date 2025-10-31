@@ -1,0 +1,35 @@
+.site-navigation {
+  font-size: 4rem;
+  font-family: 'Clawmark';
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-navigation span {
+  color: var(--white);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+@media (hover: hover) {
+  .site-navigation span:hover {
+    color: var(--blue);
+  }
+}
+
+.site-navigation span:focus,
+.site-navigation span:active {
+  color: var(--blue);
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+  .site-navigation {
+    font-size: 2rem;
+  }
+}

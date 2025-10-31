@@ -1,85 +1,87 @@
 'use client';
 
-import React, { RefObject, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useEffect, useState } from 'react';
 import styles from './page.module.css';
-import { Vibes } from 'next/font/google';
-import getTheLatestRelease from '../../data/albums';
+import { motion } from 'framer-motion';
+import LatestRelease from '@/components/LatestRelease/LatestRelease';
+import AnimatedText from '@/components/AnimatedText/AnimatedText';
+import NavigationSection from '@/components/NavigationSection/NavigationSection';
+import ContactPopup from '@/components/ContactPopup/ContactPopup';
+import Link from 'next/link';
 
-const vibes = Vibes({ weight: '400', subsets: ['latin'] });
-
-type IframeProps = {
-  src: string;
-};
-
-function IframeComponent({ src }: IframeProps) {
-  return (
-    <iframe
-      src={src}
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-      rel="preload"
-    ></iframe>
-  );
-}
-
-function scrollToSection(ref: RefObject<HTMLElement>) {
-  ref.current?.scrollIntoView({ behavior: 'smooth' });
-}
-
-const Home = () => {
-  const newReleaseSectionRef = useRef<HTMLElement>(null);
-
-  const latestReleaseSrc = getTheLatestRelease().youtubeLink;
-
-  const welcomeText = "Welcome to Anastasiia Ramona's Music World";
-  const heroDescription = "Explore Anastasiia Ramona's music and find out more about our journey.";
-  const latestReleaseDescription = "Check out Anastasiia Ramona's latest release and get a taste of her new sound.";
+export default function Home() {
+  const [isContactPopupOpen, setIsContactPopupOpen] = useState(false);
 
   useEffect(() => {
-    const CustomToast = () => (
-      <div
-        onClick={() => {
-          scrollToSection(newReleaseSectionRef);
-        }}
-        className={styles['custom-toast']}
-      >
-        Listen to the latest release!
-      </div>
-    );
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      document.body.style.setProperty('--scrollTop', `${scrollY}px`);
+    };
 
-    toast(<CustomToast />, {
-      position: 'bottom-left',
-      autoClose: 5000,
-    });
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  return (
-    <section className={styles['site-main']}>
-      <section className={styles['hero-section']}>
-        <div className={styles['hero-content']}>
-          <h2>{welcomeText}</h2>
-          <p>{heroDescription}</p>
-          <button className={styles['cta-button']}>
-            <Link legacyBehavior href="/music" rel="preload">
-              Learn More
-            </Link>
-          </button>
-        </div>
-      </section>
-      <section ref={newReleaseSectionRef} className={styles['new-release-section']}>
-        <h2 className={vibes.className}>THE LATEST RELEASE</h2>
-        <div className={styles['new-release-content']}>
-          <IframeComponent src={latestReleaseSrc} />
-          <p>{latestReleaseDescription}</p>
-        </div>
-      </section>
-      <ToastContainer />
+  const description = "Indie Dream Crafter";
+  const latestReleaseText = "Grab the Latest Release";
+
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsContactPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsContactPopupOpen(false);
+  };
+
+  return <>
+    <section>
+      <div className={styles['layers']}>
+        <motion.h1
+          data-text="Anastasiia Ramona"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{
+            duration: 1,
+            ease: 'easeOut',
+          }}
+        >
+          Anastasiia Ramona
+        </motion.h1>
+        <h2>
+          <AnimatedText text={description} />
+        </h2>
+        <div className={`${styles.layer} ${styles['layer-base']}`}></div>
+        <div className={`${styles.layer} ${styles['layer-table']}`}></div>
+        <div className={`${styles.layer} ${styles['layer-bottom']}`}></div>
+      </div>
     </section>
-  );
-};
 
-export default Home;
+    <NavigationSection
+      onContactClick={handleContactClick}
+      isContactPopupOpen={isContactPopupOpen}
+    />
 
+    <section className={styles['new-release-section']}>
+      <div className={styles['layers']}>
+        <h3><Link href="/music"><AnimatedText text={latestReleaseText} /></Link></h3>
+        <div className={`${styles.layer} ${styles['layer-top']}`}></div>
+        <div className={`${styles.layer} ${styles['layer-waves']}`}></div>
+        <LatestRelease />
+        <article className={styles['new-release-additional-text']}>
+          <p>Close your eyes, you&apos;re already here <br />
+            Nothing here is real, but it all feels familiar </p>
+        </article>
+      </div>
+    </section>
+
+    <ContactPopup
+      isOpen={isContactPopupOpen}
+      onClose={handleClosePopup}
+    />
+  </>
+}

@@ -1,0 +1,130 @@
+.trackInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 20vw;
+}
+
+.albumCover {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow-medium);
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+.albumCover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trackDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.trackTitle {
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 18vw;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.trackTitleText {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.trackTitleText.animate {
+  animation: scrollText 8s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(0);
+  }
+
+  80% {
+    transform: translateX(calc(-100% + 170px));
+  }
+
+  100% {
+    transform: translateX(calc(-100% + 170px));
+  }
+}
+
+.trackArtist {
+  color: var(--gray-light);
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.mobile {
+  width: auto;
+  flex: 1;
+  min-width: 0;
+}
+
+.mobile .albumCover {
+  width: 40px;
+  height: 40px;
+}
+
+.mobile .trackTitle {
+  font-size: 14px;
+  max-width: none;
+}
+
+.mobile .trackTitleText.animate {
+  animation: scrollTextMobile 8s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes scrollTextMobile {
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(0);
+  }
+
+  80% {
+    transform: translateX(calc(-100% + 57vw));
+  }
+
+  100% {
+    transform: translateX(calc(-100% + 57vw));
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .mobile .trackTitle {
+    max-width: 57vw;
+  }
+}
+
+.mobile .trackArtist {
+  font-size: 12px;
+  max-width: none;
+}

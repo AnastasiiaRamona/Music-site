@@ -1,0 +1,129 @@
+.playbackControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.controlBtn {
+  background: var(--white-70);
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (hover: hover) {
+  .controlBtn:hover {
+    background: var(--white-90);
+    transform: scale(1.05);
+  }
+}
+
+.controlBtn.active {
+  background: var(--white);
+}
+
+.playBtn {
+  background: var(--white);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--black);
+  box-shadow: 0 4px 12px var(--shadow-medium);
+  margin: 0 8px;
+}
+
+@media (hover: hover) {
+  .playBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px var(--shadow-dark);
+  }
+}
+
+.seekBtn {
+  background: var(--white-70);
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (hover: hover) {
+  .seekBtn:hover {
+    background: var(--white-90);
+    transform: scale(1.1);
+  }
+}
+
+.mobile {
+  gap: 16px;
+}
+
+@media (max-width: 440px) {
+  .playbackControls {
+    gap: 7px;
+  }
+
+  .playBtn {
+    margin: 0px;
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .playbackControls {
+    gap: 4px;
+  }
+}
+
+.mobile .controlBtn {
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.mobile .controlBtn:active {
+  background: var(--white-90);
+  transform: scale(0.95);
+}
+
+.mobile .seekBtn {
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.mobile .seekBtn:active {
+  background: var(--white-90);
+  transform: scale(0.95);
+}
+
+.mobile .playBtn {
+  width: 56px;
+  height: 56px;
+  box-shadow: 0 4px 16px var(--shadow-medium);
+}
+
+.mobile .playBtn:active {
+  transform: scale(0.95);
+}
+
+@media screen and (max-width: 350px) {
+  .playbackControls {
+    gap: 2px;
+  }
+}

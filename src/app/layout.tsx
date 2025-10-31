@@ -2,16 +2,21 @@ import type { Metadata } from 'next';
 import 'normalize.css';
 
 import './globals.css';
-import { Halant } from 'next/font/google';
-import StartPage from '../components/StartPage/StartPage';
-import { images } from '../data/albums';
+import { Halant, Lato } from 'next/font/google';
+import { getCriticalAssets } from '../data/preloadConfig';
 import Head from 'next/head';
+import { AudioPlayerProvider } from '../contexts/AudioPlayerContext';
+import { LyricsProvider } from '../contexts/LyricsContext';
+import ClientLayout from '../components/ClientLayout/ClientLayout';
 
 const overlock = Halant({ weight: '400', subsets: ['latin'] });
+const lato = Lato({ weight: ['300', '400', '700'], subsets: ['latin'] });
+
+export { lato };
 
 export const metadata: Metadata = {
   title: 'ANASTASIIA RAMONA',
-  description: 'Indie-musician/singer-songwriter',
+  description: 'Indie musician &singer-songwriter',
   verification: {
     yandex: '18436f7da04f12f3',
   },
@@ -24,6 +29,7 @@ export const viewport = {
   viewportFit: 'cover',
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,12 +38,34 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${overlock.className}`}>
       <Head>
-        {images.map((src, index) => (
-          <link key={index} rel="preload" href={src.toString()} as="image" />
-        ))}
+        {getCriticalAssets().map((src, index) => {
+          let asAttribute = 'image';
+          if (src.endsWith('.otf') || src.endsWith('.woff') || src.endsWith('.woff2') || src.endsWith('.ttf')) {
+            asAttribute = 'font';
+          } else if (src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.ogg')) {
+            asAttribute = 'video';
+          } else if (src.endsWith('.mp3') || src.endsWith('.opus') || src.endsWith('.wav')) {
+            asAttribute = 'audio';
+          }
+
+          return (
+            <link
+              key={index}
+              rel="preload"
+              href={src}
+              as={asAttribute}
+              fetchPriority="high"
+              {...(asAttribute === 'font' && { crossOrigin: 'anonymous' })}
+            />
+          );
+        })}
       </Head>
       <body>
-        <StartPage>{children}</StartPage>
+        <AudioPlayerProvider>
+          <LyricsProvider>
+            <ClientLayout>{children}</ClientLayout>
+          </LyricsProvider>
+        </AudioPlayerProvider>
       </body>
     </html>
   );
