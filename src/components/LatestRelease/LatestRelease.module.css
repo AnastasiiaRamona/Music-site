@@ -26,8 +26,8 @@
   width: 23vw;
   height: auto;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 48%;
+  left: 49%;
   transform: translate(-50%, -50%);
   z-index: 100;
 }
