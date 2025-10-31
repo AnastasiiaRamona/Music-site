@@ -170,8 +170,11 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   };
 
   const toggleShuffle = () => {
-    setIsShuffled(!isShuffled);
-    if (isShuffled) {
+    const newShuffledState = !isShuffled;
+    setIsShuffled(newShuffledState);
+    if (newShuffledState && currentTrack) {
+      setPlayedTracks(new Set([currentTrack.albumId]));
+    } else {
       setPlayedTracks(new Set());
     }
   };
@@ -192,15 +195,23 @@ export function AudioPlayerProvider({ children }: { children: ReactNode }) {
   };
 
   const getNextShuffledTrack = (currentTrackId: string): number => {
-    const availableTracks = playlist.filter(track => track.albumId !== currentTrackId);
+    if (playedTracks.size >= playlist.length) {
+      setPlayedTracks(new Set());
+    }
 
-    if (availableTracks.length === 0) {
+    const unplayedTracks = playlist.filter(track =>
+      !playedTracks.has(track.albumId) && track.albumId !== currentTrackId
+    );
+
+    if (unplayedTracks.length === 0) {
       setPlayedTracks(new Set());
       const randomIndex = Math.floor(Math.random() * playlist.length);
+      const selectedTrackId = playlist[randomIndex].albumId;
+      setPlayedTracks(new Set([selectedTrackId]));
       return randomIndex;
     }
 
-    const randomTrack = availableTracks[Math.floor(Math.random() * availableTracks.length)];
+    const randomTrack = unplayedTracks[Math.floor(Math.random() * unplayedTracks.length)];
     const trackIndex = playlist.findIndex(track => track.albumId === randomTrack.albumId);
 
     setPlayedTracks(prev => new Set([...Array.from(prev), randomTrack.albumId]));

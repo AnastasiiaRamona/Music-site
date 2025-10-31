@@ -43,6 +43,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+@media (hover: hover) {
+  .title:hover {
+    opacity: 0.8;
+  }
 }
 
 

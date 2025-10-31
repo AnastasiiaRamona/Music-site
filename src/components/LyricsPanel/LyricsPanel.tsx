@@ -65,7 +65,7 @@ export default function LyricsPanel({ isOpen, onClose, songId, songTitle, lyrics
             className={styles.panel}
           >
             <div className={styles.header}>
-              <h3 className={styles.title}>{songTitle}</h3>
+              <h3 className={styles.title} onClick={onClose}>{songTitle}</h3>
             </div>
 
             <div className={styles.content}>
