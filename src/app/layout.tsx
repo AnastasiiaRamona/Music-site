@@ -16,9 +16,10 @@ export { lato };
 
 export const metadata: Metadata = {
   title: 'ANASTASIIA RAMONA',
-  description: 'Indie musician &singer-songwriter',
+  description: 'Indie musician & singer-songwriter',
   verification: {
     yandex: '18436f7da04f12f3',
+    google: '_VP7MNXQLWK3loVZk5OQu5WaijMQDKe7s7XDR4g2ixg',
   },
 };
 
