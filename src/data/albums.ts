@@ -19,6 +19,7 @@ const coverSrc18 = '/assets/covers/The-Art-of-Rebellion.webp';
 const coverSrc19 = '/assets/covers/the-remastered-collection.webp';
 const coverSrc20 = '/assets/covers/Twenty-Eight-Past Four.webp';
 const coverSrc21 = '/assets/covers/north-of-me.webp';
+const coverSrc22 = '/assets/covers/the-torch.webp';
 
 export const preloadImages = [
   coverSrc1,
@@ -45,6 +46,18 @@ export const preloadImages = [
 ];
 
 export const albums = [
+  {
+    albumId: 'the-torch',
+    coverSrc: coverSrc22,
+    title: 'The Torch',
+    audioSrc: '/audios/the-torch.opus',
+    lyricsPath: '/lyrics/the-torch.txt',
+    appleMusicLink: 'https://music.apple.com/us/song/the-torch/1853073173',
+    spotifyLink: 'https://open.spotify.com/track/4KZ5LQGRHqy27aU1v82l6H?si=86fa94bc15bd4c23',
+    youtubeLink: 'https://youtu.be/umdxGdgtr9s?si=gJP7VJoQvW5a_Rpg',
+    amazonLink:
+      'https://amazon.com/music/player/tracks/B0G2CPD7R2?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_OkXctSZi30pPmCPcu9beTL0wN',
+  },
   {
     albumId: 'north-of-me',
     coverSrc: coverSrc21,
