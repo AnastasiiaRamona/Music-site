@@ -1,57 +1,21 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import styles from './page.module.css';
-import { motion } from 'framer-motion';
 import LatestRelease from '@/components/LatestRelease/LatestRelease';
 import AnimatedText from '@/components/AnimatedText/AnimatedText';
-import NavigationSection from '@/components/NavigationSection/NavigationSection';
-import ContactPopup from '@/components/ContactPopup/ContactPopup';
+import ContactController from './ContactController.client';
+import ScrollVar from './ScrollVar.client';
 import Link from 'next/link';
 
+export const dynamic = 'force-static';
+
 export default function Home() {
-  const [isContactPopupOpen, setIsContactPopupOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      document.body.style.setProperty('--scrollTop', `${scrollY}px`);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   const description = "Indie Dream Crafter";
   const latestReleaseText = "Grab the Latest Release";
 
-  const handleContactClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setIsContactPopupOpen(true);
-  };
-
-  const handleClosePopup = () => {
-    setIsContactPopupOpen(false);
-  };
-
   return <>
+    <ScrollVar />
     <section>
       <div className={styles['layers']}>
-        <motion.h1
-          data-text="Anastasiia Ramona"
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{
-            duration: 1,
-            ease: 'easeOut',
-          }}
-        >
-          Anastasiia Ramona
-        </motion.h1>
+        <h1 data-text="Anastasiia Ramona">Anastasiia Ramona</h1>
         <h2>
           <AnimatedText text={description} />
         </h2>
@@ -61,10 +25,7 @@ export default function Home() {
       </div>
     </section>
 
-    <NavigationSection
-      onContactClick={handleContactClick}
-      isContactPopupOpen={isContactPopupOpen}
-    />
+    <ContactController />
 
     <section className={styles['new-release-section']}>
       <div className={styles['layers']}>
@@ -78,10 +39,5 @@ export default function Home() {
         </article>
       </div>
     </section>
-
-    <ContactPopup
-      isOpen={isContactPopupOpen}
-      onClose={handleClosePopup}
-    />
   </>
 }

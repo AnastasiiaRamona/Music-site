@@ -1,3 +1,6 @@
+import { albums } from './albums';
+import { covers } from './covers';
+
 export const preloadConfig = {
   criticalImages: [
     '/assets/musician-1.webp',
@@ -47,6 +50,9 @@ export const preloadConfig = {
     '/assets/covers/The-Art-of-Rebellion.webp',
     '/assets/covers/the-remastered-collection.webp',
     '/assets/covers/Twenty-Eight-Past Four.webp',
+    '/assets/covers/driftwood-kingdom.webp',
+    '/assets/covers/the-torch.webp',
+    '/assets/covers/north-of-me.webp',
   ],
 };
 
@@ -58,7 +64,20 @@ export const getCriticalAssets = () => [
   '/assets/bright-background-top.png',
   '/assets/bright-background.webp',
   '/fonts/Clawmark-OVo1p.otf',
+  '/assets/vinyl.webp',
 ];
+
+export const getCriticalAlbumCovers = () => {
+  const latestRelease = albums[0];
+  const latestCover = latestRelease?.coverSrc;
+  const priorityCovers = getPriorityAlbumAssets();
+
+  const critical = new Set<string>();
+  if (latestCover) critical.add(latestCover);
+  priorityCovers.forEach(cover => critical.add(cover));
+
+  return Array.from(critical);
+};
 
 export const getPriorityAlbumAssets = () => [
   '/assets/covers/friend-of-mine_2_11zon.webp',
@@ -66,4 +85,36 @@ export const getPriorityAlbumAssets = () => [
   '/assets/covers/unsolved-problem_5_11zon.webp',
   '/assets/covers/album_9_11zon.webp',
   '/assets/covers/dont-look-down_8_11zon.webp',
+];
+
+export const getAllAlbumAssets = () => preloadConfig.albumCovers;
+
+export const getNonCriticalAlbumAssets = () => {
+  const critical = new Set(getCriticalAlbumCovers());
+  return preloadConfig.albumCovers.filter(cover => !critical.has(cover));
+};
+
+export const getAllAudioAssets = () => {
+  const all = new Set<string>();
+
+  for (const album of albums) {
+    if (album.isAlbum && album.tracks) {
+      for (const t of album.tracks) {
+        if (t.audioSrc) all.add(t.audioSrc);
+      }
+    } else if (album.audioSrc) {
+      all.add(album.audioSrc);
+    }
+  }
+
+  for (const c of covers) {
+    if (c.audioSrc) all.add(c.audioSrc);
+  }
+
+  return Array.from(all);
+};
+
+export const getVideoAssets = () => [
+  '/videos/video.mp4',
+  '/videos/music.mp4',
 ];

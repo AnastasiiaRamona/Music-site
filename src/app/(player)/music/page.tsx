@@ -1,4 +1,4 @@
-import { albums } from '../../data/albums';
+import { albums } from '../../../data/albums';
 import HeroSection from '@/components/HeroSection/HeroSection';
 import MusicPageClient from '@/components/MusicPageClient/MusicPageClient';
 
@@ -73,6 +73,8 @@ function processAlbumsData() {
   return { covers, songs };
 }
 
+export const dynamic = 'force-static';
+
 export default function Music() {
   const { covers, songs } = processAlbumsData();
 
@@ -83,3 +85,4 @@ export default function Music() {
     </>
   );
 }
+

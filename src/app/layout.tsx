@@ -3,8 +3,6 @@ import 'normalize.css';
 
 import './globals.css';
 import { Halant, Lato } from 'next/font/google';
-import { getCriticalAssets } from '../data/preloadConfig';
-import Head from 'next/head';
 import { AudioPlayerProvider } from '../contexts/AudioPlayerContext';
 import { LyricsProvider } from '../contexts/LyricsContext';
 import ClientLayout from '../components/ClientLayout/ClientLayout';
@@ -38,29 +36,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${overlock.className}`}>
-      <Head>
-        {getCriticalAssets().map((src, index) => {
-          let asAttribute = 'image';
-          if (src.endsWith('.otf') || src.endsWith('.woff') || src.endsWith('.woff2') || src.endsWith('.ttf')) {
-            asAttribute = 'font';
-          } else if (src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.ogg')) {
-            asAttribute = 'video';
-          } else if (src.endsWith('.mp3') || src.endsWith('.opus') || src.endsWith('.wav')) {
-            asAttribute = 'audio';
-          }
-
-          return (
-            <link
-              key={index}
-              rel="preload"
-              href={src}
-              as={asAttribute}
-              fetchPriority="high"
-              {...(asAttribute === 'font' && { crossOrigin: 'anonymous' })}
-            />
-          );
-        })}
-      </Head>
       <body>
         <AudioPlayerProvider>
           <LyricsProvider>
