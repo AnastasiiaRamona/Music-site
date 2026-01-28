@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
-import Image from 'next/image';
 import styles from './AudioPlayer.module.css';
 import { useAudioPlayer } from '../../contexts/AudioPlayerContext';
 import { useLyrics } from '../../contexts/LyricsContext';

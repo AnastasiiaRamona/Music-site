@@ -3,6 +3,7 @@
   src: url('/fonts/Clawmark-OVo1p.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 :root {
