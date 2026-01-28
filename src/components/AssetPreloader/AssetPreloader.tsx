@@ -10,7 +10,30 @@ interface AssetPreloaderProps {
 
 export default function AssetPreloader({ images = [], audios = [], fonts = [] }: AssetPreloaderProps) {
   useEffect(() => {
+    const runWhenIdle = (fn: () => void) => {
+      if (typeof window === 'undefined') return;
+      const w = window as unknown as {
+        requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+        cancelIdleCallback?: (id: number) => void;
+      };
+
+      if (w.requestIdleCallback) {
+        const id = w.requestIdleCallback(fn, { timeout: 2000 });
+        return () => w.cancelIdleCallback?.(id);
+      }
+
+      const t = window.setTimeout(fn, 0);
+      return () => window.clearTimeout(t);
+    };
+
+    const preloadedAssets = new Set<string>();
+
     const preloadAsset = (src: string, type: 'image' | 'audio' | 'font') => {
+      if (preloadedAssets.has(src)) {
+        return Promise.resolve(src);
+      }
+      preloadedAssets.add(src);
+
       return new Promise((resolve, reject) => {
         if (type === 'image') {
           const img = new Image();
@@ -27,7 +50,10 @@ export default function AssetPreloader({ images = [], audios = [], fonts = [] }:
           const link = document.createElement('link');
           link.rel = 'preload';
           link.as = 'font';
-          link.type = 'font/woff2';
+          if (src.endsWith('.woff2')) link.type = 'font/woff2';
+          else if (src.endsWith('.woff')) link.type = 'font/woff';
+          else if (src.endsWith('.otf')) link.type = 'font/otf';
+          else if (src.endsWith('.ttf')) link.type = 'font/ttf';
           link.crossOrigin = 'anonymous';
           link.href = src;
           document.head.appendChild(link);
@@ -39,27 +65,30 @@ export default function AssetPreloader({ images = [], audios = [], fonts = [] }:
     const preloadAssets = async () => {
       const promises: Promise<unknown>[] = [];
 
-      images.forEach(src => {
+      const uniqueImages = Array.from(new Set(images));
+      const uniqueAudios = Array.from(new Set(audios));
+      const uniqueFonts = Array.from(new Set(fonts));
+
+      uniqueImages.forEach(src => {
         promises.push(preloadAsset(src, 'image'));
       });
 
-      audios.forEach(src => {
+      uniqueAudios.forEach(src => {
         promises.push(preloadAsset(src, 'audio'));
       });
 
-      fonts.forEach(src => {
+      uniqueFonts.forEach(src => {
         promises.push(preloadAsset(src, 'font'));
       });
 
-      try {
-        await Promise.allSettled(promises);
-        console.log('Assets preloaded successfully');
-      } catch (error) {
-        console.warn('Some assets failed to preload:', error);
-      }
+      await Promise.allSettled(promises);
     };
 
-    preloadAssets();
+    const cancel = runWhenIdle(() => {
+      void preloadAssets();
+    });
+
+    return () => cancel?.();
   }, [images, audios, fonts]);
 
   return null;

@@ -5,7 +5,7 @@ import { useLyrics } from '../../contexts/LyricsContext';
 import AudioPlayer from '../AudioPlayer/AudioPlayer';
 import LyricsPanel from '../LyricsPanel/LyricsPanel';
 import AssetPreloader from '../AssetPreloader/AssetPreloader';
-import { getPriorityAlbumAssets } from '../../data/preloadConfig';
+import { getNonCriticalAlbumAssets } from '../../data/preloadConfig';
 import { useEffect, useState } from 'react';
 
 interface ClientLayoutProps {
@@ -27,7 +27,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
 
   return (
     <>
-      {shouldPreloadAlbums && <AssetPreloader images={getPriorityAlbumAssets()} />}
+      {shouldPreloadAlbums && <AssetPreloader images={getNonCriticalAlbumAssets()} />}
       {children}
       <AudioPlayer
         isVisible={isPlayerVisible}

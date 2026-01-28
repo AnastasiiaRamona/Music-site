@@ -37,7 +37,6 @@
   z-index: 1;
 }
 
-/* Анимация мерцания */
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
@@ -48,7 +47,6 @@
   }
 }
 
-/* Варианты скелетона для разных типов изображений */
 .skeleton.cover {
   border-radius: 8px;
 }
@@ -65,7 +63,6 @@
   border-radius: 4px;
 }
 
-/* Адаптивные размеры для скелетона */
 .skeleton.small {
   min-height: 40px;
 }

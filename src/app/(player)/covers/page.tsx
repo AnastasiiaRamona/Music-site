@@ -1,10 +1,10 @@
-'use client';
-
 import Image from 'next/image';
-import SongList from '../../components/SongList/SongList';
-import BackButton from '../../components/BackButton/BackButton';
-import { covers } from '../../data/covers';
+import SongList from '../../../components/SongList/SongList';
+import BackButton from '../../../components/BackButton/BackButton';
+import { covers } from '../../../data/covers';
 import styles from './page.module.css';
+
+export const dynamic = 'force-static';
 
 export default function CoversPage() {
   return (
@@ -21,13 +21,7 @@ export default function CoversPage() {
 
       <div className={styles.rightSide}>
         <div className={styles.videoContainer}>
-          <video
-            className={styles.backgroundVideo}
-            autoPlay
-            loop
-            muted
-            playsInline
-          >
+          <video className={styles.backgroundVideo} autoPlay loop muted playsInline>
             <source src="/videos/music.mp4" type="video/mp4" />
           </video>
           <div className={styles.videoBorder}>
@@ -45,3 +39,4 @@ export default function CoversPage() {
     </div>
   );
 }
+

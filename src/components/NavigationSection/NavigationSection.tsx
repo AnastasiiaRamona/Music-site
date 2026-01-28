@@ -1,5 +1,8 @@
-import Link from 'next/link'
-import styles from './NavigationSection.module.css'
+'use client';
+
+import type React from 'react';
+import Link from 'next/link';
+import styles from './NavigationSection.module.css';
 
 type NavigationSectionProps = {
   onContactClick?: (e: React.MouseEvent) => void;

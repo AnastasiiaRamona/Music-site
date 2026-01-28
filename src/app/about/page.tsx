@@ -4,6 +4,8 @@ import AboutClient from '@/components/AboutClient/AboutClient';
 import BackButton from '@/components/BackButton/BackButton';
 import { aboutData } from '@/data/aboutData';
 
+export const dynamic = 'force-static';
+
 export default function About() {
   return (
     <section className={styles.about}>

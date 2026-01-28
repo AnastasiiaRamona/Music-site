@@ -1,3 +1,5 @@
+'use client';
+
 import getTheLatestRelease from '@/data/albums';
 import Image from 'next/image';
 import styles from './LatestRelease.module.css';
