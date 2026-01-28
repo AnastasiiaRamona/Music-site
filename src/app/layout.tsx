@@ -7,8 +7,16 @@ import { AudioPlayerProvider } from '../contexts/AudioPlayerContext';
 import { LyricsProvider } from '../contexts/LyricsContext';
 import ClientLayout from '../components/ClientLayout/ClientLayout';
 
-const overlock = Halant({ weight: '400', subsets: ['latin'] });
-const lato = Lato({ weight: ['300', '400', '700'], subsets: ['latin'] });
+const overlock = Halant({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+});
+const lato = Lato({
+  weight: ['300', '400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export { lato };
 
