@@ -96,7 +96,7 @@ function SongItem({ song, index, hasCover }: { song: SongItemData; index: number
             alt={song.title}
             width={40}
             height={40}
-            unoptimized={true}
+            sizes="(max-width: 480px) 50px, (max-width: 768px) 60px, 84px"
           />
         </div>
       )}

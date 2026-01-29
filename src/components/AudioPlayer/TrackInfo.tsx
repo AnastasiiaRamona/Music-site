@@ -39,7 +39,7 @@ export default function TrackInfo({ title, coverSrc, isMobile = false }: TrackIn
             alt={title}
             width={isMobile ? 40 : 56}
             height={isMobile ? 40 : 56}
-            unoptimized={true}
+            sizes={isMobile ? '80px' : '112px'}
           />
         </div>
       )}
