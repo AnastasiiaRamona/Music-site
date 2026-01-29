@@ -4,7 +4,7 @@
 
 **A beautiful, modern music website showcasing indie dream pop and synth pop**
 
-[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16.1.6-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18-61dafb?style=flat-square&logo=react)](https://reactjs.org/)
 [![Material-UI](https://img.shields.io/badge/Material--UI-6-0081CB?style=flat-square&logo=mui)](https://mui.com/)
@@ -103,7 +103,7 @@ npm start
 ## 🛠️ Tech Stack
 
 ### Core
-- **[Next.js 14](https://nextjs.org/)** - React framework with App Router
+- **[Next.js 16.1.6](https://nextjs.org/)** - React framework with App Router
 - **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
 - **[React 18](https://reactjs.org/)** - UI library
 
@@ -195,12 +195,12 @@ The site is configured for deployment on **Netlify** (see `netlify.toml`).
 
 1. Push your code to a Git repository
 2. Connect the repository to Netlify
-3. Netlify will automatically detect Next.js and build the site
+3. Netlify will automatically detect Next.js 16 and build the site
 
 ### Other Platforms
 
 The site can also be deployed to:
-- **Vercel** (recommended for Next.js)
+- **Vercel** (recommended for Next.js 16)
 - **AWS Amplify**
 - **Cloudflare Pages**
 - Any platform supporting Node.js
@@ -281,7 +281,7 @@ This project represents a complete creative vision brought to life through music
 
 ## 🙏 Acknowledgments
 
-- Built with ❤️ using Next.js and React
+- Built with ❤️ using Next.js 16 and React
 - Audio format optimization for web performance
 - Modern web standards and best practices
 

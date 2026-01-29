@@ -170,7 +170,7 @@ export default function MobilePlayer({
               alt={currentTrack.title}
               width={400}
               height={400}
-              unoptimized={true}
+              sizes="(max-width: 480px) 400px, 800px"
             />
           )}
         </div>
