@@ -98,9 +98,9 @@ function Cover({ id, url, alt }: CoverData) {
         loading="lazy"
         className={styles['cover-image']}
         skeletonClassName="cover medium"
-        unoptimized={true}
-        width={300}
-        height={300}
+        width={576}
+        height={576}
+        sizes="(max-height: 500px) 240px, (max-height: 600px) 280px, 576px"
       />
       <div
         className={styles['play-icon']}
