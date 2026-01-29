@@ -3,6 +3,10 @@ const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   swcMinify: true,
+  experimental: {
+    inlineCss: true,
+    useLightningcss: true,
+  },
 };
 
 export default nextConfig;

@@ -25,6 +25,7 @@ export default function LatestRelease() {
         quality={100}
         width={900}
         height={900}
+        sizes="(max-width: 668px) 280px, (max-width: 816px) 400px, (max-width: 891px) 480px, (max-width: 1246px) 560px, (max-width: 1408px) 720px, 1008px"
       />
       <Image className={styles['latest-release-cover']}
         src={latestReleaseSrc}

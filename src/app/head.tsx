@@ -7,11 +7,20 @@ function guessAs(src: string): 'image' | 'font' | 'video' | 'audio' {
   return 'image';
 }
 
+function getFontType(src: string): string | undefined {
+  if (src.endsWith('.otf')) return 'font/otf';
+  if (src.endsWith('.woff2')) return 'font/woff2';
+  if (src.endsWith('.woff')) return 'font/woff';
+  if (src.endsWith('.ttf')) return 'font/ttf';
+  return undefined;
+}
+
 export default function Head() {
   return (
     <>
       {getCriticalAssets().map((src) => {
         const as = guessAs(src);
+        const fontType = as === 'font' ? getFontType(src) : undefined;
         return (
           <link
             key={src}
@@ -20,6 +29,7 @@ export default function Head() {
             as={as}
             fetchPriority="high"
             {...(as === 'font' && { crossOrigin: 'anonymous' })}
+            {...(fontType && { type: fontType })}
           />
         );
       })}

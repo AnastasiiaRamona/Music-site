@@ -11,11 +11,13 @@ const overlock = Halant({
   weight: '400',
   subsets: ['latin'],
   display: 'swap',
+  preload: true,
 });
 const lato = Lato({
   weight: ['300', '400', '700'],
   subsets: ['latin'],
-  display: 'swap',
+  display: 'optional',
+  preload: false,
 });
 
 export { lato };
@@ -93,7 +95,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${overlock.className}`}>
-      <body>
+      <body className={lato.className}>
         <AudioPlayerProvider>
           <LyricsProvider>
             <ClientLayout>{children}</ClientLayout>

@@ -20,7 +20,7 @@ export default function About() {
             fill
             className={styles.mainImage}
             priority
-            unoptimized
+            sizes="(max-width: 564px) 100vw, (max-width: 840px) 100vw, (max-width: 896px) 50vw, 960px"
           />
         </div>
         <AboutClient
