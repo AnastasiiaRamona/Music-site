@@ -75,9 +75,6 @@ export const metadata: Metadata = {
     yandex: '18436f7da04f12f3',
     google: '_VP7MNXQLWK3loVZk5OQu5WaijMQDKe7s7XDR4g2ixg',
   },
-  alternates: {
-    canonical: 'https://anastasiia-ramona.netlify.app',
-  },
 };
 
 export const viewport = {

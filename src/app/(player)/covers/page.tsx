@@ -6,6 +6,12 @@ import styles from './page.module.css';
 
 export const dynamic = 'force-static';
 
+export const metadata = {
+  alternates: {
+    canonical: 'https://anastasiia-ramona.netlify.app/covers',
+  },
+};
+
 export default function CoversPage() {
   return (
     <div className={styles.coversPage}>

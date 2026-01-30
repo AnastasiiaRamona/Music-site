@@ -7,6 +7,12 @@ import Link from 'next/link';
 
 export const dynamic = 'force-static';
 
+export const metadata = {
+  alternates: {
+    canonical: 'https://anastasiia-ramona.netlify.app/home',
+  },
+};
+
 export default function Home() {
   const description = "Indie Dream Crafter";
   const latestReleaseText = "Grab the Latest Release";

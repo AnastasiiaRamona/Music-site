@@ -6,6 +6,12 @@ import { aboutData } from '@/data/aboutData';
 
 export const dynamic = 'force-static';
 
+export const metadata = {
+  alternates: {
+    canonical: 'https://anastasiia-ramona.netlify.app/about',
+  },
+};
+
 export default function About() {
   return (
     <section className={styles.about}>

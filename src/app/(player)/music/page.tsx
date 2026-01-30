@@ -75,6 +75,12 @@ function processAlbumsData() {
 
 export const dynamic = 'force-static';
 
+export const metadata = {
+  alternates: {
+    canonical: 'https://anastasiia-ramona.netlify.app/music',
+  },
+};
+
 export default function Music() {
   const { covers, songs } = processAlbumsData();
 
