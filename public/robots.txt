@@ -2,5 +2,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap (uncomment and set your domain when you have a sitemap)
-# Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://anastasiia-ramona.netlify.app/sitemap.xml
