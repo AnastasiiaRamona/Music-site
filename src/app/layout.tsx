@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   },
   verification: {
     yandex: '18436f7da04f12f3',
-    google: '_VP7MNXQLWK3loVZk5OQu5WaijMQDKe7s7XDR4g2ixg',
+    google: 'VUqWr4Y38dh4_kL4GFgFC-_yi8yiTL8l1hMBXn64MA0',
   },
 };
 
