@@ -293,6 +293,4 @@ This project represents a complete creative vision brought to life through music
 
 **Made with music and code** 🎵✨
 
-[Report Bug](https://github.com/yourusername/music-site/issues) · [Request Feature](https://github.com/yourusername/music-site/issues)
-
 </div>
