@@ -22,32 +22,6 @@ const coverSrc21 = '/assets/covers/north-of-me.webp';
 const coverSrc22 = '/assets/covers/the-torch.webp';
 const coverSrc23 = '/assets/covers/driftwood-kingdom.webp';
 
-export const preloadImages = [
-  coverSrc1,
-  coverSrc2,
-  coverSrc3,
-  coverSrc4,
-  coverSrc5,
-  coverSrc6,
-  coverSrc7,
-  coverSrc8,
-  coverSrc9,
-  coverSrc10,
-  coverSrc11,
-  coverSrc12,
-  coverSrc13,
-  coverSrc14,
-  coverSrc15,
-  coverSrc16,
-  coverSrc17,
-  coverSrc18,
-  coverSrc19,
-  coverSrc20,
-  coverSrc21,
-  coverSrc22,
-  coverSrc23,
-];
-
 export const albums = [
   {
     albumId: 'the-driftwood-kingdom',
