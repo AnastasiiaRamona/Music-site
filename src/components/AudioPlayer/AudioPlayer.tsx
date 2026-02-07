@@ -11,6 +11,7 @@ import ProgressBar from './ProgressBar';
 import VolumeControl from './VolumeControl';
 import MobilePlayer from './MobilePlayer';
 import { MinusIcon, PlusIcon, CloseIconLarge } from '../Icons/Icons';
+import { useAudioLoadRetry } from './useAudioLoadRetry';
 
 interface AudioPlayerProps {
   isVisible: boolean;
@@ -171,6 +172,8 @@ export default function AudioPlayer({ isVisible, currentTrack, shouldAutoPlay = 
       setDuration(0);
     }
   }, [currentTrack]);
+
+  useAudioLoadRetry(audioRef, currentTrack);
 
   useEffect(() => {
     if (shouldAutoPlay && audioRef.current && currentTrack) {
