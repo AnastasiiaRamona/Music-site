@@ -3,11 +3,11 @@ export const aboutData = {
 
   quotes: [
     {
-      text: "Born far away, where winters last and silence speaks louder than words, Anastasiia Ramona began her path with a Fender guitar — the one that taught her to turn emotion into sound.",
+      text: "I know she's from the land of snow. In her old photos, you can often see a Fender guitar. I wonder if that was her first guitar.",
       magazine: "The Independent Artist Who Definitely Has It Together Magazine"
     },
     {
-      text: "Some say she's part human, part machine — a mind partly claimed by code. Yet it's the human part that writes, sings, and records: fragile, instinctive, alive.",
+      text: "Some say she's human. Others say she's been connected to a machine for too long — maybe even turning into one herself. But I don’t hear AI in her music. I hear a human writing it.",
       magazine: "Too Tired To Tour Journal"
     }
   ]
