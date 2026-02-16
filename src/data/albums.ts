@@ -21,6 +21,7 @@ const coverSrc20 = '/assets/covers/Twenty-Eight-Past Four.webp';
 const coverSrc21 = '/assets/covers/north-of-me.webp';
 const coverSrc22 = '/assets/covers/the-torch.webp';
 const coverSrc23 = '/assets/covers/driftwood-kingdom.webp';
+const coverSrc24 = '/assets/covers/the-railway-station.webp';
 
 export const albumCoverSrcs = [
   coverSrc1,
@@ -46,9 +47,58 @@ export const albumCoverSrcs = [
   coverSrc21,
   coverSrc22,
   coverSrc23,
+  coverSrc24,
 ];
 
 export const albums = [
+  {
+    albumId: 'the-railway-station',
+    coverSrc: coverSrc24,
+    title: 'The Railway Station',
+    isAlbum: true,
+    tracks: [
+      {
+        trackId: 'the-railway-station',
+        title: 'The Railway Station',
+        audioSrc: '/audios/the-railway-station/1. The-railway-station.opus',
+        coverSrc: coverSrc24,
+        instrumental: true,
+      },
+      {
+        trackId: 'undervoltage',
+        title: 'Undervoltage',
+        audioSrc: '/audios/the-railway-station/2. Undervoltage.opus',
+        coverSrc: coverSrc24,
+        instrumental: true,
+      },
+      {
+        trackId: 'almost-happy',
+        title: `Almost Happy`,
+        audioSrc: '/audios/the-railway-station/3. Amost-happy.opus',
+        coverSrc: coverSrc24,
+        instrumental: true,
+      },
+      {
+        trackId: 'confession-of-the-last-station',
+        title: 'Confession of the Last Station',
+        audioSrc: '/audios/the-railway-station/4. Confession.opus',
+        coverSrc: coverSrc24,
+        lyricsPath: '/lyrics/confession-of-the-last-station.txt',
+      },
+      {
+        trackId: 'backwards',
+        title: 'Backwards',
+        audioSrc: '/audios/the-railway-station/5. Backwards.opus',
+        coverSrc: coverSrc24,
+        instrumental: true,
+      },
+    ],
+    appleMusicLink: 'https://music.apple.com/us/album/the-railway-station-ep/1876572400',
+    spotifyLink: 'https://open.spotify.com/album/7jbQVxVDEiyccYFxv16usk?si=K5fKa5K8SV6N4X_zQcMfTA',
+    youtubeLink: 'https://youtube.com/playlist?list=OLAK5uy_kEg2bf5xRtYe_tr4Qoo6MPDs9AdHWOOkw&si=ReZUkRgijCqDrC8X',
+    amazonLink:
+      'https://amazon.com/music/player/albums/B0GMXL3B8W?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_U3HQbHQ357CYRd37ddN5d3dae',
+  },
   {
     albumId: 'the-driftwood-kingdom',
     coverSrc: coverSrc23,
@@ -60,7 +110,6 @@ export const albums = [
         title: 'Skyglitch',
         audioSrc: '/audios/driftwood-kingdom/1. skyglitch.opus',
         coverSrc: coverSrc14,
-        lyricsPath: '/lyrics/skyglitch.txt',
         instrumental: true,
       },
       {
@@ -96,7 +145,6 @@ export const albums = [
         title: 'Friend of Mine',
         audioSrc: '/audios/driftwood-kingdom/6. friend-of-mine.opus',
         coverSrc: coverSrc1,
-        lyricsPath: '/lyrics/friend-of-mine.txt',
         instrumental: true,
       },
       {
