@@ -22,6 +22,7 @@ const coverSrc21 = '/assets/covers/north-of-me.webp';
 const coverSrc22 = '/assets/covers/the-torch.webp';
 const coverSrc23 = '/assets/covers/driftwood-kingdom.webp';
 const coverSrc24 = '/assets/covers/the-railway-station.webp';
+const coverSrc25 = '/assets/covers/stop-the-whales.webp';
 
 export const albumCoverSrcs = [
   coverSrc1,
@@ -51,6 +52,18 @@ export const albumCoverSrcs = [
 ];
 
 export const albums = [
+  {
+    albumId: 'stop-the-whales',
+    coverSrc: coverSrc25,
+    title: 'Stop the Whales!',
+    audioSrc: '/audios/stop-the-whales.opus',
+    lyricsPath: '/lyrics/stop-the-whales.txt',
+    appleMusicLink: 'https://music.apple.com/us/album/stop-the-whales-single/1885183455',
+    spotifyLink: 'https://open.spotify.com/track/543SyRlyIVvQToDxCfqnGM?si=92e1fbfe46314e5e',
+    youtubeLink: 'https://youtu.be/nn5OPq4XJhg?si=M-FMojdEHPg-nAhe',
+    amazonLink:
+      'https://amazon.com/music/player/albums/B0GSKF3VN9?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_P3aHz0RItDZjwN3b6LEP8BwVH',
+  },
   {
     albumId: 'the-railway-station',
     coverSrc: coverSrc24,
