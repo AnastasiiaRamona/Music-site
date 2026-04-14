@@ -23,6 +23,7 @@ const coverSrc22 = '/assets/covers/the-torch.webp';
 const coverSrc23 = '/assets/covers/driftwood-kingdom.webp';
 const coverSrc24 = '/assets/covers/the-railway-station.webp';
 const coverSrc25 = '/assets/covers/stop-the-whales.webp';
+const coverSrc26 = '/assets/covers/underwater.webp';
 
 export const albumCoverSrcs = [
   coverSrc1,
@@ -49,9 +50,23 @@ export const albumCoverSrcs = [
   coverSrc22,
   coverSrc23,
   coverSrc24,
+  coverSrc25,
+  coverSrc26,
 ];
 
 export const albums = [
+  {
+    albumId: 'underwater',
+    coverSrc: coverSrc26,
+    title: 'Underwater',
+    audioSrc: '/audios/underwater.opus',
+    lyricsPath: '/lyrics/underwater.txt',
+    appleMusicLink: 'https://music.apple.com/us/album/underwater-single/1890184941',
+    spotifyLink: 'https://open.spotify.com/track/1Oi67wbeBFq1lNwMGiAamf?si=af58d9f8cac24a32',
+    youtubeLink: 'https://youtu.be/CEEkNbO6TF0?si=Xor3Wqf_TxBTad6Y',
+    amazonLink:
+      'https://amazon.com/music/player/albums/B0GVT9237D?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_bMen3takhB8B2grTLpTLCd2rR',
+  },
   {
     albumId: 'stop-the-whales',
     coverSrc: coverSrc25,
