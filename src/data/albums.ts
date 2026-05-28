@@ -24,6 +24,7 @@ const coverSrc23 = '/assets/covers/driftwood-kingdom.webp';
 const coverSrc24 = '/assets/covers/the-railway-station.webp';
 const coverSrc25 = '/assets/covers/stop-the-whales.webp';
 const coverSrc26 = '/assets/covers/underwater.webp';
+const coverSrc27 = '/assets/covers/hey-johnny.webp';
 
 export const albumCoverSrcs = [
   coverSrc1,
@@ -52,9 +53,37 @@ export const albumCoverSrcs = [
   coverSrc24,
   coverSrc25,
   coverSrc26,
+  coverSrc27,
 ];
 
 export const albums = [
+  {
+    albumId: 'hey-johnny',
+    coverSrc: coverSrc27,
+    title: 'Hey, Johnny',
+    isAlbum: true,
+    tracks: [
+      {
+        trackId: 'hey-johnny',
+        title: 'Hey, Johnny',
+        audioSrc: '/audios/hey-johnny/1. hey-johnny.opus',
+        coverSrc: coverSrc27,
+        lyricsPath: '/lyrics/hey-johnny.txt',
+      },
+      {
+        trackId: 'hey-johnny-instrumental',
+        title: "Hey, Johnny (Instrumental)",
+        audioSrc: '/audios/hey-johnny/2. hey-johnny-instrumental.opus',
+        coverSrc: coverSrc27,
+        instrumental: true,
+      },
+    ],
+    appleMusicLink: 'https://music.apple.com/us/album/hey-johnny-single/6768594209',
+    spotifyLink: 'https://open.spotify.com/album/032sk0qWCKjeN94ro0d7f0?si=XVH_vzmcQmGpiyqBCV8Ikw',
+    youtubeLink: 'https://youtu.be/iPPh8wlRLIY?si=h4fharxmKFVkYL2g',
+    amazonLink:
+      'https://amazon.com/music/player/albums/B0H1J5DBWY?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_qEge0QpcqZktmh0qketG32lba',
+  },
   {
     albumId: 'underwater',
     coverSrc: coverSrc26,
