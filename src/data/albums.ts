@@ -25,6 +25,7 @@ const coverSrc24 = '/assets/covers/the-railway-station.webp';
 const coverSrc25 = '/assets/covers/stop-the-whales.webp';
 const coverSrc26 = '/assets/covers/underwater.webp';
 const coverSrc27 = '/assets/covers/hey-johnny.webp';
+const coverSrc28 = '/assets/covers/folk-song-for-goodbye.webp';
 
 export const albumCoverSrcs = [
   coverSrc1,
@@ -54,9 +55,22 @@ export const albumCoverSrcs = [
   coverSrc25,
   coverSrc26,
   coverSrc27,
+  coverSrc28,
 ];
 
 export const albums = [
+  {
+    albumId: 'folk-song-for-goodbye',
+    coverSrc: coverSrc28,
+    title: 'Folk Song for Goodbye',
+    audioSrc: '/audios/folk-song-for-goodbye.opus',
+    lyricsPath: '/lyrics/folk-song-for-goodbye.txt',
+    appleMusicLink: 'https://music.apple.com/us/song/folk-song-for-goodbye/6778273653',
+    spotifyLink: 'https://open.spotify.com/album/6vLrNCLbDmLZrG6sQv5fco?si=YF-_2p27SbOXMC18o2A5SA',
+    youtubeLink: 'https://youtu.be/QCVXVF6ZACA?si=cr18OTzSPF9Sk2t6',
+    amazonLink:
+      'https://amazon.com/music/player/albums/B0H4KJYW35?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_W5trt3QtWDie6H6VmisWb6CoJ',
+  },
   {
     albumId: 'hey-johnny',
     coverSrc: coverSrc27,

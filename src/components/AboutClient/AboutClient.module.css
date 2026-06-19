@@ -131,7 +131,7 @@ screen and (max-width: 950px) and (min-height: 1300px) {
 }
 
 @media screen and (max-width: 840px) and (orientation: portrait),
-screen and (min-height: 1262px) {
+screen and (min-height: 1262px) and (max-width: 1260px) and (orientation: portrait) {
   .content {
     max-width: 90vw;
     margin: 0 auto;
