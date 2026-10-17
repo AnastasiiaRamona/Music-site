@@ -26,6 +26,7 @@ const coverSrc25 = '/assets/covers/stop-the-whales.webp';
 const coverSrc26 = '/assets/covers/underwater.webp';
 const coverSrc27 = '/assets/covers/hey-johnny.webp';
 const coverSrc28 = '/assets/covers/folk-song-for-goodbye.webp';
+const coverSrc29 = '/assets/covers/posh-blue-mood.webp';
 
 export const albumCoverSrcs = [
   coverSrc1,
@@ -56,9 +57,22 @@ export const albumCoverSrcs = [
   coverSrc26,
   coverSrc27,
   coverSrc28,
+  coverSrc29,
 ];
 
 export const albums = [
+  {
+    albumId: 'posh-blue-mood',
+    coverSrc: coverSrc29,
+    title: 'Posh Blue Mood',
+    audioSrc: '/audios/posh-blue-mood.opus',
+    lyricsPath: '/lyrics/posh-blue-mood.txt',
+    appleMusicLink: 'https://music.apple.com/us/album/posh-blue-mood-single/6818666403',
+    spotifyLink: 'https://open.spotify.com/album/528Xesx5s2I18QLeqkd2iG?si=8ROyz0SQTNqWYVf5tHp-Sg',
+    youtubeLink: 'https://youtu.be/X38Y5SkwlUE?si=jgYBwWFXitWRdp3v',
+    amazonLink:
+      'https://amazon.com/music/player/tracks/B0HLV8KKZ4?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_uoIvNx2U9aIlPpPYwL6QPhEFo',
+  },
   {
     albumId: 'folk-song-for-goodbye',
     coverSrc: coverSrc28,
